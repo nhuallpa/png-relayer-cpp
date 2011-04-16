@@ -5,16 +5,18 @@
  *      Author: administrador
  */
 
-#include "Png.h"
+#include "PngAjedrez.h"
+using namespace std;
 
-Png::Png() {
+
+PngAjedrez::PngAjedrez() {
 
 	this->tableroInicial.clear();
 	this->movidas.clear();
 
 }
 
-tEstado Png::cargarPng(char *rutaPng) {
+tEstado PngAjedrez::cargarPng(char *rutaPng) {
 	tEstado estado = EXITOSO;
 	string lineaBuffer;
 	ifstream in(rutaPng);
@@ -34,7 +36,7 @@ tEstado Png::cargarPng(char *rutaPng) {
 
 
 
-tEstado Png::cargarPng(istream &inStream) {
+tEstado PngAjedrez::cargarPng(istream &inStream) {
 	tEstado estado = EXITOSO;
 	string lineaBuffer;
 	getline(inStream, this->tableroInicial);
@@ -46,11 +48,26 @@ tEstado Png::cargarPng(istream &inStream) {
 	return estado;
 }
 
-stringstream*  Png::getMovidas() {
-    return &movidas;
+string PngAjedrez::dameFila(int nroFila) {
+	int posIni = 0;
+	string fila = "";
+	int nroToken = PNG_CANT_FILA - nroFila + 1;
+	for (int i = 0; i<nroToken; i++) {
+		size_t posEntontrado = tableroInicial.find('/', posIni);
+		if (posEntontrado != string::npos) {
+			fila = tableroInicial.substr(posIni, posEntontrado - posIni);
+			posIni = posEntontrado + 1;
+		}
+	}
+	return fila;
 }
 
-string Png::getTableroInicial() {
+
+// todo: quitar despues
+stringstream*  PngAjedrez::getMovidas() {
+    return &movidas;
+}
+string PngAjedrez::getTableroInicial() {
     return this->tableroInicial;
 }
 

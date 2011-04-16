@@ -12,20 +12,24 @@
 #include <fstream>
 #include <sstream>
 #include "commonType.h"
-using namespace std;
 
-class Png {
+#define PNG_CANT_FILA 8
+
+class PngAjedrez {
 
 private:
-	string tableroInicial;
-	stringstream movidas;
+	std::string tableroInicial;
+	std::stringstream movidas;
 
 public:
-	Png();
+	PngAjedrez();
 	tEstado cargarPng(char* rutaPng);
-	tEstado cargarPng(istream &inStream);
-    stringstream* getMovidas();
-    string getTableroInicial();
+	tEstado cargarPng(std::istream &inStream);
+	std::string dameFila(int nroFila);
+
+	std::stringstream* getMovidas();
+	std::string getTableroInicial();
+
 
 };
 
