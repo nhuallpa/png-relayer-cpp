@@ -14,3 +14,8 @@ typedef enum { 	EXITOSO = 0,
 
 
 #endif /* COMMONTYPE_H_ */
+
+#ifndef NULL
+#define NULL 0
+#endif
+
