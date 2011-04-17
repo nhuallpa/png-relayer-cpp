@@ -21,10 +21,13 @@ public:
 	ControladorReplayer(Ajedrez* ajedrez);
 	void reproducir(PngAjedrez* entradaPng);
 	virtual ~ControladorReplayer();
+	void mostrarResultados();
 
 private:
 	void armarTableroInicial(PngAjedrez* entradaPng);
 	void construirFila(std::string cadenaFilaActual, int nroFila);
+	bool hayPosicionesVacias(char indicador);
+
 };
 
 #endif /* CONTROLADORREPLAYER_H_ */

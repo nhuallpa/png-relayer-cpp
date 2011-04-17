@@ -8,13 +8,15 @@
 #include "ControladorReplayer.h"
 using namespace std;
 
-ControladorReplayer::ControladorReplayer(Ajedrez* ajedrez) {
-
-
+ControladorReplayer::ControladorReplayer(Ajedrez* unAjedrez) {
+	ajedrez = unAjedrez;
 }
 
 ControladorReplayer::~ControladorReplayer() {
 
+}
+
+void ControladorReplayer::mostrarResultados() {
 }
 
 void ControladorReplayer::reproducir(PngAjedrez* entradaPng) {
@@ -34,10 +36,34 @@ void ControladorReplayer::armarTableroInicial(PngAjedrez* entradaPng)
 
 void ControladorReplayer::construirFila(string cadenaFilaActual, int nroFila) {
 
-	for (int indice = 0; indice < cadenaFilaActual.size(); indice++) {
-		//todo: aca me quede
+	int tamanio = cadenaFilaActual.size();
+	int columnaLibre = 0;
+	for (int indice = 0; indice < tamanio; indice++) {
+		char indicador = cadenaFilaActual.at(indice);
+		if (hayPosicionesVacias(indicador)) {
+			int nroVacios = cadenaFilaActual[indice] - '0';
+			columnaLibre += nroVacios;
+		} else {
+//			Pieza unaPieza = new Pieza();
+//			ajedrez.registrarPieza(unaPieza);
+//			ajedrez.posicionarFicha(posicion, unaPieza);
+			columnaLibre++;
+		}
 	}
 }
+
+bool ControladorReplayer::hayPosicionesVacias(char indicador) {
+	return (indicador >= '1' && indicador <= '8');
+}
+
+
+
+
+
+
+
+
+
 
 
 
