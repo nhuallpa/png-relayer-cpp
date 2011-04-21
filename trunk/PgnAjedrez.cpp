@@ -1,22 +1,22 @@
 /*
- * PngFile.cpp
+ * PgnFile.cpp
  *
  *  Created on: 10/04/2011
- *      Author: administrador
+ *      Author: Nestor Huallpa
  */
 
-#include "PngAjedrez.h"
+#include "PgnAjedrez.h"
 using namespace std;
 
 
-PngAjedrez::PngAjedrez() {
+PgnAjedrez::PgnAjedrez() {
 
 	this->tableroInicial.clear();
 	this->movidas.clear();
 
 }
 
-tEstado PngAjedrez::cargarPng(char *rutaPng) {
+tEstado PgnAjedrez::cargarPng(char *rutaPng) {
 	tEstado estado = EXITOSO;
 	string lineaBuffer;
 	ifstream in(rutaPng);
@@ -36,7 +36,7 @@ tEstado PngAjedrez::cargarPng(char *rutaPng) {
 
 
 
-tEstado PngAjedrez::cargarPng(istream &inStream) {
+tEstado PgnAjedrez::cargarPng(istream &inStream) {
 	tEstado estado = EXITOSO;
 	string lineaBuffer;
 	getline(inStream, this->tableroInicial);
@@ -48,7 +48,7 @@ tEstado PngAjedrez::cargarPng(istream &inStream) {
 	return estado;
 }
 
-string PngAjedrez::dameFila(int nroFila) {
+string PgnAjedrez::dameFila(int nroFila) {
 	int posIni = 0;
 	string fila = "";
 	int nroToken = PNG_CANT_FILA - nroFila + 1;
@@ -64,10 +64,10 @@ string PngAjedrez::dameFila(int nroFila) {
 
 
 // todo: quitar despues
-stringstream*  PngAjedrez::getMovidas() {
+stringstream*  PgnAjedrez::getMovidas() {
     return &movidas;
 }
-string PngAjedrez::getTableroInicial() {
+string PgnAjedrez::getTableroInicial() {
     return this->tableroInicial;
 }
 

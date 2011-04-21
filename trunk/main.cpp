@@ -1,12 +1,12 @@
 //============================================================================
 // Name        : main.cpp
-// Author      : 
+// Author      : Nestor Huallpa
 // Version     :
 // Copyright   : Your copyright notice
 // Description :
 //============================================================================
 
-#include "PngAjedrez.h"
+#include "PgnAjedrez.h"
 #include "Ajedrez.h"
 #include "ControladorReplayer.h"
 
@@ -15,7 +15,7 @@
 using namespace std;
 
 #define TEST
-void iniciarEjecucion(PngAjedrez* entradaPng) {
+void iniciarEjecucion(PgnAjedrez* entradaPng) {
 	Ajedrez ajedrez;
 	ControladorReplayer controlador(&ajedrez);
 //	VistaReplayer unaVista(ajedrez);
@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
 	TestTableroAjedrez testSuit;
 	testSuit.run();
 #else
-	PngAjedrez entradaPng;
+	PgnAjedrez entradaPng;
 	if (argc == 2) {
 		estado = entradaPng.cargarPng(argv[1]);
 	} else if (argc == 1){
