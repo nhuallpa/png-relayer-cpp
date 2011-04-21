@@ -10,10 +10,13 @@ using namespace std;
 
 ControladorReplayer::ControladorReplayer(TableroAjedrez* unAjedrez) {
 	tableroAjedrez = unAjedrez;
+	piezasIniciales = NULL;
 }
 
 ControladorReplayer::~ControladorReplayer() {
-
+	if (piezasIniciales) {
+		//todo: liberar lista y sus datas
+	}
 }
 
 void ControladorReplayer::mostrarResultados() {
@@ -27,14 +30,16 @@ void ControladorReplayer::reproducir(PgnAjedrez* entradaPng) {
 
 void ControladorReplayer::prepararTableroInicial(PgnAjedrez* entradaPng) {
 	pgnInterprete.setPgn(entradaPng);
-	ListaPPieza* piezasIniciales = pgnInterprete.getPiezasIniciales();
-	ListaPPieza::IteratorList itPiezasInicales = piezasIniciales->getIterator();
-	while (itPiezasInicales.hasNext()) {
-		Pieza* unaPieza = itPiezasInicales.next();
-		tableroAjedrez->posionar(unaPieza->getPiezaJugadora(),
-									unaPieza->getCoordenadaInicial());
+	piezasIniciales = pgnInterprete.getPiezasIniciales();
+	if (piezasIniciales) {
+		ListaPPieza::IteratorList itPiezasInicales = piezasIniciales->getIterator();
+		while (itPiezasInicales.hasNext()) {
+			Pieza* unaPieza = itPiezasInicales.next();
+			tableroAjedrez->posionar(unaPieza->getPiezaJugadora(),
+					unaPieza->getCoordenadaInicial());
+		}
 	}
-	// todo: resguardar la lista para visualizar
+
 }
 
 
