@@ -27,7 +27,7 @@ void TestTableroAjedrez::testTableroVacio() {
 	streamtest<<"Qg2h1+ 21. Kd1d2 Qh1g2+ 22. Kd2e1 Nh3g1 23. Nb1c3 Bd4c3+ 24. b2c3 Qg2e2#"<<endl;
 
 
-	Ajedrez ajedrez;
+	TableroAjedrez ajedrez;
 	for (int fila = 0; fila < ajedrez.getCantFilas(); fila++){
 		for (int columna = 0; columna < ajedrez.getCantColumnas(); columna++) {
 			Assert::assertFalse(ajedrez.hayFicha(fila, columna), "testTableroVacio");
@@ -48,7 +48,7 @@ void TestTableroAjedrez::testTableroCargado() {
 
 	PgnAjedrez entradaPng;
 	entradaPng.cargarPng(streamtest);
-	Ajedrez ajedrez;
+	TableroAjedrez ajedrez;
 	ControladorReplayer controlador(&ajedrez);
 	controlador.reproducir(&entradaPng);
 

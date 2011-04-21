@@ -7,26 +7,31 @@
 
 #ifndef _CONTROLADORREPLAYER_H_
 #define _CONTROLADORREPLAYER_H_
-#include "Ajedrez.h"
+#include "TableroAjedrez.h"
 #include "PgnAjedrez.h"
-#include "string.h"
+#include "PgnInterprete.h"
+#include <string>
+#include "Lista.h"
+#include "PiezaJugadora.h"
+#include "Coordenada.h"
+
 
 
 class ControladorReplayer {
 
 private:
-	Ajedrez* ajedrez;
+	TableroAjedrez* tableroAjedrez;
+	PgnInterprete pgnInterprete;
 
 public:
-	ControladorReplayer(Ajedrez* ajedrez);
+	ControladorReplayer(TableroAjedrez* ajedrez);
 	void reproducir(PgnAjedrez* entradaPng);
 	virtual ~ControladorReplayer();
 	void mostrarResultados();
 
+
 private:
-	void armarTableroInicial(PgnAjedrez* entradaPng);
-	void construirFila(std::string cadenaFilaActual, int nroFila);
-	bool hayPosicionesVacias(char indicador);
+	void prepararTableroInicial(PgnAjedrez* entradaPng);
 
 };
 
