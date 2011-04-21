@@ -22,6 +22,7 @@ class ControladorReplayer {
 private:
 	TableroAjedrez* tableroAjedrez;
 	PgnInterprete pgnInterprete;
+	ListaPPieza* piezasIniciales;
 
 public:
 	ControladorReplayer(TableroAjedrez* ajedrez);
