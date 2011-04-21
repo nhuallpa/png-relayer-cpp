@@ -1,12 +1,12 @@
 /*
- * PngFile.h
+ * PgnFile.h
  *
  *  Created on: 10/04/2011
- *      Author: administrador
+ *      Author: Nestor Huallpa
  */
 
-#ifndef PNGFILE_H_
-#define PNGFILE_H_
+#ifndef __PGNFILE_H_
+#define __PGNFILE_H_
 
 #include <iostream>
 #include <fstream>
@@ -15,14 +15,14 @@
 
 #define PNG_CANT_FILA 8
 
-class PngAjedrez {
+class PgnAjedrez {
 
 private:
 	std::string tableroInicial;
 	std::stringstream movidas;
 
 public:
-	PngAjedrez();
+	PgnAjedrez();
 	tEstado cargarPng(char* rutaPng);
 	tEstado cargarPng(std::istream &inStream);
 	std::string dameFila(int nroFila);

@@ -8,7 +8,7 @@
 #ifndef _CONTROLADORREPLAYER_H_
 #define _CONTROLADORREPLAYER_H_
 #include "Ajedrez.h"
-#include "PngAjedrez.h"
+#include "PgnAjedrez.h"
 #include "string.h"
 
 
@@ -19,12 +19,12 @@ private:
 
 public:
 	ControladorReplayer(Ajedrez* ajedrez);
-	void reproducir(PngAjedrez* entradaPng);
+	void reproducir(PgnAjedrez* entradaPng);
 	virtual ~ControladorReplayer();
 	void mostrarResultados();
 
 private:
-	void armarTableroInicial(PngAjedrez* entradaPng);
+	void armarTableroInicial(PgnAjedrez* entradaPng);
 	void construirFila(std::string cadenaFilaActual, int nroFila);
 	bool hayPosicionesVacias(char indicador);
 

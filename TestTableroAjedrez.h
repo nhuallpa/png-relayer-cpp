@@ -8,7 +8,7 @@
 #ifndef TESTTABLEROAJEDREZ_H_
 #define TESTTABLEROAJEDREZ_H_
 #include "Ajedrez.h"
-#include "PngAjedrez.h"
+#include "PgnAjedrez.h"
 #include "ControladorReplayer.h"
 #include "Assert.h"
 #include "assert.h"

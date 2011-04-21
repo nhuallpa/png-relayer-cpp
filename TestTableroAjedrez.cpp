@@ -46,7 +46,7 @@ void TestTableroAjedrez::testTableroCargado() {
 	streamtest<<"d2d3 Bc5f2 17. Re1h1 Qg4g3+ 18. Kg2f1 Bf2d4 19. Kf1e2 Qg3g2+ 20. Ke2d1"<<endl;
 	streamtest<<"Qg2h1+ 21. Kd1d2 Qh1g2+ 22. Kd2e1 Nh3g1 23. Nb1c3 Bd4c3+ 24. b2c3 Qg2e2#"<<endl;
 
-	PngAjedrez entradaPng;
+	PgnAjedrez entradaPng;
 	entradaPng.cargarPng(streamtest);
 	Ajedrez ajedrez;
 	ControladorReplayer controlador(&ajedrez);

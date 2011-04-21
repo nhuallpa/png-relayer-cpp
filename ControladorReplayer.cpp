@@ -19,13 +19,13 @@ ControladorReplayer::~ControladorReplayer() {
 void ControladorReplayer::mostrarResultados() {
 }
 
-void ControladorReplayer::reproducir(PngAjedrez* entradaPng) {
+void ControladorReplayer::reproducir(PgnAjedrez* entradaPng) {
 	armarTableroInicial(entradaPng);
 //	this.ejecutarMovidas(entradaPng);
 //	this.armarTableroFinal(entradaPng);
 }
 
-void ControladorReplayer::armarTableroInicial(PngAjedrez* entradaPng)
+void ControladorReplayer::armarTableroInicial(PgnAjedrez* entradaPng)
 {
 	string cadenaFilaActual;
 	for (int nroFila = AJ_CANT_FILAS; nroFila > 0; nroFila--) {
