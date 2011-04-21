@@ -1,9 +1,9 @@
 //============================================================================
-// Name        : PngReplayer.cpp
+// Name        : main.cpp
 // Author      : 
 // Version     :
 // Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
+// Description :
 //============================================================================
 
 #include "PngAjedrez.h"
