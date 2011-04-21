@@ -7,7 +7,7 @@
 
 #ifndef TESTTABLEROAJEDREZ_H_
 #define TESTTABLEROAJEDREZ_H_
-#include "Ajedrez.h"
+#include "TableroAjedrez.h"
 #include "PgnAjedrez.h"
 #include "ControladorReplayer.h"
 #include "Assert.h"

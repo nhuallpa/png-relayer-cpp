@@ -7,7 +7,7 @@
 //============================================================================
 
 #include "PgnAjedrez.h"
-#include "Ajedrez.h"
+#include "TableroAjedrez.h"
 #include "ControladorReplayer.h"
 
 #include "TestTableroAjedrez.h"
@@ -16,7 +16,7 @@ using namespace std;
 
 #define TEST
 void iniciarEjecucion(PgnAjedrez* entradaPng) {
-	Ajedrez ajedrez;
+	TableroAjedrez ajedrez;
 	ControladorReplayer controlador(&ajedrez);
 //	VistaReplayer unaVista(ajedrez);
 //	controlador.setVista(unaVista);

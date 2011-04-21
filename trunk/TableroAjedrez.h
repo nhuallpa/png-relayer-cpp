@@ -10,8 +10,10 @@
 #define AJ_CANT_FILAS 8
 #define AJ_CANT_COLUMNAS 8
 #include "Celda.h"
+#include "PiezaJugadora.h"
+#include "Coordenada.h"
 
-class Ajedrez {
+class TableroAjedrez {
 
 private:
 	int cantFilas;
@@ -19,13 +21,14 @@ private:
 	Celda tablero[AJ_CANT_FILAS][AJ_CANT_COLUMNAS];
 
 public:
-	Ajedrez();
+	TableroAjedrez();
 	bool hayFicha(int fila, int colum);
-	virtual ~Ajedrez();
+	virtual ~TableroAjedrez();
 	int getCantColumnas() const {return cantColumnas;}
 	int getCantFilas() const {return cantFilas;}
 	void setCantColumnas(int cantColumnas) {this->cantColumnas = cantColumnas;}
 	void setCantFilas(int cantFilas) {this->cantFilas = cantFilas;}
+	void posionar(PiezaJugadora* piezaJugadora, Coordenada coord);
 
 };
 

@@ -8,8 +8,27 @@
 #include "Pieza.h"
 
 Pieza::Pieza() {
-	// TODO Auto-generated constructor stub
+	piezaJugadora = NULL;
+}
 
+Coordenada Pieza::getCoordenadaInicial() const
+{
+    return coordenadaInicial;
+}
+
+PiezaJugadora *Pieza::getPiezaJugadora() const
+{
+    return piezaJugadora;
+}
+
+void Pieza::setCoordenadaInicial(Coordenada coordenadaInicial)
+{
+    this->coordenadaInicial = coordenadaInicial;
+}
+
+void Pieza::setPiezaJugadora(PiezaJugadora *piezaJugadora)
+{
+    this->piezaJugadora = piezaJugadora;
 }
 
 Pieza::~Pieza() {

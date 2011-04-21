@@ -5,15 +5,15 @@
  *      Author: administrador
  */
 
-#include "Ajedrez.h"
+#include "TableroAjedrez.h"
 
-Ajedrez::Ajedrez() {
+TableroAjedrez::TableroAjedrez() {
 	cantFilas = AJ_CANT_FILAS;
 	cantColumnas = AJ_CANT_COLUMNAS;
 }
 
 
-bool Ajedrez::hayFicha(int fila, int colum) {
+bool TableroAjedrez::hayFicha(int fila, int colum) {
 
 	bool result = false;
 	if (fila > 0 && fila < cantFilas &&
@@ -24,6 +24,11 @@ bool Ajedrez::hayFicha(int fila, int colum) {
 	return result;
 }
 
-Ajedrez::~Ajedrez() {
+TableroAjedrez::~TableroAjedrez() {
 
 }
+
+void TableroAjedrez::posionar(PiezaJugadora *piezaJugadora, Coordenada coord) {
+}
+
+

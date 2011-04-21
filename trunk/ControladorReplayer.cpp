@@ -2,14 +2,14 @@
  * ControladorReplayer.cpp
  *
  *  Created on: 15/04/2011
- *      Author: administrador
+ *      Author: Nestor Huallpa
  */
 
 #include "ControladorReplayer.h"
 using namespace std;
 
-ControladorReplayer::ControladorReplayer(Ajedrez* unAjedrez) {
-	ajedrez = unAjedrez;
+ControladorReplayer::ControladorReplayer(TableroAjedrez* unAjedrez) {
+	tableroAjedrez = unAjedrez;
 }
 
 ControladorReplayer::~ControladorReplayer() {
@@ -20,51 +20,21 @@ void ControladorReplayer::mostrarResultados() {
 }
 
 void ControladorReplayer::reproducir(PgnAjedrez* entradaPng) {
-	armarTableroInicial(entradaPng);
+	prepararTableroInicial(entradaPng);
 //	this.ejecutarMovidas(entradaPng);
 //	this.armarTableroFinal(entradaPng);
 }
 
-void ControladorReplayer::armarTableroInicial(PgnAjedrez* entradaPng)
-{
-	string cadenaFilaActual;
-	for (int nroFila = AJ_CANT_FILAS; nroFila > 0; nroFila--) {
-		cadenaFilaActual = entradaPng->dameFila(nroFila);
-		construirFila(cadenaFilaActual, nroFila);
+void ControladorReplayer::prepararTableroInicial(PgnAjedrez* entradaPng) {
+	pgnInterprete.setPgn(entradaPng);
+	ListaPPieza* piezasIniciales = pgnInterprete.getPiezasIniciales();
+	ListaPPieza::IteratorList itPiezasInicales = piezasIniciales->getIterator();
+	while (itPiezasInicales.hasNext()) {
+		Pieza* unaPieza = itPiezasInicales.next();
+		tableroAjedrez->posionar(unaPieza->getPiezaJugadora(),
+									unaPieza->getCoordenadaInicial());
 	}
+	// todo: resguardar la lista para visualizar
 }
-
-void ControladorReplayer::construirFila(string cadenaFilaActual, int nroFila) {
-
-	int tamanio = cadenaFilaActual.size();
-	int columnaLibre = 0;
-	for (int indice = 0; indice < tamanio; indice++) {
-		char indicador = cadenaFilaActual.at(indice);
-		if (hayPosicionesVacias(indicador)) {
-			int nroVacios = cadenaFilaActual[indice] - '0';
-			columnaLibre += nroVacios;
-		} else {
-//			Pieza unaPieza = new Pieza();
-//			ajedrez.registrarPieza(unaPieza);
-//			ajedrez.posicionarFicha(posicion, unaPieza);
-			columnaLibre++;
-		}
-	}
-}
-
-bool ControladorReplayer::hayPosicionesVacias(char indicador) {
-	return (indicador >= '1' && indicador <= '8');
-}
-
-
-
-
-
-
-
-
-
-
-
 
 

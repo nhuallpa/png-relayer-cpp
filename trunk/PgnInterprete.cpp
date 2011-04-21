@@ -12,6 +12,18 @@ PgnInterprete::PgnInterprete() {
 
 }
 
+PgnAjedrez *PgnInterprete::getPgn() const {
+    return pgn;
+}
+
+void PgnInterprete::setPgn(PgnAjedrez *pgn) {
+    this->pgn = pgn;
+}
+
 PgnInterprete::~PgnInterprete() {
 	// TODO Auto-generated destructor stub
+}
+
+ListaPPieza* PgnInterprete::getPiezasIniciales() {
+	return NULL;
 }
