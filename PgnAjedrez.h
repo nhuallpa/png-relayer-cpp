@@ -5,8 +5,8 @@
  *      Author: Nestor Huallpa
  */
 
-#ifndef __PGNFILE_H_
-#define __PGNFILE_H_
+#ifndef __PGNAJEDREZ_H_
+#define __PGNAJEDREZ_H_
 
 #include <iostream>
 #include <fstream>

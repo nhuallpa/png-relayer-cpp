@@ -23,6 +23,7 @@ private:
 	TableroAjedrez* tableroAjedrez;
 	PgnInterprete pgnInterprete;
 	ListaPPieza* piezasIniciales;
+    void colocarPiezasIniciales();
 
 public:
 	ControladorReplayer(TableroAjedrez* ajedrez);

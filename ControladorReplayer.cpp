@@ -28,18 +28,27 @@ void ControladorReplayer::reproducir(PgnAjedrez* entradaPng) {
 //	this.armarTableroFinal(entradaPng);
 }
 
+/*
+ * todo: Tests
+ * test coordenadas
+ * test interprete
+ * test posicionar
+ *
+ * */
 void ControladorReplayer::prepararTableroInicial(PgnAjedrez* entradaPng) {
 	pgnInterprete.setPgn(entradaPng);
 	piezasIniciales = pgnInterprete.getPiezasIniciales();
 	if (piezasIniciales) {
-		ListaPPieza::IteratorList itPiezasInicales = piezasIniciales->getIterator();
-		while (itPiezasInicales.hasNext()) {
-			Pieza* unaPieza = itPiezasInicales.next();
-			tableroAjedrez->posionar(unaPieza->getPiezaJugadora(),
-					unaPieza->getCoordenadaInicial());
-		}
+		colocarPiezasIniciales();
 	}
-
 }
-
+void ControladorReplayer::colocarPiezasIniciales(){
+	ListaPPieza::IteratorList itPiezasInicales =
+											piezasIniciales->getIterator();
+    while(itPiezasInicales.hasNext()){
+        Pieza *unaPieza = itPiezasInicales.next();
+        tableroAjedrez->posionar(unaPieza->getPiezaJugadora(),
+        		unaPieza->getCoordenadaInicial());
+    }
+}
 
