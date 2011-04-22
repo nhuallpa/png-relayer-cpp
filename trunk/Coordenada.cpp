@@ -8,10 +8,7 @@
 #include "Coordenada.h"
 
 Coordenada::Coordenada() {
-	// TODO Auto-generated constructor stub
-
 }
 
 Coordenada::~Coordenada() {
-	// TODO Auto-generated destructor stub
 }

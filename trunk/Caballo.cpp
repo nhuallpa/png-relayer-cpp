@@ -8,10 +8,7 @@
 #include "Caballo.h"
 
 Caballo::Caballo() {
-	// TODO Auto-generated constructor stub
-
 }
 
 Caballo::~Caballo() {
-	// TODO Auto-generated destructor stub
 }

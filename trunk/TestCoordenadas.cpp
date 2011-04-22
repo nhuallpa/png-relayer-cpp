@@ -8,10 +8,8 @@
 #include "TestCoordenadas.h"
 
 TestCoordenadas::TestCoordenadas() {
-	// TODO Auto-generated constructor stub
 
 }
 
 TestCoordenadas::~TestCoordenadas() {
-	// TODO Auto-generated destructor stub
 }

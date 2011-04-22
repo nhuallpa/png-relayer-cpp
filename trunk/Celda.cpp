@@ -23,5 +23,4 @@ void Celda::setPieza(Pieza *pieza)
 }
 
 Celda::~Celda() {
-	// TODO Auto-generated destructor stub
 }

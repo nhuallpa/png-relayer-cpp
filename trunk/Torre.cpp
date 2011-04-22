@@ -8,10 +8,9 @@
 #include "Torre.h"
 
 Torre::Torre() {
-	// TODO Auto-generated constructor stub
 
 }
 
 Torre::~Torre() {
-	// TODO Auto-generated destructor stub
+
 }
