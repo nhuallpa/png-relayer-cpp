@@ -21,5 +21,4 @@ void PiezaJugadora::setColor(tColor color) {
 }
 
 PiezaJugadora::~PiezaJugadora() {
-	// TODO Auto-generated destructor stub
 }

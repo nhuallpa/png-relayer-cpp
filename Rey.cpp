@@ -8,10 +8,8 @@
 #include "Rey.h"
 
 Rey::Rey() {
-	// TODO Auto-generated constructor stub
 
 }
 
 Rey::~Rey() {
-	// TODO Auto-generated destructor stub
 }

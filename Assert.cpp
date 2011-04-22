@@ -9,8 +9,6 @@
 using namespace std;
 
 Assert::Assert() {
-	// TODO Auto-generated constructor stub
-
 }
 
 void Assert::assertTrue(bool value, string descr) {

@@ -14,9 +14,6 @@ ControladorReplayer::ControladorReplayer(TableroAjedrez* unAjedrez) {
 }
 
 ControladorReplayer::~ControladorReplayer() {
-	if (piezasIniciales) {
-		//todo: liberar lista y sus datas
-	}
 }
 
 void ControladorReplayer::mostrarResultados() {
@@ -30,13 +27,14 @@ void ControladorReplayer::reproducir(PgnAjedrez* entradaPng) {
 
 /*
  * todo: Tests
- * test coordenadas
- * test interprete
- * test posicionar
+ * test coordenadas de la pieza
+ * test interprete piezas y colores
+ * test posicionar de tablero
  *
  * */
 void ControladorReplayer::prepararTableroInicial(PgnAjedrez* entradaPng) {
 	pgnInterprete.setPgn(entradaPng);
+	pgnInterprete.interpretar();
 	piezasIniciales = pgnInterprete.getPiezasIniciales();
 	if (piezasIniciales) {
 		colocarPiezasIniciales();

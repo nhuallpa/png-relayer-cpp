@@ -8,10 +8,8 @@
 #include "Alfil.h"
 
 Alfil::Alfil() {
-	// TODO Auto-generated constructor stub
 
 }
 
 Alfil::~Alfil() {
-	// TODO Auto-generated destructor stub
 }

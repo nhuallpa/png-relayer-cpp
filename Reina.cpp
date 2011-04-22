@@ -8,10 +8,7 @@
 #include "Reina.h"
 
 Reina::Reina() {
-	// TODO Auto-generated constructor stub
-
 }
 
 Reina::~Reina() {
-	// TODO Auto-generated destructor stub
 }
