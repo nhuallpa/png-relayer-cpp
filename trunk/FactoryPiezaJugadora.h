@@ -2,7 +2,7 @@
  * FactoryPiezaJugadora.h
  *
  *  Created on: 21/04/2011
- *      Author: administrador
+ *      Author: Nestor Huallpa
  */
 
 #ifndef __FACTORYPIEZAJUGADORA_H_

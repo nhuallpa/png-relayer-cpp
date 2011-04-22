@@ -49,7 +49,6 @@ public:
      * de piezas iniciales
      * */
     void interpretar();
-
 };
 
 #endif /* PGNINTERPRETE_H_ */

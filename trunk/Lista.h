@@ -30,11 +30,9 @@ public:
 		Lista& list;
 		Nodo<T>* nodoActual;
 	public:
-
-		IteratorList(Lista& l):list(l){
+		IteratorList(Lista& l):list(l) {
 			nodoActual = NULL;
 		}
-
 		bool hasNext() {
 			bool haySiguiente = false;
 			if (!list.raiz) {
@@ -57,13 +55,11 @@ public:
 			nodoActual = nodoSiguiente;
 			return (nodoSiguiente)?nodoSiguiente->getData():NULL;
 		}
-
 	};
 	/**
 	 *	End Iterador
 	 **/
 	IteratorList getIterator() { return IteratorList(*this); }
-
 };
 
 template < class T >

@@ -30,7 +30,7 @@ PiezaJugadora *FactoryPiezaJugadora::crear(char simbolo) {
 		}
 	}
 	if (pJugadora) {
-		if (esMinuscula(simbolo)){
+		if (esMinuscula(simbolo)) {
 			pJugadora->setColor(NEGRO);
 		} else {
 			pJugadora->setColor(BLANCO);
@@ -45,7 +45,7 @@ bool FactoryPiezaJugadora::esMinuscula(char value) {
 }
 
 FactoryPiezaJugadora::~FactoryPiezaJugadora() {
-	for (int index = 0; index < CANT_PIEZAS; ++index) {
+	for (int index = 0; index < CANT_PIEZAS; index++) {
 		delete creadores[index];
 	}
 }
