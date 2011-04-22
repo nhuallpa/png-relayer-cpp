@@ -69,3 +69,4 @@ void TestPgnInterprete::testUnaPiezaBlanca() {
 }
 
 
+
