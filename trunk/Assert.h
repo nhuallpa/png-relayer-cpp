@@ -5,8 +5,8 @@
  *      Author: administrador
  */
 
-#ifndef ASSERT_H_
-#define ASSERT_H_
+#ifndef __ASSERT_H_
+#define __ASSERT_H_
 #include <iostream>
 #include <string>
 
@@ -16,6 +16,7 @@ public:
 	Assert();
 	static void assertTrue(bool value, std::string descr);
 	static void assertFalse(bool value, std::string descr);
+	static void assertEquals(int expected, int result, std::string descr);
 	virtual ~Assert();
 };
 

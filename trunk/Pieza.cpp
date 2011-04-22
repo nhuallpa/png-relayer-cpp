@@ -7,8 +7,8 @@
 
 #include "Pieza.h"
 
-Pieza::Pieza() {
-	piezaJugadora = NULL;
+Pieza::Pieza(PiezaJugadora* pJugadora, const Coordenada& coord) {
+	piezaJugadora = pJugadora;
 }
 
 Coordenada Pieza::getCoordenadaInicial() const
@@ -32,5 +32,7 @@ void Pieza::setPiezaJugadora(PiezaJugadora *piezaJugadora)
 }
 
 Pieza::~Pieza() {
-	// TODO Auto-generated destructor stub
+	if (piezaJugadora) {
+		delete piezaJugadora;
+	}
 }

@@ -6,9 +6,11 @@
  */
 
 #include "PgnInterprete.h"
+using namespace std;
+
 
 PgnInterprete::PgnInterprete() {
-	// TODO Auto-generated constructor stub
+	piezasIniciales = NULL;
 
 }
 
@@ -21,9 +23,37 @@ void PgnInterprete::setPgn(PgnAjedrez *pgn) {
 }
 
 PgnInterprete::~PgnInterprete() {
-	// TODO Auto-generated destructor stub
+
+	if (piezasIniciales){
+		ListaPPieza::IteratorList it = piezasIniciales->getIterator();
+		while (it.hasNext()) {
+			delete it.next();
+		}
+		delete piezasIniciales;
+	}
+
 }
 
 ListaPPieza* PgnInterprete::getPiezasIniciales() {
-	return NULL;
+	return piezasIniciales;
 }
+
+void PgnInterprete::interpretar() {
+	if (!piezasIniciales) {
+		piezasIniciales = new ListaPPieza();
+		Coordenada coord;
+		for (int fila = PNG_CANT_FILA; fila > 0; fila--) {
+			string filaString = pgn->dameFila(fila);
+			for (size_t index = 0; index < filaString.length(); ++index) {
+				char simbolo = filaString.at(index);
+				PiezaJugadora* pJugadadora = factoryPiezaJugadora.crear(simbolo);
+				if (pJugadadora) {
+					piezasIniciales->agregar(new Pieza(pJugadadora, coord));
+				}
+
+			}
+		}
+	}
+}
+
+

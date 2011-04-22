@@ -18,7 +18,7 @@ private:
 	Coordenada coordenadaInicial;
 
 public:
-	Pieza();
+	Pieza(PiezaJugadora* pJugadora, const Coordenada& coord);
 	virtual ~Pieza();
     Coordenada getCoordenadaInicial() const;
     PiezaJugadora *getPiezaJugadora() const;

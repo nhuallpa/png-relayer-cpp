@@ -11,6 +11,7 @@
 #include "ControladorReplayer.h"
 
 #include "TestTableroAjedrez.h"
+#include "TestPgnInterprete.h"
 
 using namespace std;
 
@@ -29,7 +30,9 @@ int main(int argc, char* argv[]) {
 
 #ifdef TEST
 	TestTableroAjedrez testSuit;
-	testSuit.run();
+	TestPgnInterprete testSuitPgn;
+	//testSuit.run();
+	testSuitPgn.run();
 #else
 	PgnAjedrez entradaPng;
 	if (argc == 2) {

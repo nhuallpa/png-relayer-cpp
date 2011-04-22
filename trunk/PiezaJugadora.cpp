@@ -8,8 +8,16 @@
 #include "PiezaJugadora.h"
 
 PiezaJugadora::PiezaJugadora() {
-	// TODO Auto-generated constructor stub
+	color = SIN_COLOR;
 
+}
+
+tColor PiezaJugadora::getColor() const {
+    return color;
+}
+
+void PiezaJugadora::setColor(tColor color) {
+    this->color = color;
 }
 
 PiezaJugadora::~PiezaJugadora() {

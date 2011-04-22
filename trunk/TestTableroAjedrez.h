@@ -11,11 +11,7 @@
 #include "PgnAjedrez.h"
 #include "ControladorReplayer.h"
 #include "Assert.h"
-#include "assert.h"
 class TestTableroAjedrez {
-
-private:
-
 
 public:
 	TestTableroAjedrez();
