@@ -8,10 +8,7 @@
 #include "Peon.h"
 
 Peon::Peon() {
-	// TODO Auto-generated constructor stub
-
 }
 
 Peon::~Peon() {
-	// TODO Auto-generated destructor stub
 }
