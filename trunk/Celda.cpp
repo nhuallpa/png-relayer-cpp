@@ -8,18 +8,16 @@
 #include "Celda.h"
 
 Celda::Celda() {
-	pieza = NULL;
+	piezaJugadora = NULL;
 
 }
 
-Pieza *Celda::getPieza() const
-{
-    return pieza;
+PiezaJugadora *Celda::getPiezaJugadora() const {
+    return piezaJugadora;
 }
 
-void Celda::setPieza(Pieza *pieza)
-{
-    this->pieza = pieza;
+void Celda::setPiezaJugadora(PiezaJugadora *piezaJugadora) {
+    this->piezaJugadora = piezaJugadora;
 }
 
 Celda::~Celda() {

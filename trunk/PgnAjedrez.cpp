@@ -52,8 +52,13 @@ string PgnAjedrez::dameFila(int nroFila) {
 	int posIni = 0;
 	string fila = "";
 	int nroToken = PNG_CANT_FILA - nroFila + 1;
-	for (int i = 0; i<nroToken; i++) {
-		size_t posEntontrado = tableroInicial.find('/', posIni);
+	for (int filaActual = 0; filaActual<nroToken; filaActual++) {
+		size_t posEntontrado;
+		if (filaActual == (PNG_CANT_FILA-1)) {
+			posEntontrado = tableroInicial.find(' ', posIni);
+		} else {
+			posEntontrado = tableroInicial.find('/', posIni);
+		}
 		if (posEntontrado != string::npos) {
 			fila = tableroInicial.substr(posIni, posEntontrado - posIni);
 			posIni = posEntontrado + 1;

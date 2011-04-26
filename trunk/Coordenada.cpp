@@ -8,7 +8,30 @@
 #include "Coordenada.h"
 
 Coordenada::Coordenada() {
+	fila = 1;
+	columna = 'a';
+}
+Coordenada::Coordenada(int fil, char colum) {
+	fila = fil;
+	columna = colum;
+}
+
+char Coordenada::getColumna() const {
+    return columna;
+}
+
+int Coordenada::getFila() const {
+    return fila;
+}
+
+void Coordenada::setColumna(char columna) {
+    this->columna = columna;
+}
+
+void Coordenada::setFila(int fila) {
+    this->fila = fila;
 }
 
 Coordenada::~Coordenada() {
+
 }

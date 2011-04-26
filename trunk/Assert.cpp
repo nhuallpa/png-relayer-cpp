@@ -31,5 +31,12 @@ void Assert::assertEquals(int expected, int result, string descr) {
 	}
 }
 
+void Assert::assertEquals(char expected, char result, string descr) {
+	if (expected != result) {
+		cout<<"se esperaba "<<expected<<", se recibio "<<result<<" en '"<<descr<<"'"<<endl;
+	}
+}
+
+
 Assert::~Assert() {
 }

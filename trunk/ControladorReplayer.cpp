@@ -27,9 +27,6 @@ void ControladorReplayer::reproducir(PgnAjedrez* entradaPng) {
 
 /*
  * todo: Tests
- * test interprete piezas coordenadas y colores
- * test coordenadas de la pieza
- * test posicionar de tablero
  *
  * */
 void ControladorReplayer::prepararTableroInicial(PgnAjedrez* entradaPng) {
@@ -46,7 +43,7 @@ void ControladorReplayer::colocarPiezasIniciales(){
     while(itPiezasInicales.hasNext()){
         Pieza *unaPieza = itPiezasInicales.next();
         tableroAjedrez->posionar(unaPieza->getPiezaJugadora(),
-        		unaPieza->getCoordenadaInicial());
+        								unaPieza->getCoordenadaInicial());
     }
 }
 

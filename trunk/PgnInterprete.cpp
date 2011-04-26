@@ -41,18 +41,29 @@ ListaPPieza* PgnInterprete::getPiezasIniciales() {
 void PgnInterprete::interpretar() {
 	if (!piezasIniciales) {
 		piezasIniciales = new ListaPPieza();
-		Coordenada coord;
+
 		for (int fila = PNG_CANT_FILA; fila > 0; fila--) {
 			string filaString = pgn->dameFila(fila);
-			for (size_t index = 0; index < filaString.length(); ++index) {
-				char simbolo = filaString.at(index);
-				PiezaJugadora* pJugadadora = factoryPiezaJugadora.crear(simbolo);
-				if (pJugadadora) {
-					piezasIniciales->agregar(new Pieza(pJugadadora, coord));
-				}
-
-			}
+			interpretarFila(filaString, fila);
 		}
+	}
+}
+
+void PgnInterprete::interpretarFila(string filaString, int fila) {
+	int columna = 0;
+	for (size_t index = 0; index < filaString.length(); ++index) {
+		char simbolo = filaString.at(index);
+		if ( simbolo > '0' && simbolo <= '8' ) {
+			columna += (simbolo - '0');
+		} else {
+			PiezaJugadora* pJugadadora = factoryPiezaJugadora.crear(simbolo);
+			if (pJugadadora) {
+				Coordenada coord(fila, 'a' + columna );
+				piezasIniciales->agregar(new Pieza(pJugadadora, coord));
+			}
+			++columna;
+		}
+
 	}
 }
 

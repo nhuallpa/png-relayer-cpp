@@ -28,7 +28,7 @@ public:
 	int getCantFilas() const {return cantFilas;}
 	void setCantColumnas(int cantColumnas) {this->cantColumnas = cantColumnas;}
 	void setCantFilas(int cantFilas) {this->cantFilas = cantFilas;}
-	void posionar(PiezaJugadora* piezaJugadora, Coordenada coord);
+	void posionar(PiezaJugadora* piezaJugadora, const Coordenada &coord);
 
 };
 
