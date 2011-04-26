@@ -49,6 +49,10 @@ public:
      * de piezas iniciales
      * */
     void interpretar();
+
+private:
+
+    void interpretarFila(std::string filaString, int fila);
 };
 
 #endif /* PGNINTERPRETE_H_ */

@@ -16,6 +16,15 @@ public:
 	void run();
 	void testUnaPiezaBlanca();
 	void testUnaPiezaNegra();
+	void testPosicionInicial8a();
+	void testPosicionInicial1a();
+	void testPosicionInicial1h();
+	void testPosicionInicial8h();
+	void testPosicionInicial5d();
+	void testUnaPiezaNegra1a();
+	void testUnaPiezaBlanca1h();
+
+
 };
 
 #endif /* TESTPGNINTERPRETE_H_ */

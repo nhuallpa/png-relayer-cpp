@@ -17,6 +17,7 @@ public:
 	static void assertTrue(bool value, std::string descr);
 	static void assertFalse(bool value, std::string descr);
 	static void assertEquals(int expected, int result, std::string descr);
+	static void assertEquals(char expected, char result, std::string descr);
 	virtual ~Assert();
 };
 
