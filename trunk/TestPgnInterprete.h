@@ -23,6 +23,7 @@ public:
 	void testPosicionInicial5d();
 	void testUnaPiezaNegra1a();
 	void testUnaPiezaBlanca1h();
+	void testPosicionInicial5d5h();
 
 
 };

@@ -2,11 +2,11 @@
  * Ajedrez.h
  *
  *  Created on: 15/04/2011
- *      Author: administrador
+ *      Author: Nestor Huallpa
  */
 
-#ifndef AJEDREZ_H_
-#define AJEDREZ_H_
+#ifndef __AJEDREZ_H_
+#define __AJEDREZ_H_
 #define AJ_CANT_FILAS 8
 #define AJ_CANT_COLUMNAS 8
 #include "Celda.h"
@@ -22,12 +22,21 @@ private:
 
 public:
 	TableroAjedrez();
-	bool hayFicha(int fila, int colum);
-	virtual ~TableroAjedrez();
+
+	/*
+	 *Dimensiones
+	 */
 	int getCantColumnas() const {return cantColumnas;}
 	int getCantFilas() const {return cantFilas;}
 	void setCantColumnas(int cantColumnas) {this->cantColumnas = cantColumnas;}
 	void setCantFilas(int cantFilas) {this->cantFilas = cantFilas;}
+
+
+	bool hayPiezaJugadora(const Coordenada &coord);
+	/*
+	 * Tomo un punto a Pieza jugadora y lo ubica en el tablero en base a la
+	 * coordenada pasa por parametro
+	 * */
 	void posionar(PiezaJugadora* piezaJugadora, const Coordenada &coord);
 
 };

@@ -6,14 +6,11 @@
  */
 
 #include "TestTableroAjedrez.h"
+#include "Coordenada.h"
 
 using namespace std;
 
 
-TestTableroAjedrez::TestTableroAjedrez() {
-
-
-}
 
 void TestTableroAjedrez::testTableroVacio() {
 	stringstream streamtest;
@@ -26,11 +23,13 @@ void TestTableroAjedrez::testTableroVacio() {
 	streamtest<<"d2d3 Bc5f2 17. Re1h1 Qg4g3+ 18. Kg2f1 Bf2d4 19. Kf1e2 Qg3g2+ 20. Ke2d1"<<endl;
 	streamtest<<"Qg2h1+ 21. Kd1d2 Qh1g2+ 22. Kd2e1 Nh3g1 23. Nb1c3 Bd4c3+ 24. b2c3 Qg2e2#"<<endl;
 
-
+	Coordenada coord;
 	TableroAjedrez ajedrez;
-	for (int fila = 0; fila < ajedrez.getCantFilas(); fila++){
-		for (int columna = 0; columna < ajedrez.getCantColumnas(); columna++) {
-			Assert::assertFalse(ajedrez.hayFicha(fila, columna), "testTableroVacio");
+	for (int fila = 1; fila <= ajedrez.getCantFilas(); fila++) {
+		for (char colum = 'a'; colum <= 'h'; colum++) {
+			coord.setColumna(colum);
+			coord.setFila(fila);
+			Assert::assertFalse(ajedrez.hayPiezaJugadora(coord), "testTableroVacio");
 		}
 	}
 }
@@ -52,27 +51,31 @@ void TestTableroAjedrez::testTableroCargado() {
 	ControladorReplayer controlador(&ajedrez);
 	controlador.reproducir(&entradaPng);
 
-	for (int fila = 0; fila < 2; fila++) {
-		for (int colum = 0; colum < ajedrez.getCantColumnas(); colum++) {
-			Assert::assertTrue(ajedrez.hayFicha(fila, colum), "testTableroCargado");
+
+	Coordenada coord;
+	for (int fila = 1; fila <= 2; fila++) {
+		for (char colum = 'a'; colum <= 'h'; colum++) {
+			coord.setColumna(colum);
+			coord.setFila(fila);
+			Assert::assertTrue(ajedrez.hayPiezaJugadora(coord), "testTableroCargado-Blancas");
 		}
 	}
 
-	for (int fila = 2; fila < 6; fila++) {
-		for (int colum = 0; colum < ajedrez.getCantColumnas(); colum++) {
-			Assert::assertFalse(ajedrez.hayFicha(fila, colum), "testTableroCargado");
+	for (int fila = 3; fila <= 6; fila++) {
+		for (char colum = 'a'; colum <= 'h'; colum++) {
+			coord.setColumna(colum);
+			coord.setFila(fila);
+			Assert::assertFalse(ajedrez.hayPiezaJugadora(coord), "testTableroCargado-Nada");
 		}
 	}
-	for (int fila = 6; fila < ajedrez.getCantFilas(); fila++) {
-		for (int colum = 0; colum < ajedrez.getCantColumnas(); colum++) {
-			Assert::assertTrue(ajedrez.hayFicha(fila, colum), "testTableroCargado");
+	for (int fila = 7; fila <= ajedrez.getCantFilas(); fila++) {
+		for (char colum = 'a'; colum <= 'h'; colum++) {
+			coord.setColumna(colum);
+			coord.setFila(fila);
+			Assert::assertTrue(ajedrez.hayPiezaJugadora(coord), "testTableroCargado-Negras");
 		}
 	}
 
-
-}
-
-TestTableroAjedrez::~TestTableroAjedrez() {
 
 }
 

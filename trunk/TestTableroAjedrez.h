@@ -14,11 +14,9 @@
 class TestTableroAjedrez {
 
 public:
-	TestTableroAjedrez();
 	void testTableroVacio();
 	void testTableroCargado();
 	void run();
-	virtual ~TestTableroAjedrez();
 };
 
 #endif /* TESTTABLEROAJEDREZ_H_ */

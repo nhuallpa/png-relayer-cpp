@@ -13,29 +13,32 @@ TableroAjedrez::TableroAjedrez() {
 }
 
 
-bool TableroAjedrez::hayFicha(int fila, int colum) {
+bool TableroAjedrez::hayPiezaJugadora(const Coordenada &coord) {
 
 	bool result = false;
-	if (fila > 0 && fila < cantFilas &&
-		colum > 0 && colum < cantColumnas) {
-		result = (tablero[fila][colum].getPiezaJugadora() != NULL);
+
+	int fila = coord.getFila() - 1;
+	int columna = coord.getColumna() - 'a';
+
+	if (fila >= 0 && fila < cantFilas &&
+			columna >= 0 && columna < cantColumnas) {
+		result = (tablero[fila][columna].getPiezaJugadora() != NULL);
 	}
 
 	return result;
 }
 
-TableroAjedrez::~TableroAjedrez() {
 
-}
-
-
-// todo: seguir con getPieza de tablero;
 void TableroAjedrez::posionar(PiezaJugadora *piezaJugadora, const Coordenada &coord) {
+
+	//  Fila 0 es FilaAjedrez 1
+	//  Columna 0 es la columnaTablero a
 
 	int fila = coord.getFila() - 1;
 	int columna = coord.getColumna() - 'a';
 
-	if (fila > 0 && fila < AJ_CANT_FILAS && columna > 0 && columna <AJ_CANT_COLUMNAS ) {
+	if (fila >= 0 && fila < AJ_CANT_FILAS &&
+		columna >= 0 && columna < AJ_CANT_COLUMNAS ) {
 		tablero[fila][columna].setPiezaJugadora(piezaJugadora);
 	}
 

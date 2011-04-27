@@ -19,16 +19,16 @@ ControladorReplayer::~ControladorReplayer() {
 void ControladorReplayer::mostrarResultados() {
 }
 
+
+//  todo:seguir con trablero Vista.
 void ControladorReplayer::reproducir(PgnAjedrez* entradaPng) {
 	prepararTableroInicial(entradaPng);
+	//cout<<tableroVista.toString();
 //	this.ejecutarMovidas(entradaPng);
-//	this.armarTableroFinal(entradaPng);
+//	cout<<analisisRealizado;
+//	cout<<tableroVista;
 }
 
-/*
- * todo: Tests
- *
- * */
 void ControladorReplayer::prepararTableroInicial(PgnAjedrez* entradaPng) {
 	pgnInterprete.setPgn(entradaPng);
 	pgnInterprete.interpretar();

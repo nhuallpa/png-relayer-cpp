@@ -29,9 +29,9 @@ int main(int argc, char* argv[]) {
 
 
 #ifdef TEST
-	TestTableroAjedrez testSuit;
+	TestTableroAjedrez testSuitTablero;
 	TestPgnInterprete testSuitPgn;
-	//testSuit.run();
+	testSuitTablero.run();
 	testSuitPgn.run();
 #else
 	PgnAjedrez entradaPng;
