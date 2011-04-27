@@ -21,6 +21,7 @@ void TestPgnInterprete::run() {
 	testPosicionInicial1h();
 	testPosicionInicial8h();
 	testPosicionInicial5d();
+	testPosicionInicial5d5h();
 }
 void TestPgnInterprete::testUnaPiezaNegra() {
 	stringstream streamtest;
@@ -296,6 +297,47 @@ void TestPgnInterprete::testPosicionInicial5d()
 									"testPosicionInicial5d");
 			Assert::assertEquals(coor.getColumna(), pieza->getCoordenadaInicial().getColumna() ,
 												"testPosicionInicial5d");
+		}
+	}
+}
+
+void TestPgnInterprete::testPosicionInicial5d5h() {
+	stringstream streamtest;
+	streamtest<<"8/8/8/3p3n/8/8/8/8 w"<<endl;
+	streamtest<<endl;
+	streamtest<<"1. e2e4 e7e5 2. Qd1f3 Nb8c6 3. Bf1c4 Ng8f6 4. Ng1e2 Bf8c5 5. a2a3 d7d6 6. 0-0 Bc8g4 "<<endl;
+
+
+	Coordenada coor, coor2;
+	coor.setFila(5);
+	coor.setColumna('d');
+	coor2.setFila(5);
+	coor2.setColumna('h');
+
+
+	PgnAjedrez pgn;
+	pgn.cargarPng(streamtest);
+	PgnInterprete interprete;
+	interprete.setPgn(&pgn);
+	interprete.interpretar();
+	ListaPPieza* piezas = interprete.getPiezasIniciales();
+	if (piezas) {
+		ListaPPieza::IteratorList it = piezas->getIterator();
+		Assert::assertTrue(it.hasNext(), "testPosicionInicial5d5h-hasNext");
+		if (it.hasNext()) {
+			Pieza* pieza = it.next();
+			Assert::assertEquals(coor.getFila(), pieza->getCoordenadaInicial().getFila() ,
+									"testPosicionInicial5d5h");
+			Assert::assertEquals(coor.getColumna(), pieza->getCoordenadaInicial().getColumna() ,
+												"testPosicionInicial5d5h");
+		}
+		Assert::assertTrue(it.hasNext(), "testPosicionInicial5d5h-hasNext-2");
+		if (it.hasNext()) {
+			Pieza* pieza = it.next();
+			Assert::assertEquals(coor2.getFila(), pieza->getCoordenadaInicial().getFila() ,
+									"testPosicionInicial5d5h-2");
+			Assert::assertEquals(coor2.getColumna(), pieza->getCoordenadaInicial().getColumna() ,
+												"testPosicionInicial5d5h-2");
 		}
 	}
 }
