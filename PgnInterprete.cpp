@@ -59,7 +59,7 @@ void PgnInterprete::interpretarFila(string filaString, int fila) {
 			PiezaJugadora* pJugadadora = factoryPiezaJugadora.crear(simbolo);
 			if (pJugadadora) {
 				Coordenada coord(fila, 'a' + columna );
-				piezasIniciales->agregar(new Pieza(pJugadadora, coord));
+				piezasIniciales->agregar(new Pieza(pJugadadora, coord, simbolo));
 			}
 			++columna;
 		}

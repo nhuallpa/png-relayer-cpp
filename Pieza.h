@@ -16,14 +16,17 @@ class Pieza {
 private:
 	PiezaJugadora* piezaJugadora;
 	Coordenada coordenadaInicial;
+	char symbol;
 
 public:
-	Pieza(PiezaJugadora* pJugadora, const Coordenada& coord);
+	Pieza(PiezaJugadora* pJugadora, const Coordenada& coord, char unSimbolo);
 	virtual ~Pieza();
     Coordenada getCoordenadaInicial() const;
     PiezaJugadora *getPiezaJugadora() const;
     void setCoordenadaInicial(Coordenada coordenadaInicial);
     void setPiezaJugadora(PiezaJugadora *piezaJugadora);
+    char getSymbol() const;
+    void setSymbol(char symbol);
 };
 
 #endif /* PIEZA_H_ */

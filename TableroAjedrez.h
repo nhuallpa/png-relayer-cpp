@@ -30,14 +30,20 @@ public:
 	int getCantFilas() const {return cantFilas;}
 	void setCantColumnas(int cantColumnas) {this->cantColumnas = cantColumnas;}
 	void setCantFilas(int cantFilas) {this->cantFilas = cantFilas;}
-
+	PiezaJugadora* getPiezaJugadora(int fila, char columna);
 
 	bool hayPiezaJugadora(const Coordenada &coord);
+	bool hayPiezaJugadora(int fila, char columna);
 	/*
 	 * Tomo un punto a Pieza jugadora y lo ubica en el tablero en base a la
 	 * coordenada pasa por parametro
 	 * */
 	void posionar(PiezaJugadora* piezaJugadora, const Coordenada &coord);
+
+private:
+	bool indicesValidos(int fila, int columna);
+	int filaToIndice(int fila);
+	int columnaToIndice(char columna);
 
 };
 

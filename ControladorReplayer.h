@@ -14,6 +14,7 @@
 #include "Lista.h"
 #include "PiezaJugadora.h"
 #include "Coordenada.h"
+#include "VistaReplayer.h"
 
 
 
@@ -21,12 +22,13 @@ class ControladorReplayer {
 
 private:
 	TableroAjedrez* tableroAjedrez;
+	VistaReplayer* vista;
 	PgnInterprete pgnInterprete;
 	ListaPPieza* piezasIniciales;
     void colocarPiezasIniciales();
 
 public:
-	ControladorReplayer(TableroAjedrez* ajedrez);
+	ControladorReplayer(TableroAjedrez* ajedrez, VistaReplayer* unaVista);
 	void reproducir(PgnAjedrez* entradaPng);
 	virtual ~ControladorReplayer();
 	void mostrarResultados();

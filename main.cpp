@@ -15,19 +15,18 @@
 
 using namespace std;
 
-#define TEST
+#define TEST_
 void iniciarEjecucion(PgnAjedrez* entradaPng) {
 	TableroAjedrez ajedrez;
-	ControladorReplayer controlador(&ajedrez);
-//	VistaReplayer unaVista(ajedrez);
-//	controlador.setVista(unaVista);
+	VistaReplayer vista;
+	ControladorReplayer controlador(&ajedrez, &vista);
 	controlador.reproducir(entradaPng);
 	controlador.mostrarResultados();
 }
 
 int main(int argc, char* argv[]) {
 
-
+	tEstado estado = EXITOSO;
 #ifdef TEST
 	TestTableroAjedrez testSuitTablero;
 	TestPgnInterprete testSuitPgn;
@@ -49,7 +48,7 @@ int main(int argc, char* argv[]) {
 		iniciarEjecucion(&entradaPng);
 	}
 #endif
-	tEstado estado = EXITOSO;
+
 
 	return estado;
 }

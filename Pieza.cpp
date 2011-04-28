@@ -7,10 +7,11 @@
 
 #include "Pieza.h"
 
-Pieza::Pieza(PiezaJugadora* pJugadora, const Coordenada& coord) {
+Pieza::Pieza(PiezaJugadora* pJugadora, const Coordenada& coord, char simbolo) {
 	piezaJugadora = pJugadora;
 	coordenadaInicial.setFila(coord.getFila());
 	coordenadaInicial.setColumna(coord.getColumna());
+	setSymbol(simbolo);
 }
 
 Coordenada Pieza::getCoordenadaInicial() const {
@@ -23,6 +24,16 @@ PiezaJugadora *Pieza::getPiezaJugadora() const {
 
 void Pieza::setCoordenadaInicial(Coordenada coordenadaInicial) {
     this->coordenadaInicial = coordenadaInicial;
+}
+
+char Pieza::getSymbol() const
+{
+    return symbol;
+}
+
+void Pieza::setSymbol(char symbol)
+{
+    this->symbol = symbol;
 }
 
 void Pieza::setPiezaJugadora(PiezaJugadora *piezaJugadora) {
