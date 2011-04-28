@@ -12,36 +12,69 @@ TableroAjedrez::TableroAjedrez() {
 	cantColumnas = AJ_CANT_COLUMNAS;
 }
 
+bool TableroAjedrez::hayPiezaJugadora(int fila, char columna) {
+	Coordenada coord;
+	coord.setFila(fila);
+	coord.setColumna(columna);
+	return hayPiezaJugadora(coord);
+}
 
 bool TableroAjedrez::hayPiezaJugadora(const Coordenada &coord) {
 
 	bool result = false;
 
-	int fila = coord.getFila() - 1;
-	int columna = coord.getColumna() - 'a';
+	int i = filaToIndice(coord.getFila());
+	int j = columnaToIndice(coord.getColumna());
 
-	if (fila >= 0 && fila < cantFilas &&
-			columna >= 0 && columna < cantColumnas) {
-		result = (tablero[fila][columna].getPiezaJugadora() != NULL);
+	if (indicesValidos(i, j)) {
+		result = (tablero[i][j].getPiezaJugadora() != NULL);
 	}
 
+	return result;
+}
+
+PiezaJugadora *TableroAjedrez::getPiezaJugadora(int fila, char columna) {
+
+	PiezaJugadora* result = NULL;
+
+	int i = filaToIndice(fila);
+	int j = columnaToIndice(columna);
+
+	if (indicesValidos(i, j)) {
+		result = tablero[i][j].getPiezaJugadora();
+	}
 	return result;
 }
 
 
 void TableroAjedrez::posionar(PiezaJugadora *piezaJugadora, const Coordenada &coord) {
 
-	//  Fila 0 es FilaAjedrez 1
-	//  Columna 0 es la columnaTablero a
+	//  i 0 es FilaAjedrez 1
+	//  j 0 es la columnaTablero a
 
-	int fila = coord.getFila() - 1;
-	int columna = coord.getColumna() - 'a';
+	int i = filaToIndice(coord.getFila());
+	int j = columnaToIndice(coord.getColumna());
 
-	if (fila >= 0 && fila < AJ_CANT_FILAS &&
-		columna >= 0 && columna < AJ_CANT_COLUMNAS ) {
-		tablero[fila][columna].setPiezaJugadora(piezaJugadora);
+	if (indicesValidos(i, j)) {
+		tablero[i][j].setPiezaJugadora(piezaJugadora);
 	}
-
 }
+
+bool TableroAjedrez::indicesValidos(int i, int j) {
+	return (i >= 0 && i < cantFilas &&
+			j >= 0 && j < cantColumnas);
+}
+
+int TableroAjedrez::columnaToIndice(char columna) {
+	return columna - 'a';
+}
+
+int TableroAjedrez::filaToIndice(int fila) {
+	return fila - 1;
+}
+
+
+
+
 
 

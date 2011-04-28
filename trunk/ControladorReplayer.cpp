@@ -8,8 +8,15 @@
 #include "ControladorReplayer.h"
 using namespace std;
 
-ControladorReplayer::ControladorReplayer(TableroAjedrez* unAjedrez) {
+std::ostream& operator<< (ostream& out, VistaReplayer* vista){
+	out<<vista->toString();
+	return out;
+}
+
+
+ControladorReplayer::ControladorReplayer(TableroAjedrez* unAjedrez, VistaReplayer* unaVista) {
 	tableroAjedrez = unAjedrez;
+	vista = unaVista;
 	piezasIniciales = NULL;
 }
 
@@ -17,21 +24,26 @@ ControladorReplayer::~ControladorReplayer() {
 }
 
 void ControladorReplayer::mostrarResultados() {
+	cout<<vista;
 }
 
 
-//  todo:seguir con trablero Vista.
+//  TODO:seguir con trablero Vista.
 void ControladorReplayer::reproducir(PgnAjedrez* entradaPng) {
+
+	pgnInterprete.setPgn(entradaPng);
+	pgnInterprete.interpretar();
+
 	prepararTableroInicial(entradaPng);
-	//cout<<tableroVista.toString();
+
+	vista->visualizar(tableroAjedrez, pgnInterprete.getPiezasIniciales());
+
 //	this.ejecutarMovidas(entradaPng);
-//	cout<<analisisRealizado;
-//	cout<<tableroVista;
+//	ReplayerVista<<analisisRealizado;
+//	ReplayerVista<<tableroAjedrez;
 }
 
 void ControladorReplayer::prepararTableroInicial(PgnAjedrez* entradaPng) {
-	pgnInterprete.setPgn(entradaPng);
-	pgnInterprete.interpretar();
 	piezasIniciales = pgnInterprete.getPiezasIniciales();
 	if (piezasIniciales) {
 		colocarPiezasIniciales();

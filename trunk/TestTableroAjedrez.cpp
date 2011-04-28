@@ -48,7 +48,8 @@ void TestTableroAjedrez::testTableroCargado() {
 	PgnAjedrez entradaPng;
 	entradaPng.cargarPng(streamtest);
 	TableroAjedrez ajedrez;
-	ControladorReplayer controlador(&ajedrez);
+	VistaReplayer vista;
+	ControladorReplayer controlador(&ajedrez, &vista);
 	controlador.reproducir(&entradaPng);
 
 
