@@ -33,9 +33,7 @@ void ControladorReplayer::reproducir(PgnAjedrez* entradaPng) {
 
 	pgnInterprete.setPgn(entradaPng);
 	pgnInterprete.interpretar();
-
-	prepararTableroInicial(entradaPng);
-
+	prepararTableroInicial();
 	vista->visualizar(tableroAjedrez, pgnInterprete.getPiezasIniciales());
 
 //	this.ejecutarMovidas(entradaPng);
@@ -43,7 +41,7 @@ void ControladorReplayer::reproducir(PgnAjedrez* entradaPng) {
 //	ReplayerVista<<tableroAjedrez;
 }
 
-void ControladorReplayer::prepararTableroInicial(PgnAjedrez* entradaPng) {
+void ControladorReplayer::prepararTableroInicial() {
 	piezasIniciales = pgnInterprete.getPiezasIniciales();
 	if (piezasIniciales) {
 		colocarPiezasIniciales();
@@ -58,4 +56,6 @@ void ControladorReplayer::colocarPiezasIniciales(){
         								unaPieza->getCoordenadaInicial());
     }
 }
+
+
 

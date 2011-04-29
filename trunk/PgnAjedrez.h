@@ -27,7 +27,7 @@ public:
 	tEstado cargarPng(std::istream &inStream);
 	std::string dameFila(int nroFila);
 
-	std::stringstream* getMovidas();
+	std::stringstream& getMovidas();
 	std::string getTableroInicial();
 
 

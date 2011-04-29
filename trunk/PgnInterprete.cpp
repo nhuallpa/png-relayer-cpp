@@ -9,39 +9,42 @@
 using namespace std;
 
 
+// todo : sacar
+//istream &operator >> (istream &in, Turno &turno) {
+//	cout<<"jeje";
+//	return in;
+//}
+
 PgnInterprete::PgnInterprete() {
 	piezasIniciales = NULL;
+	turnos = NULL;
+	pgn = NULL;
 
 }
 
-PgnAjedrez *PgnInterprete::getPgn() const {
-    return pgn;
+void PgnInterprete::interpretar() {
+	interpretarTableroInicial();
+	interpretarTurnos();
 }
 
-void PgnInterprete::setPgn(PgnAjedrez *pgn) {
-    this->pgn = pgn;
-}
+void PgnInterprete::interpretarTurnos() {
+	if (!turnos && pgn) {
 
-PgnInterprete::~PgnInterprete() {
+		stringstream& inTurnos = pgn->getMovidas();
+		Turno turnoActual;
+		string valor;
+//		while (!inTurnos.eof()) {
+//			inTurnos>>turnoActual;
+//		}
 
-	if (piezasIniciales){
-		ListaPPieza::IteratorList it = piezasIniciales->getIterator();
-		while (it.hasNext()) {
-			delete it.next();
-		}
-		delete piezasIniciales;
+
 	}
 
 }
 
-ListaPPieza* PgnInterprete::getPiezasIniciales() {
-	return piezasIniciales;
-}
-
-void PgnInterprete::interpretar() {
-	if (!piezasIniciales) {
+void PgnInterprete::interpretarTableroInicial() {
+	if (!piezasIniciales && pgn) {
 		piezasIniciales = new ListaPPieza();
-
 		for (int fila = PNG_CANT_FILA; fila > 0; fila--) {
 			string filaString = pgn->dameFila(fila);
 			interpretarFila(filaString, fila);
@@ -53,7 +56,7 @@ void PgnInterprete::interpretarFila(string filaString, int fila) {
 	int columna = 0;
 	for (size_t index = 0; index < filaString.length(); ++index) {
 		char simbolo = filaString.at(index);
-		if ( simbolo > '0' && simbolo <= '8' ) {
+		if (simbolo > '0' && simbolo <= '8') {
 			columna += (simbolo - '0');
 		} else {
 			PiezaJugadora* pJugadadora = factoryPiezaJugadora.crear(simbolo);
@@ -63,8 +66,34 @@ void PgnInterprete::interpretarFila(string filaString, int fila) {
 			}
 			++columna;
 		}
-
 	}
 }
+
+PgnAjedrez *PgnInterprete::getPgn() const {
+    return pgn;
+}
+
+void PgnInterprete::setPgn(PgnAjedrez *pgn) {
+    this->pgn = pgn;
+}
+
+ListaPPieza* PgnInterprete::getPiezasIniciales() {
+	return piezasIniciales;
+}
+
+PgnInterprete::~PgnInterprete() {
+	if (piezasIniciales){
+		ListaPPieza::IteratorList it = piezasIniciales->getIterator();
+		while (it.hasNext()) {
+			delete it.next();
+		}
+		delete piezasIniciales;
+	}
+
+}
+
+
+
+
 
 
