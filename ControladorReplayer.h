@@ -2,7 +2,7 @@
  * ControladorReplayer.h
  *
  *  Created on: 15/04/2011
- *      Author: administrador
+ *      Author: Nestor Huallp
  */
 
 #ifndef _CONTROLADORREPLAYER_H_
@@ -35,7 +35,7 @@ public:
 
 
 private:
-	void prepararTableroInicial(PgnAjedrez* entradaPng);
+	void prepararTableroInicial();
 
 };
 

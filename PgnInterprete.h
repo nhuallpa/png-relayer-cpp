@@ -23,14 +23,17 @@
 #include <string>
 #include "Pieza.h"
 #include "FactoryPiezaJugadora.h"
+#include "Turno.h"
 
 typedef Lista<Pieza*> ListaPPieza;
+typedef Lista<Turno*> ListaPTurno;
 
 class PgnInterprete {
 private:
 	PgnAjedrez* pgn;
 	FactoryPiezaJugadora factoryPiezaJugadora;
 	ListaPPieza* piezasIniciales;
+	ListaPTurno* turnos;
 
 public:
 	PgnInterprete();
@@ -45,12 +48,19 @@ public:
     ListaPPieza* getPiezasIniciales();
 
     /*
-     * Interpreta el pgn de Ajedrez y carga la lista
-     * de piezas iniciales
+     * Ejecuta los interpretes
      * */
     void interpretar();
 
 private:
+
+    /*
+	* Interpreta el pgn de Ajedrez y carga la lista
+	* de piezas iniciales
+	* */
+    void interpretarTableroInicial();
+
+    void interpretarTurnos();
 
     void interpretarFila(std::string filaString, int fila);
 };
