@@ -6,6 +6,7 @@
  */
 
 #include "PgnInterprete.h"
+
 using namespace std;
 
 
@@ -29,15 +30,29 @@ void PgnInterprete::interpretar() {
 
 void PgnInterprete::interpretarTurnos() {
 	if (!turnos && pgn) {
+		turnos = new ListaPTurno();
+		stringstream& streamMovidas = pgn->getMovidas();
+		while (!streamMovidas.eof()) {
+			string palabra;
 
-		stringstream& inTurnos = pgn->getMovidas();
-		Turno turnoActual;
-		string valor;
-//		while (!inTurnos.eof()) {
-//			inTurnos>>turnoActual;
-//		}
+			streamMovidas>>palabra;
+			if (!streamMovidas.good()) {
+				break;
+			}
 
+			streamMovidas>>palabra;
+			Movimiento* movimientoBlanco = NULL;
+			movimientoBlanco = factoryMovimiento.crear(palabra, BLANCO);
 
+			streamMovidas>>palabra;
+			Movimiento* movimientoNegro = NULL;
+			movimientoNegro = factoryMovimiento.crear(palabra, NEGRO);
+
+			Turno* unTurno = new Turno();
+			unTurno->setMovimientoNegro(movimientoNegro);
+			unTurno->setMovimientoBlanco(movimientoBlanco);
+			turnos->agregar(unTurno);
+		}
 	}
 
 }
@@ -69,16 +84,16 @@ void PgnInterprete::interpretarFila(string filaString, int fila) {
 	}
 }
 
-PgnAjedrez *PgnInterprete::getPgn() const {
-    return pgn;
-}
-
 void PgnInterprete::setPgn(PgnAjedrez *pgn) {
     this->pgn = pgn;
 }
 
 ListaPPieza* PgnInterprete::getPiezasIniciales() {
 	return piezasIniciales;
+}
+
+ListaPTurno* PgnInterprete::getTurnos() {
+	return turnos;
 }
 
 PgnInterprete::~PgnInterprete() {
@@ -88,6 +103,13 @@ PgnInterprete::~PgnInterprete() {
 			delete it.next();
 		}
 		delete piezasIniciales;
+	}
+	if (turnos){
+		ListaPTurno::IteratorList it = turnos->getIterator();
+		while (it.hasNext()) {
+			delete it.next();
+		}
+		delete turnos;
 	}
 
 }

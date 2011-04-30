@@ -7,6 +7,7 @@
 
 #include "TestPgnInterprete.h"
 #include "Assert.h"
+
 using namespace std;
 
 
@@ -22,17 +23,23 @@ void TestPgnInterprete::run() {
 	testPosicionInicial8h();
 	testPosicionInicial5d();
 	testPosicionInicial5d5h();
+
+	testMovimientoSimple();
+	testBlancoNegroEnroqueCorto();
+	testBlancoNegroEnroqueLargo();
+	testPromocionAAlfil();
+	testTurnoEmpiezaBlanca();
+	testTurnoEmpiezaNegra();
+
+	testJackeCombinable();
+	testMateCombinable();
 }
 void TestPgnInterprete::testUnaPiezaNegra() {
 	stringstream streamtest;
 
 	streamtest<<"p7/8/8/8/8/8/8/8 w"<<endl;
 	streamtest<<endl;
-	streamtest<<"1. e2e4 e7e5 2. Qd1f3 Nb8c6 3. Bf1c4 Ng8f6 4. Ng1e2 Bf8c5 5. a2a3 d7d6 6. 0-0 Bc8g4 "<<endl;
-	streamtest<<"7. Qf3d3 Nf6h5 8. h2h3 Bg4e2 9. Qd3e2 Nh5f4 10. Qe2e1 Nc6d4 11. Bc4b3"<<endl;
-	streamtest<<"Nf4h3+ 12. Kg1h2 Qd8h4 13. g2g3 Nd4f3+ 14. Kh2g2 Nf3e1+ 15. Rf1e1 Qh4g4 16."<<endl;
-	streamtest<<"d2d3 Bc5f2 17. Re1h1 Qg4g3+ 18. Kg2f1 Bf2d4 19. Kf1e2 Qg3g2+ 20. Ke2d1"<<endl;
-	streamtest<<"Qg2h1+ 21. Kd1d2 Qh1g2+ 22. Kd2e1 Nh3g1 23. Nb1c3 Bd4c3+ 24. b2c3 Qg2e2#"<<endl;
+	streamtest<<""<<endl;
 
 	PgnAjedrez pgn;
 	pgn.cargarPng(streamtest);
@@ -55,11 +62,7 @@ void TestPgnInterprete::testUnaPiezaBlanca() {
 
 	streamtest<<"P7/8/8/8/8/8/8/8 w"<<endl;
 	streamtest<<endl;
-	streamtest<<"1. e2e4 e7e5 2. Qd1f3 Nb8c6 3. Bf1c4 Ng8f6 4. Ng1e2 Bf8c5 5. a2a3 d7d6 6. 0-0 Bc8g4 "<<endl;
-	streamtest<<"7. Qf3d3 Nf6h5 8. h2h3 Bg4e2 9. Qd3e2 Nh5f4 10. Qe2e1 Nc6d4 11. Bc4b3"<<endl;
-	streamtest<<"Nf4h3+ 12. Kg1h2 Qd8h4 13. g2g3 Nd4f3+ 14. Kh2g2 Nf3e1+ 15. Rf1e1 Qh4g4 16."<<endl;
-	streamtest<<"d2d3 Bc5f2 17. Re1h1 Qg4g3+ 18. Kg2f1 Bf2d4 19. Kf1e2 Qg3g2+ 20. Ke2d1"<<endl;
-	streamtest<<"Qg2h1+ 21. Kd1d2 Qh1g2+ 22. Kd2e1 Nh3g1 23. Nb1c3 Bd4c3+ 24. b2c3 Qg2e2#"<<endl;
+	streamtest<<""<<endl;
 
 	PgnAjedrez pgn;
 	pgn.cargarPng(streamtest);
@@ -82,11 +85,7 @@ void TestPgnInterprete::testUnaPiezaNegra1a() {
 
 	streamtest<<"8/8/8/8/8/8/8/n7 w"<<endl;
 	streamtest<<endl;
-	streamtest<<"1. e2e4 e7e5 2. Qd1f3 Nb8c6 3. Bf1c4 Ng8f6 4. Ng1e2 Bf8c5 5. a2a3 d7d6 6. 0-0 Bc8g4 "<<endl;
-	streamtest<<"7. Qf3d3 Nf6h5 8. h2h3 Bg4e2 9. Qd3e2 Nh5f4 10. Qe2e1 Nc6d4 11. Bc4b3"<<endl;
-	streamtest<<"Nf4h3+ 12. Kg1h2 Qd8h4 13. g2g3 Nd4f3+ 14. Kh2g2 Nf3e1+ 15. Rf1e1 Qh4g4 16."<<endl;
-	streamtest<<"d2d3 Bc5f2 17. Re1h1 Qg4g3+ 18. Kg2f1 Bf2d4 19. Kf1e2 Qg3g2+ 20. Ke2d1"<<endl;
-	streamtest<<"Qg2h1+ 21. Kd1d2 Qh1g2+ 22. Kd2e1 Nh3g1 23. Nb1c3 Bd4c3+ 24. b2c3 Qg2e2#"<<endl;
+	streamtest<<""<<endl;
 
 	PgnAjedrez pgn;
 	pgn.cargarPng(streamtest);
@@ -109,11 +108,7 @@ void TestPgnInterprete::testUnaPiezaBlanca1h() {
 
 	streamtest<<"8/8/8/8/8/8/8/7P w"<<endl;
 	streamtest<<endl;
-	streamtest<<"1. e2e4 e7e5 2. Qd1f3 Nb8c6 3. Bf1c4 Ng8f6 4. Ng1e2 Bf8c5 5. a2a3 d7d6 6. 0-0 Bc8g4 "<<endl;
-	streamtest<<"7. Qf3d3 Nf6h5 8. h2h3 Bg4e2 9. Qd3e2 Nh5f4 10. Qe2e1 Nc6d4 11. Bc4b3"<<endl;
-	streamtest<<"Nf4h3+ 12. Kg1h2 Qd8h4 13. g2g3 Nd4f3+ 14. Kh2g2 Nf3e1+ 15. Rf1e1 Qh4g4 16."<<endl;
-	streamtest<<"d2d3 Bc5f2 17. Re1h1 Qg4g3+ 18. Kg2f1 Bf2d4 19. Kf1e2 Qg3g2+ 20. Ke2d1"<<endl;
-	streamtest<<"Qg2h1+ 21. Kd1d2 Qh1g2+ 22. Kd2e1 Nh3g1 23. Nb1c3 Bd4c3+ 24. b2c3 Qg2e2#"<<endl;
+	streamtest<<""<<endl;
 
 	PgnAjedrez pgn;
 	pgn.cargarPng(streamtest);
@@ -137,11 +132,7 @@ void TestPgnInterprete::testPosicionInicial8a() {
 
 	streamtest<<"P7/8/8/8/8/8/8/8 w"<<endl;
 	streamtest<<endl;
-	streamtest<<"1. e2e4 e7e5 2. Qd1f3 Nb8c6 3. Bf1c4 Ng8f6 4. Ng1e2 Bf8c5 5. a2a3 d7d6 6. 0-0 Bc8g4 "<<endl;
-	streamtest<<"7. Qf3d3 Nf6h5 8. h2h3 Bg4e2 9. Qd3e2 Nh5f4 10. Qe2e1 Nc6d4 11. Bc4b3"<<endl;
-	streamtest<<"Nf4h3+ 12. Kg1h2 Qd8h4 13. g2g3 Nd4f3+ 14. Kh2g2 Nf3e1+ 15. Rf1e1 Qh4g4 16."<<endl;
-	streamtest<<"d2d3 Bc5f2 17. Re1h1 Qg4g3+ 18. Kg2f1 Bf2d4 19. Kf1e2 Qg3g2+ 20. Ke2d1"<<endl;
-	streamtest<<"Qg2h1+ 21. Kd1d2 Qh1g2+ 22. Kd2e1 Nh3g1 23. Nb1c3 Bd4c3+ 24. b2c3 Qg2e2#"<<endl;
+	streamtest<<""<<endl;
 
 	PgnAjedrez pgn;
 	pgn.cargarPng(streamtest);
@@ -171,11 +162,7 @@ void TestPgnInterprete::testPosicionInicial1a()
 
 	streamtest<<"8/8/8/8/8/8/8/P7 w"<<endl;
 	streamtest<<endl;
-	streamtest<<"1. e2e4 e7e5 2. Qd1f3 Nb8c6 3. Bf1c4 Ng8f6 4. Ng1e2 Bf8c5 5. a2a3 d7d6 6. 0-0 Bc8g4 "<<endl;
-	streamtest<<"7. Qf3d3 Nf6h5 8. h2h3 Bg4e2 9. Qd3e2 Nh5f4 10. Qe2e1 Nc6d4 11. Bc4b3"<<endl;
-	streamtest<<"Nf4h3+ 12. Kg1h2 Qd8h4 13. g2g3 Nd4f3+ 14. Kh2g2 Nf3e1+ 15. Rf1e1 Qh4g4 16."<<endl;
-	streamtest<<"d2d3 Bc5f2 17. Re1h1 Qg4g3+ 18. Kg2f1 Bf2d4 19. Kf1e2 Qg3g2+ 20. Ke2d1"<<endl;
-	streamtest<<"Qg2h1+ 21. Kd1d2 Qh1g2+ 22. Kd2e1 Nh3g1 23. Nb1c3 Bd4c3+ 24. b2c3 Qg2e2#"<<endl;
+	streamtest<<""<<endl;
 
 	Coordenada coor;
 	coor.setFila(1);
@@ -204,11 +191,7 @@ void TestPgnInterprete::testPosicionInicial8h() {
 	stringstream streamtest;
 	streamtest<<"7p/8/8/8/8/8/8/8 w"<<endl;
 	streamtest<<endl;
-	streamtest<<"1. e2e4 e7e5 2. Qd1f3 Nb8c6 3. Bf1c4 Ng8f6 4. Ng1e2 Bf8c5 5. a2a3 d7d6 6. 0-0 Bc8g4 "<<endl;
-	streamtest<<"7. Qf3d3 Nf6h5 8. h2h3 Bg4e2 9. Qd3e2 Nh5f4 10. Qe2e1 Nc6d4 11. Bc4b3"<<endl;
-	streamtest<<"Nf4h3+ 12. Kg1h2 Qd8h4 13. g2g3 Nd4f3+ 14. Kh2g2 Nf3e1+ 15. Rf1e1 Qh4g4 16."<<endl;
-	streamtest<<"d2d3 Bc5f2 17. Re1h1 Qg4g3+ 18. Kg2f1 Bf2d4 19. Kf1e2 Qg3g2+ 20. Ke2d1"<<endl;
-	streamtest<<"Qg2h1+ 21. Kd1d2 Qh1g2+ 22. Kd2e1 Nh3g1 23. Nb1c3 Bd4c3+ 24. b2c3 Qg2e2#"<<endl;
+	streamtest<<""<<endl;
 
 	PgnAjedrez pgn;
 	pgn.cargarPng(streamtest);
@@ -238,11 +221,7 @@ void TestPgnInterprete::testPosicionInicial1h() {
 	stringstream streamtest;
 	streamtest<<"8/8/8/8/8/8/8/7p w"<<endl;
 	streamtest<<endl;
-	streamtest<<"1. e2e4 e7e5 2. Qd1f3 Nb8c6 3. Bf1c4 Ng8f6 4. Ng1e2 Bf8c5 5. a2a3 d7d6 6. 0-0 Bc8g4 "<<endl;
-	streamtest<<"7. Qf3d3 Nf6h5 8. h2h3 Bg4e2 9. Qd3e2 Nh5f4 10. Qe2e1 Nc6d4 11. Bc4b3"<<endl;
-	streamtest<<"Nf4h3+ 12. Kg1h2 Qd8h4 13. g2g3 Nd4f3+ 14. Kh2g2 Nf3e1+ 15. Rf1e1 Qh4g4 16."<<endl;
-	streamtest<<"d2d3 Bc5f2 17. Re1h1 Qg4g3+ 18. Kg2f1 Bf2d4 19. Kf1e2 Qg3g2+ 20. Ke2d1"<<endl;
-	streamtest<<"Qg2h1+ 21. Kd1d2 Qh1g2+ 22. Kd2e1 Nh3g1 23. Nb1c3 Bd4c3+ 24. b2c3 Qg2e2#"<<endl;
+	streamtest<<""<<endl;
 
 	PgnAjedrez pgn;
 	pgn.cargarPng(streamtest);
@@ -273,11 +252,7 @@ void TestPgnInterprete::testPosicionInicial5d()
 	stringstream streamtest;
 	streamtest<<"8/8/8/3p4/8/8/8/8 w"<<endl;
 	streamtest<<endl;
-	streamtest<<"1. e2e4 e7e5 2. Qd1f3 Nb8c6 3. Bf1c4 Ng8f6 4. Ng1e2 Bf8c5 5. a2a3 d7d6 6. 0-0 Bc8g4 "<<endl;
-	streamtest<<"7. Qf3d3 Nf6h5 8. h2h3 Bg4e2 9. Qd3e2 Nh5f4 10. Qe2e1 Nc6d4 11. Bc4b3"<<endl;
-	streamtest<<"Nf4h3+ 12. Kg1h2 Qd8h4 13. g2g3 Nd4f3+ 14. Kh2g2 Nf3e1+ 15. Rf1e1 Qh4g4 16."<<endl;
-	streamtest<<"d2d3 Bc5f2 17. Re1h1 Qg4g3+ 18. Kg2f1 Bf2d4 19. Kf1e2 Qg3g2+ 20. Ke2d1"<<endl;
-	streamtest<<"Qg2h1+ 21. Kd1d2 Qh1g2+ 22. Kd2e1 Nh3g1 23. Nb1c3 Bd4c3+ 24. b2c3 Qg2e2#"<<endl;
+	streamtest<<""<<endl;
 
 	PgnAjedrez pgn;
 	pgn.cargarPng(streamtest);
@@ -305,7 +280,7 @@ void TestPgnInterprete::testPosicionInicial5d5h() {
 	stringstream streamtest;
 	streamtest<<"8/8/8/3p3n/8/8/8/8 w"<<endl;
 	streamtest<<endl;
-	streamtest<<"1. e2e4 e7e5 2. Qd1f3 Nb8c6 3. Bf1c4 Ng8f6 4. Ng1e2 Bf8c5 5. a2a3 d7d6 6. 0-0 Bc8g4 "<<endl;
+	streamtest<<""<<endl;
 
 
 	Coordenada coor, coor2;
@@ -341,6 +316,149 @@ void TestPgnInterprete::testPosicionInicial5d5h() {
 		}
 	}
 }
+
+void TestPgnInterprete::testMovimientoSimple() {
+	stringstream streamtest;
+	streamtest<<"8/pppppppp/8/8/8/8/PPPPPPPP/8 w"<<endl;
+	streamtest<<endl;
+	streamtest<<"1. e2e4 e7e5"<<endl;
+
+	PgnAjedrez entradaPng;
+	entradaPng.cargarPng(streamtest);
+	TableroAjedrez ajedrez;
+	VistaReplayer vista;
+	ControladorReplayer controlador(&ajedrez, &vista);
+	controlador.reproducir(&entradaPng);
+
+	Coordenada coord1(2,'e');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord1), "testMovimientoSimple-1");
+	Coordenada coord2(7,'e');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord2), "testMovimientoSimple-2");
+	Coordenada coord3(4,'e');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord3), "testMovimientoSimple-3");
+	Coordenada coord4(5,'e');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord4), "testMovimientoSimple-4");
+}
+
+
+void TestPgnInterprete::testBlancoNegroEnroqueLargo() {
+	stringstream streamtest;
+	streamtest<<"r3k3/8/8/8/8/8/8/R3K3 w"<<endl;
+	streamtest<<endl;
+	streamtest<<"1. 0-0-0 0-0-0"<<endl;
+
+	PgnAjedrez entradaPng;
+	entradaPng.cargarPng(streamtest);
+	TableroAjedrez ajedrez;
+	VistaReplayer vista;
+	ControladorReplayer controlador(&ajedrez, &vista);
+	controlador.reproducir(&entradaPng);
+
+	Coordenada coord1(1, 'a');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord1), "testBlancoNegroEnroqueLargo-1");
+	Coordenada coord2(1, 'e');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord2), "testBlancoNegroEnroqueLargo-1");
+	Coordenada coord3(1, 'd');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord3), "testBlancoNegroEnroqueLargo-1");
+	Coordenada coord4(1, 'c');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord4), "testBlancoNegroEnroqueLargo-1");
+
+
+
+	Coordenada coord5(8, 'a');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord5), "testBlancoNegroEnroqueLargo-2");
+	Coordenada coord6(8, 'e');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord6), "testBlancoNegroEnroqueLargo-2");
+	Coordenada coord7(8, 'd');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord7), "testBlancoNegroEnroqueLargo-2");
+	Coordenada coord8(8, 'c');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord8), "testBlancoNegroEnroqueLargo-2");
+}
+
+void TestPgnInterprete::testBlancoNegroEnroqueCorto()
+{
+	stringstream streamtest;
+	streamtest<<"4k2r/8/8/8/8/8/8/4K2R w"<<endl;
+	streamtest<<endl;
+	streamtest<<"1. 0-0 0-0"<<endl;
+
+	PgnAjedrez entradaPng;
+	entradaPng.cargarPng(streamtest);
+	TableroAjedrez ajedrez;
+	VistaReplayer vista;
+	ControladorReplayer controlador(&ajedrez, &vista);
+	controlador.reproducir(&entradaPng);
+
+	Coordenada coord1(1, 'h');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord1), "testBlancoNegroEnroqueCorto-1");
+	Coordenada coord2(1, 'e');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord2), "testBlancoNegroEnroqueCorto-1");
+	Coordenada coord3(1, 'f');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord3), "testBlancoNegroEnroqueCorto-1");
+	Coordenada coord4(1, 'g');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord4), "testBlancoNegroEnroqueCorto-1");
+
+
+
+	Coordenada coord5(8, 'h');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord5), "testBlancoNegroEnroqueCorto-2");
+	Coordenada coord6(8, 'e');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord6), "testBlancoNegroEnroqueCorto-2");
+	Coordenada coord7(8, 'f');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord7), "testBlancoNegroEnroqueCorto-2");
+	Coordenada coord8(8, 'g');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord8), "testBlancoNegroEnroqueCorto-2");
+
+}
+
+
+void TestPgnInterprete::testPromocionAAlfil() {
+	stringstream streamtest;
+	streamtest<<"8/P7/8/8/8/8/4p3/8 w"<<endl;
+	streamtest<<endl;
+	streamtest<<"1. a7a8B e2e1B"<<endl;
+
+	PgnAjedrez entradaPng;
+	entradaPng.cargarPng(streamtest);
+	TableroAjedrez ajedrez;
+	VistaReplayer vista;
+	ControladorReplayer controlador(&ajedrez, &vista);
+	controlador.reproducir(&entradaPng);
+
+	Coordenada coord1(7,'a');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord1), "testPromocionAAlfil-1");
+	Coordenada coord2(8,'a');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord2), "testPromocionAAlfil-1");
+
+	Coordenada coord3(2,'e');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord3), "testPromocionAAlfil-2");
+	Coordenada coord4(1,'e');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord4), "testPromocionAAlfil-2");
+}
+
+void TestPgnInterprete::testTurnoEmpiezaNegra()
+{
+}
+
+
+
+void TestPgnInterprete::testTurnoEmpiezaBlanca()
+{
+}
+
+void TestPgnInterprete::testMateCombinable()
+{
+}
+
+
+
+void TestPgnInterprete::testJackeCombinable()
+{
+}
+
+
+
+
 
 
 

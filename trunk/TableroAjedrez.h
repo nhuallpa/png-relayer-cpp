@@ -30,6 +30,7 @@ public:
 	int getCantFilas() const {return cantFilas;}
 	void setCantColumnas(int cantColumnas) {this->cantColumnas = cantColumnas;}
 	void setCantFilas(int cantFilas) {this->cantFilas = cantFilas;}
+	PiezaJugadora* getPiezaJugadora(const Coordenada &coord);
 	PiezaJugadora* getPiezaJugadora(int fila, char columna);
 
 	bool hayPiezaJugadora(const Coordenada &coord);
@@ -39,6 +40,11 @@ public:
 	 * coordenada pasa por parametro
 	 * */
 	void posionar(PiezaJugadora* piezaJugadora, const Coordenada &coord);
+
+
+	/*
+	 * */
+	PiezaJugadora* levantarPiezaJugadora(const Coordenada &coord);
 
 private:
 	bool indicesValidos(int fila, int columna);

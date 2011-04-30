@@ -24,6 +24,8 @@
 #include "Pieza.h"
 #include "FactoryPiezaJugadora.h"
 #include "Turno.h"
+#include "PiezaJugadora.h"
+#include "FactoryMovimiento.h"
 
 typedef Lista<Pieza*> ListaPPieza;
 typedef Lista<Turno*> ListaPTurno;
@@ -32,13 +34,13 @@ class PgnInterprete {
 private:
 	PgnAjedrez* pgn;
 	FactoryPiezaJugadora factoryPiezaJugadora;
+	FactoryMovimiento	factoryMovimiento;
 	ListaPPieza* piezasIniciales;
 	ListaPTurno* turnos;
 
 public:
 	PgnInterprete();
 	virtual ~PgnInterprete();
-    PgnAjedrez *getPgn() const;
     void setPgn(PgnAjedrez *pgn);
 
     /**
@@ -46,6 +48,8 @@ public:
      *
      */
     ListaPPieza* getPiezasIniciales();
+
+    ListaPTurno* getTurnos();
 
     /*
      * Ejecuta los interpretes

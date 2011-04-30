@@ -20,6 +20,8 @@
 
 class FactoryPiezaJugadora {
 
+	//static FactoryPiezaJugadora* singletonFactory;
+
 private:
 	Creador* creadores[CANT_PIEZAS];
 
@@ -27,6 +29,8 @@ public:
 	FactoryPiezaJugadora();
 	PiezaJugadora* crear(char simbolo);
 	virtual ~FactoryPiezaJugadora();
+
+	//static FactoryPiezaJugadora* getFactory();
 
 private:
 	bool esMinuscula(char value);

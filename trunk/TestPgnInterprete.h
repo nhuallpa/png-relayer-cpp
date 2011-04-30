@@ -8,6 +8,10 @@
 #ifndef __TESTPGNINTERPRETE_H_
 #define __TESTPGNINTERPRETE_H_
 #include "PgnInterprete.h"
+#include "TableroAjedrez.h"
+#include "VistaReplayer.h"
+#include "ControladorReplayer.h"
+
 #include "iostream"
 
 class TestPgnInterprete {
@@ -25,6 +29,14 @@ public:
 	void testUnaPiezaBlanca1h();
 	void testPosicionInicial5d5h();
 
+	void testMovimientoSimple();
+	void testBlancoNegroEnroqueCorto();
+	void testBlancoNegroEnroqueLargo();
+	void testPromocionAAlfil();
+	void testTurnoEmpiezaBlanca();
+	void testTurnoEmpiezaNegra();
+	void testJackeCombinable();
+	void testMateCombinable();
 
 };
 
