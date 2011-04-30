@@ -6,6 +6,8 @@
  */
 
 #include "ControladorReplayer.h"
+
+
 using namespace std;
 
 std::ostream& operator<< (ostream& out, VistaReplayer* vista){
@@ -17,7 +19,7 @@ std::ostream& operator<< (ostream& out, VistaReplayer* vista){
 ControladorReplayer::ControladorReplayer(TableroAjedrez* unAjedrez, VistaReplayer* unaVista) {
 	tableroAjedrez = unAjedrez;
 	vista = unaVista;
-	piezasIniciales = NULL;
+
 }
 
 ControladorReplayer::~ControladorReplayer() {
@@ -35,19 +37,18 @@ void ControladorReplayer::reproducir(PgnAjedrez* entradaPng) {
 	pgnInterprete.interpretar();
 	prepararTableroInicial();
 	vista->visualizar(tableroAjedrez, pgnInterprete.getPiezasIniciales());
-
-//	this.ejecutarMovidas(entradaPng);
+	ejecutarTurnos();
 //	ReplayerVista<<analisisRealizado;
 //	ReplayerVista<<tableroAjedrez;
 }
 
 void ControladorReplayer::prepararTableroInicial() {
-	piezasIniciales = pgnInterprete.getPiezasIniciales();
+	ListaPPieza* piezasIniciales = pgnInterprete.getPiezasIniciales();
 	if (piezasIniciales) {
-		colocarPiezasIniciales();
+		colocarPiezasIniciales(piezasIniciales);
 	}
 }
-void ControladorReplayer::colocarPiezasIniciales(){
+void ControladorReplayer::colocarPiezasIniciales(ListaPPieza* piezasIniciales) {
 	ListaPPieza::IteratorList itPiezasInicales =
 											piezasIniciales->getIterator();
     while(itPiezasInicales.hasNext()){
@@ -57,5 +58,20 @@ void ControladorReplayer::colocarPiezasIniciales(){
     }
 }
 
+void ControladorReplayer::ejecutarTurnos() {
+
+	ListaPTurno* turnos = pgnInterprete.getTurnos();
+	if (turnos) {
+		ListaPTurno::IteratorList it = turnos->getIterator();
+		while (it.hasNext()) {
+			Turno* turno = it.next();
+			Movimiento* unMovimiento = NULL;
+			unMovimiento = turno->getMovimientoBlanco();
+			unMovimiento->aplicarEn(tableroAjedrez);
+			unMovimiento = turno->getMovimientoNegro();
+			unMovimiento->aplicarEn(tableroAjedrez);
+		}
+	}
+}
 
 

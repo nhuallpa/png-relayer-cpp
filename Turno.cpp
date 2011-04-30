@@ -8,10 +8,35 @@
 #include "Turno.h"
 
 Turno::Turno() {
-	// TODO Auto-generated constructor stub
+	movimientoBlanco = NULL;
+	movimientoNegro = NULL;
+}
 
+Movimiento *Turno::getMovimientoBlanco() const
+{
+    return movimientoBlanco;
+}
+
+Movimiento *Turno::getMovimientoNegro() const
+{
+    return movimientoNegro;
+}
+
+void Turno::setMovimientoBlanco(Movimiento *movimientoBlanco)
+{
+    this->movimientoBlanco = movimientoBlanco;
+}
+
+void Turno::setMovimientoNegro(Movimiento *movimientoNegro)
+{
+    this->movimientoNegro = movimientoNegro;
 }
 
 Turno::~Turno() {
-	// TODO Auto-generated destructor stub
+	if (movimientoBlanco) {
+		delete movimientoBlanco;
+	}
+	if (movimientoNegro) {
+		delete movimientoNegro;
+	}
 }

@@ -33,6 +33,10 @@ bool TableroAjedrez::hayPiezaJugadora(const Coordenada &coord) {
 	return result;
 }
 
+PiezaJugadora *TableroAjedrez::getPiezaJugadora(const Coordenada &coord) {
+	return getPiezaJugadora(coord.getFila(), coord.getColumna());
+}
+
 PiezaJugadora *TableroAjedrez::getPiezaJugadora(int fila, char columna) {
 
 	PiezaJugadora* result = NULL;
@@ -58,6 +62,13 @@ void TableroAjedrez::posionar(PiezaJugadora *piezaJugadora, const Coordenada &co
 	if (indicesValidos(i, j)) {
 		tablero[i][j].setPiezaJugadora(piezaJugadora);
 	}
+}
+
+PiezaJugadora* TableroAjedrez::levantarPiezaJugadora(const Coordenada &coord) {
+
+	PiezaJugadora* pieza = getPiezaJugadora(coord.getFila(), coord.getColumna());
+	posionar(NULL, coord);
+	return pieza;
 }
 
 bool TableroAjedrez::indicesValidos(int i, int j) {

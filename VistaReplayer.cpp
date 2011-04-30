@@ -33,7 +33,6 @@ void VistaReplayer::visualizar(TableroAjedrez* tablero, ListaPPieza* listaPiezas
 		}
 		out<<endl;
 	}
-	//cout<<out.str();
 }
 
 char VistaReplayer::encontrarSymbolo(PiezaJugadora* piezaJugadora, ListaPPieza* listaPiezas) {
