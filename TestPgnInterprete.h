@@ -34,8 +34,9 @@ public:
 	void testBlancoNegroEnroqueLargo();
 	void testPromocionAAlfil();
 	void testTurnoEmpiezaNegra();
-	void testJackeCombinable();
-	void testMateCombinable();
+	void testJaqueCombinable();
+	void testMovimientoMateCombinable();
+	void testMovidaSipleCombinable();
 
 };
 

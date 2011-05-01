@@ -30,8 +30,9 @@ void TestPgnInterprete::run() {
 	testPromocionAAlfil();
 	testTurnoEmpiezaNegra();
 
-	testJackeCombinable();
-	testMateCombinable();
+	testJaqueCombinable();
+	testMovimientoMateCombinable();
+	testMovidaSipleCombinable();
 }
 void TestPgnInterprete::testUnaPiezaNegra() {
 	stringstream streamtest;
@@ -439,7 +440,7 @@ void TestPgnInterprete::testTurnoEmpiezaNegra()
 {
 
 	stringstream streamtest;
-	streamtest<<"p7/4p3/8/8/8/8/4P3/P7 w"<<endl;
+	streamtest<<"p7/4p3/8/8/8/8/4P3/P7 b"<<endl;
 	streamtest<<endl;
 	streamtest<<"1. e7e6 2. a1a2  a8a7"<<endl;
 
@@ -465,20 +466,79 @@ void TestPgnInterprete::testTurnoEmpiezaNegra()
 }
 
 
-void TestPgnInterprete::testMateCombinable()
-{
+void TestPgnInterprete::testMovimientoMateCombinable() {
+	stringstream streamtest;
+	streamtest<<"8/pppppppp/8/8/8/8/PPPPPPPP/8 w"<<endl;
+	streamtest<<endl;
+	streamtest<<"1. e2e4# Ae7e5#"<<endl;
+
+	PgnAjedrez entradaPng;
+	entradaPng.cargarPng(streamtest);
+	TableroAjedrez ajedrez;
+	VistaReplayer vista;
+	ControladorReplayer controlador(&ajedrez, &vista);
+	controlador.reproducir(&entradaPng);
+
+	Coordenada coord1(2,'e');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord1), "testMovimientoMateCombinable-1");
+	Coordenada coord2(7,'e');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord2), "testMovimientoMateCombinable-2");
+	Coordenada coord3(4,'e');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord3), "testMovimientoMateCombinable-3");
+	Coordenada coord4(5,'e');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord4), "testMovimientoMateCombinable-4");
 }
 
 
 
-void TestPgnInterprete::testJackeCombinable()
+void TestPgnInterprete::testJaqueCombinable()
 {
+	stringstream streamtest;
+	streamtest<<"8/pppppppp/8/8/8/8/PPPPPPPP/8 w"<<endl;
+	streamtest<<endl;
+	streamtest<<"1. e2e4+ Ae7e5+"<<endl;
+
+	PgnAjedrez entradaPng;
+	entradaPng.cargarPng(streamtest);
+	TableroAjedrez ajedrez;
+	VistaReplayer vista;
+	ControladorReplayer controlador(&ajedrez, &vista);
+	controlador.reproducir(&entradaPng);
+
+	Coordenada coord1(2,'e');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord1), "testJaqueCombinable-1");
+	Coordenada coord2(7,'e');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord2), "testJaqueCombinable-2");
+	Coordenada coord3(4,'e');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord3), "testJaqueCombinable-3");
+	Coordenada coord4(5,'e');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord4), "testJaqueCombinable-4");
+
 }
 
-// todo otro combinables Bb2b4 como normal
+void TestPgnInterprete::testMovidaSipleCombinable()
+{
+	stringstream streamtest;
+	streamtest<<"8/pppppppp/8/8/8/8/PPPPPPPP/8 w"<<endl;
+	streamtest<<endl;
+	streamtest<<"1. Ne2e4 Ae7e5"<<endl;
 
+	PgnAjedrez entradaPng;
+	entradaPng.cargarPng(streamtest);
+	TableroAjedrez ajedrez;
+	VistaReplayer vista;
+	ControladorReplayer controlador(&ajedrez, &vista);
+	controlador.reproducir(&entradaPng);
 
+	Coordenada coord1(2,'e');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord1), "testMovidaSipleCombinable-1");
+	Coordenada coord2(7,'e');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord2), "testMovidaSipleCombinable-2");
+	Coordenada coord3(4,'e');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord3), "testMovidaSipleCombinable-3");
+	Coordenada coord4(5,'e');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord4), "testMovidaSipleCombinable-4");
 
-
+}
 
 
