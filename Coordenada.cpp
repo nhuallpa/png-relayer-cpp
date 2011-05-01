@@ -16,6 +16,11 @@ Coordenada::Coordenada(int fil, char colum) {
 	columna = colum;
 }
 
+Coordenada::Coordenada(const Coordenada & coordena) {
+	fila = coordena.getFila();
+	columna = coordena.getColumna();
+}
+
 char Coordenada::getColumna() const {
     return columna;
 }

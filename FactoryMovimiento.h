@@ -13,7 +13,9 @@
 #include "Promocion.h"
 #include "EnroqueLargo.h"
 #include "EnroqueCorto.h"
-
+#include "Coordenada.h"
+#include "FactoryPiezaJugadora.h"
+#include "PiezaJugadora.h"
 #include "Util.h"
 #include <string>
 

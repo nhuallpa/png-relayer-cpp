@@ -36,6 +36,7 @@ private:
 	FactoryPiezaJugadora factoryPiezaJugadora;
 	FactoryMovimiento	factoryMovimiento;
 	ListaPPieza* piezasIniciales;
+	ListaPPieza* piezasPromocion;
 	ListaPTurno* turnos;
 
 public:
@@ -67,6 +68,12 @@ private:
     void interpretarTurnos();
 
     void interpretarFila(std::string filaString, int fila);
+
+    void registrarPiezas(PiezaJugadora* piezaJugadora, const Coordenada& coord, char simbolo);
+
+    // caso particular, debido a que un movimiento es causante de un
+    // una nueva pieza. Esta debe registrarse para ser usada en el MVC
+    void registrarPromocionDe(Movimiento* movimientoBlanco, std::string palabra);
 };
 
 #endif /* PGNINTERPRETE_H_ */

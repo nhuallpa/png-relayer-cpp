@@ -456,6 +456,7 @@ void TestPgnInterprete::testJackeCombinable()
 {
 }
 
+// todo otro combinables Bb2b4 como normal
 
 
 

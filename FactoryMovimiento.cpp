@@ -8,12 +8,13 @@
 
 #include "FactoryMovimiento.h"
 
+
 Movimiento *FactoryMovimiento::crear(std::string palabra, tColor color) {
 	Movimiento* movimiento = NULL;
 	if (palabra.length() == 4) {
-
-		Movimiento* movidaDirecta = new MovidaDirecta(Util::charToInt(palabra[1]), palabra[0],
-													  Util::charToInt(palabra[3]), palabra[2]);
+		Coordenada origen(Util::charToInt(palabra[1]), palabra[0]);
+		Coordenada destino(Util::charToInt(palabra[3]), palabra[2]);
+		Movimiento* movidaDirecta = new MovidaDirecta(origen, destino);
 		movimiento = movidaDirecta;
 	}
 
@@ -23,16 +24,20 @@ Movimiento *FactoryMovimiento::crear(std::string palabra, tColor color) {
 	}
 
 	if (palabra.compare("0-0") == 0) {
-		Movimiento* enroqueLargo = new EnroqueCorto(color);
-		movimiento = enroqueLargo;
+		Movimiento* enroqueCorto= new EnroqueCorto(color);
+		movimiento = enroqueCorto;
 	}
 
 	if (palabra.length() == 5 && Util::esMayucula(palabra[4])) {
-		char simbolo = palabra[4];
-		Movimiento* enroqueLargo = new Promocion(simbolo);
-		movimiento = enroqueLargo;
+		char simbolo =  palabra[4];
+		if (color == NEGRO) {
+			simbolo = tolower(palabra[4]);
+		}
+		Coordenada origen(Util::charToInt(palabra[1]), palabra[0]);
+		Coordenada destino(Util::charToInt(palabra[3]), palabra[2]);
+		Movimiento* promocion = new Promocion(origen, destino, simbolo);
+		movimiento = promocion;
 	}
-
 
 	if (movimiento == NULL) {
 		movimiento = new NingunMovimiento();

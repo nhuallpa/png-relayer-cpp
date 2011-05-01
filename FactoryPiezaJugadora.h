@@ -20,17 +20,21 @@
 
 class FactoryPiezaJugadora {
 
-	//static FactoryPiezaJugadora* singletonFactory;
-
 private:
 	Creador* creadores[CANT_PIEZAS];
+//	static FactoryPiezaJugadora* singletonFactory;
 
 public:
 	FactoryPiezaJugadora();
 	PiezaJugadora* crear(char simbolo);
 	virtual ~FactoryPiezaJugadora();
 
-	//static FactoryPiezaJugadora* getFactory();
+//	static FactoryPiezaJugadora* getFactory() {
+//		if (singletonFactory == NULL) {
+//			singletonFactory = new FactoryPiezaJugadora();
+//		}
+//		return singletonFactory;
+//	}
 
 private:
 	bool esMinuscula(char value);

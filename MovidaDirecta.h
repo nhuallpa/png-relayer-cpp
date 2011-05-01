@@ -16,9 +16,8 @@ private:
 	Coordenada destino;
 
 public:
-	MovidaDirecta(int filaOrigen, char columnaOrigen,
-				  int filaDestino, char columnaDestino);
 
+	MovidaDirecta(const Coordenada& ori, const Coordenada& dest);
 	void aplicarEn(TableroAjedrez* tablero);
 
 	virtual ~MovidaDirecta();

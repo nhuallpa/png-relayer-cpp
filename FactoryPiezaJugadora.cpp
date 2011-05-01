@@ -7,7 +7,7 @@
 
 #include "FactoryPiezaJugadora.h"
 
-
+//FactoryPiezaJugadora* FactoryPiezaJugadora::singletonFactory = NULL;
 char idPiezas[6] = {'P', 'R', 'N', 'B', 'Q', 'K'};
 
 FactoryPiezaJugadora::FactoryPiezaJugadora() {
@@ -49,3 +49,5 @@ FactoryPiezaJugadora::~FactoryPiezaJugadora() {
 		delete creadores[index];
 	}
 }
+
+

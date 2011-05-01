@@ -18,6 +18,7 @@ using namespace std;
 
 PgnInterprete::PgnInterprete() {
 	piezasIniciales = NULL;
+	piezasPromocion = NULL;
 	turnos = NULL;
 	pgn = NULL;
 
@@ -44,9 +45,16 @@ void PgnInterprete::interpretarTurnos() {
 			Movimiento* movimientoBlanco = NULL;
 			movimientoBlanco = factoryMovimiento.crear(palabra, BLANCO);
 
+			if (movimientoBlanco->tienePromocion()) {
+				registrarPromocionDe(movimientoBlanco, palabra);
+			}
+
 			streamMovidas>>palabra;
 			Movimiento* movimientoNegro = NULL;
 			movimientoNegro = factoryMovimiento.crear(palabra, NEGRO);
+			if (movimientoBlanco->tienePromocion()) {
+				registrarPromocionDe(movimientoNegro, palabra);
+			}
 
 			Turno* unTurno = new Turno();
 			unTurno->setMovimientoNegro(movimientoNegro);
@@ -75,13 +83,32 @@ void PgnInterprete::interpretarFila(string filaString, int fila) {
 			columna += (simbolo - '0');
 		} else {
 			PiezaJugadora* pJugadadora = factoryPiezaJugadora.crear(simbolo);
-			if (pJugadadora) {
-				Coordenada coord(fila, 'a' + columna );
-				piezasIniciales->agregar(new Pieza(pJugadadora, coord, simbolo));
-			}
+			Coordenada coord(fila, 'a' + columna );
+			registrarPiezas(pJugadadora, coord, simbolo);
 			++columna;
 		}
 	}
+}
+
+void PgnInterprete::registrarPiezas(PiezaJugadora* piezaJugadora,
+									const Coordenada& coord, char simbolo){
+	if (piezaJugadora) {
+		piezasIniciales->agregar(new Pieza(piezaJugadora, coord, simbolo));
+	}
+}
+void PgnInterprete::registrarPromocionDe(Movimiento* movimiento, string palabra) {
+	if (piezasPromocion == NULL) {
+		piezasPromocion = new ListaPPieza();
+	}
+
+	char simbolo = ((Promocion*)movimiento)->getSimboloPromocion();
+	PiezaJugadora* nuevaPiezaJugadora = factoryPiezaJugadora.crear(simbolo);
+	((Promocion*)movimiento)->setPiezaPromocion(nuevaPiezaJugadora);
+	Coordenada& destino = ((Promocion*)movimiento)->getDestino();
+	if (nuevaPiezaJugadora) {
+		piezasPromocion->agregar(new Pieza(nuevaPiezaJugadora, destino, simbolo));
+	}
+
 }
 
 void PgnInterprete::setPgn(PgnAjedrez *pgn) {
@@ -111,7 +138,13 @@ PgnInterprete::~PgnInterprete() {
 		}
 		delete turnos;
 	}
-
+	if (piezasPromocion) {
+		ListaPPieza::IteratorList it = piezasPromocion->getIterator();
+		while (it.hasNext()) {
+			delete it.next();
+		}
+		delete piezasPromocion;
+	}
 }
 
 
