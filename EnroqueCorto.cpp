@@ -18,4 +18,3 @@ EnroqueCorto::EnroqueCorto(tColor color) {
 	destinoTorre.setFila(fila);
 	destinoTorre.setColumna('f');
 }
-

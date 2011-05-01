@@ -125,6 +125,10 @@ ListaPPieza* PgnInterprete::getPiezasIniciales() {
 	return piezasIniciales;
 }
 
+ListaPPieza* PgnInterprete::getPiezasPromocion() {
+	return piezasPromocion;
+}
+
 ListaPTurno* PgnInterprete::getTurnos() {
 	return turnos;
 }

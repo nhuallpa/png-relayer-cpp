@@ -15,7 +15,9 @@
 #include <iosfwd>
 
 
-//std::ostream& operator<< (std::ostream& out, const VistaReplayer& vista);
+
+const char c_SIN_SIMBOLO = '-';
+const char c_VACIO = '.';
 
 class VistaReplayer {
 
@@ -24,13 +26,24 @@ class VistaReplayer {
 public:
 	VistaReplayer();
 
-	void visualizar(TableroAjedrez* tablero, ListaPPieza* listaPiezas);
+
+
+	void visualizarTableroInicial(TableroAjedrez* tablero,
+								  ListaPPieza* piezasIniciales,
+								  ListaPPieza* piezasPromociones);
+	void visualizarTableroFinal(TableroAjedrez* tablero,
+								ListaPPieza* piezasIniciales,
+								ListaPPieza* piezasPromociones);
 
 	char encontrarSymbolo(PiezaJugadora* piezaJugadora, ListaPPieza* listaPiezas);
 
 	std::string toString();
 
-	virtual ~VistaReplayer();
+private:
+	void visualizar(TableroAjedrez* tablero,
+						ListaPPieza* piezasIniciales,
+						ListaPPieza* piezasPromociones);
+
 };
 
 #endif /* VISTAREPLAYER_H_ */

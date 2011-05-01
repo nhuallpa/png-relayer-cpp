@@ -19,6 +19,3 @@ void MovidaDirecta::aplicarEn(TableroAjedrez* tablero) {
 	}
 }
 
-MovidaDirecta::~MovidaDirecta() {
-	// TODO Auto-generated destructor stub
-}

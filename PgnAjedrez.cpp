@@ -67,8 +67,6 @@ string PgnAjedrez::dameFila(int nroFila) {
 	return fila;
 }
 
-
-// todo: quitar despues
 stringstream&  PgnAjedrez::getMovidas() {
     return movidas;
 }

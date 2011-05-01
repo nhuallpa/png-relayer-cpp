@@ -29,17 +29,18 @@ void ControladorReplayer::mostrarResultados() {
 	cout<<vista;
 }
 
-
-//  TODO:seguir con trablero Vista.
 void ControladorReplayer::reproducir(PgnAjedrez* entradaPng) {
-
 	pgnInterprete.setPgn(entradaPng);
 	pgnInterprete.interpretar();
 	prepararTableroInicial();
-	vista->visualizar(tableroAjedrez, pgnInterprete.getPiezasIniciales());
+	vista->visualizarTableroInicial(tableroAjedrez,
+									pgnInterprete.getPiezasIniciales(),
+									pgnInterprete.getPiezasPromocion());
 	ejecutarTurnos();
-//	ReplayerVista<<analisisRealizado;
-//	ReplayerVista<<tableroAjedrez;
+	//vista->visualizarAnalisis(listaAnalisis);
+	vista->visualizarTableroFinal(tableroAjedrez,
+								  pgnInterprete.getPiezasIniciales(),
+								  pgnInterprete.getPiezasPromocion());
 }
 
 void ControladorReplayer::prepararTableroInicial() {

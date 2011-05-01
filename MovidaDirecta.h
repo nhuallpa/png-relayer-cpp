@@ -20,7 +20,6 @@ public:
 	MovidaDirecta(const Coordenada& ori, const Coordenada& dest);
 	void aplicarEn(TableroAjedrez* tablero);
 
-	virtual ~MovidaDirecta();
 };
 
 #endif /* MOVIDADIRECTA_H_ */
