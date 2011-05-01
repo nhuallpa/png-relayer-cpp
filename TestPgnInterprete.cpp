@@ -28,7 +28,6 @@ void TestPgnInterprete::run() {
 	testBlancoNegroEnroqueCorto();
 	testBlancoNegroEnroqueLargo();
 	testPromocionAAlfil();
-	testTurnoEmpiezaBlanca();
 	testTurnoEmpiezaNegra();
 
 	testJackeCombinable();
@@ -438,13 +437,33 @@ void TestPgnInterprete::testPromocionAAlfil() {
 
 void TestPgnInterprete::testTurnoEmpiezaNegra()
 {
+
+	stringstream streamtest;
+	streamtest<<"p7/4p3/8/8/8/8/4P3/P7 w"<<endl;
+	streamtest<<endl;
+	streamtest<<"1. e7e6 2. a1a2  a8a7"<<endl;
+
+	PgnAjedrez entradaPng;
+	entradaPng.cargarPng(streamtest);
+	TableroAjedrez ajedrez;
+	VistaReplayer vista;
+	ControladorReplayer controlador(&ajedrez, &vista);
+	controlador.reproducir(&entradaPng);
+
+	Coordenada coord1(7,'e');
+	Assert::assertFalse(ajedrez.hayPiezaJugadora(coord1), "testTurnoEmpiezaNegra-1");
+	Coordenada coord2(6,'e');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord2), "testTurnoEmpiezaNegra-1");
+	Coordenada coord3(2,'e');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord3), "testTurnoEmpiezaNegra-1");
+
+	Coordenada coord4(2,'a');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord4), "testTurnoEmpiezaNegra-2");
+	Coordenada coord5(7,'a');
+	Assert::assertTrue(ajedrez.hayPiezaJugadora(coord5), "testTurnoEmpiezaNegra-2");
+
 }
 
-
-
-void TestPgnInterprete::testTurnoEmpiezaBlanca()
-{
-}
 
 void TestPgnInterprete::testMateCombinable()
 {

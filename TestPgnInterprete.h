@@ -33,7 +33,6 @@ public:
 	void testBlancoNegroEnroqueCorto();
 	void testBlancoNegroEnroqueLargo();
 	void testPromocionAAlfil();
-	void testTurnoEmpiezaBlanca();
 	void testTurnoEmpiezaNegra();
 	void testJackeCombinable();
 	void testMateCombinable();

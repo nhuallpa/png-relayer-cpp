@@ -30,6 +30,7 @@
 typedef Lista<Pieza*> ListaPPieza;
 typedef Lista<Turno*> ListaPTurno;
 
+const char JUGADOR_NEGRO = 'b';
 class PgnInterprete {
 private:
 	PgnAjedrez* pgn;
@@ -57,6 +58,10 @@ public:
      * */
     void interpretar();
 
+    /*
+     * */
+    bool empiezaNegra();
+
 private:
 
     /*
@@ -74,6 +79,12 @@ private:
     // caso particular, debido a que un movimiento es causante de un
     // una nueva pieza. Esta debe registrarse para ser usada en el MVC
     void registrarPromocionDe(Movimiento* movimientoBlanco, std::string palabra);
+
+    void crearTurno(std::string nroTurno, std::string movidaNegro);
+
+    void crearTurno(std::string nroTurno, std::string movidaBlanco, std::string movidaNegro);
+
+    void crearTurno(Movimiento* movidaBlanco, Movimiento* movidaNegro);
 };
 
 #endif /* PGNINTERPRETE_H_ */

@@ -76,5 +76,9 @@ string PgnAjedrez::getTableroInicial() {
     return this->tableroInicial;
 }
 
+char PgnAjedrez::getSimboloSiguienteJugador() {
+    return this->tableroInicial[this->tableroInicial.length() - 1];
+}
+
 
 

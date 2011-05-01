@@ -26,7 +26,7 @@ public:
 	tEstado cargarPng(char* rutaPng);
 	tEstado cargarPng(std::istream &inStream);
 	std::string dameFila(int nroFila);
-
+	char getSimboloSiguienteJugador();
 	std::stringstream& getMovidas();
 	std::string getTableroInicial();
 
