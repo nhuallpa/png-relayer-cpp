@@ -8,13 +8,13 @@
 #include "Movimiento.h"
 
 Movimiento::Movimiento() {
-	// TODO Auto-generated constructor stub
-
+	conPomocion = false;
 }
 
-Movimiento::~Movimiento() {
-	// TODO Auto-generated destructor stub
+bool Movimiento::tienePromocion() {
+	return conPomocion;
 }
+
 
 
 

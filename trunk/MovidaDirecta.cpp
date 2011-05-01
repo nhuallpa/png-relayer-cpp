@@ -7,13 +7,10 @@
 
 #include "MovidaDirecta.h"
 
-MovidaDirecta::MovidaDirecta(int filaOrigen, char columnaOrigen,
-		  	  	  	  	  	  int filaDestino, char columnaDestino) {
-	origen.setFila(filaOrigen);
-	origen.setColumna(columnaOrigen);
-	destino.setFila(filaDestino);
-	destino.setColumna(columnaDestino);
+MovidaDirecta::MovidaDirecta(const Coordenada &ori,const Coordenada &dest):
+							origen(ori), destino(dest) {
 }
+
 
 void MovidaDirecta::aplicarEn(TableroAjedrez* tablero) {
 	PiezaJugadora* piezaJugadora = tablero->levantarPiezaJugadora(origen);

@@ -13,11 +13,18 @@
 class Promocion: public Movimiento {
 
 private:
-	char symbol;
+	char simboloPromocion;
+	PiezaJugadora* piezaPromocion;
+	Coordenada origen;
+	Coordenada destino;
 
 public:
-	Promocion(char simbolo);
+	Promocion(const Coordenada& ori, const Coordenada& dest, char simbolo);
 	void aplicarEn(TableroAjedrez* tablero);
+	void setPiezaPromocion(PiezaJugadora* piezaJugadora);
+	char getSimboloPromocion();
+	Coordenada& getDestino();
+
 };
 
 #endif /* PROMOCION_H_ */

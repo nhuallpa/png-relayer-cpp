@@ -2,7 +2,7 @@
  * TestTableroAjedrez.cpp
  *
  *  Created on: 16/04/2011
- *      Author: administrador
+ *      Author: Nestor
  */
 
 #include "TestTableroAjedrez.h"
@@ -76,3 +76,4 @@ void TestTableroAjedrez::run() {
 	testTableroVacio();
 	testTableroCargado();
 }
+

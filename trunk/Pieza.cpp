@@ -7,10 +7,9 @@
 
 #include "Pieza.h"
 
-Pieza::Pieza(PiezaJugadora* pJugadora, const Coordenada& coord, char simbolo) {
+Pieza::Pieza(PiezaJugadora* pJugadora, const Coordenada& coord, char simbolo)
+													:coordenadaInicial(coord) {
 	piezaJugadora = pJugadora;
-	coordenadaInicial.setFila(coord.getFila());
-	coordenadaInicial.setColumna(coord.getColumna());
 	setSymbol(simbolo);
 }
 

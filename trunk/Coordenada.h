@@ -16,6 +16,7 @@ private:
 
 public:
 	Coordenada();
+	Coordenada(const Coordenada & coordena);
 	Coordenada(int fila, char columna);
 	virtual ~Coordenada();
     char getColumna() const;

@@ -11,9 +11,13 @@
 #include "Coordenada.h"
 
 class Movimiento {
+
+protected:
+	bool conPomocion;
+
 public:
 	Movimiento();
-	virtual ~Movimiento();
+	bool tienePromocion();
 	virtual void aplicarEn(TableroAjedrez* tablero) = 0;
 };
 
