@@ -12,9 +12,7 @@
 
 class NingunMovimiento: public Movimiento {
 public:
-	NingunMovimiento();
 	void aplicarEn(TableroAjedrez* tablero);
-	virtual ~NingunMovimiento();
 };
 
 #endif /* NINGUNMOVIMIENTO_H_ */

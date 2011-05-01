@@ -15,7 +15,7 @@
 
 using namespace std;
 
-#define TEST
+#define TEST_
 void iniciarEjecucion(PgnAjedrez* entradaPng) {
 	TableroAjedrez ajedrez;
 	VistaReplayer vista;
@@ -42,9 +42,6 @@ int main(int argc, char* argv[]) {
 		estado = CANT_PARAM_INV;
 	}
 	if (estado == EXITOSO) {
-// 		TODO: borrar luego
-//		cout<<entradaPng.getTableroInicial()<<endl;
-//		cout<<entradaPng.getMovidas()->str()<<endl;
 		iniciarEjecucion(&entradaPng);
 	}
 #endif

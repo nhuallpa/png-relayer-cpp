@@ -51,6 +51,8 @@ public:
      */
     ListaPPieza* getPiezasIniciales();
 
+    ListaPPieza* getPiezasPromocion();
+
     ListaPTurno* getTurnos();
 
     /*

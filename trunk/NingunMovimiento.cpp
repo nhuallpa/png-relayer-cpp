@@ -7,15 +7,7 @@
 
 #include "NingunMovimiento.h"
 
-NingunMovimiento::NingunMovimiento() {
-	// TODO Auto-generated constructor stub
-
-}
 
 void NingunMovimiento::aplicarEn(TableroAjedrez* tablero) {
 
-}
-
-NingunMovimiento::~NingunMovimiento() {
-	// TODO Auto-generated destructor stub
 }

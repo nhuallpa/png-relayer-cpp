@@ -20,5 +20,3 @@ EnroqueLargo::EnroqueLargo(tColor color) {
 	destinoTorre.setFila(fila);
 	destinoTorre.setColumna('d');
 }
-
-
