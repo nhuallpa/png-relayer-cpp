@@ -7,14 +7,16 @@
 
 #include "PgnInterprete.h"
 
+
+
 using namespace std;
-
-
 // todo : sacar
 //istream &operator >> (istream &in, Turno &turno) {
 //	cout<<"jeje";
 //	return in;
 //}
+
+
 
 PgnInterprete::PgnInterprete() {
 	piezasIniciales = NULL;
@@ -22,6 +24,30 @@ PgnInterprete::PgnInterprete() {
 	turnos = NULL;
 	pgn = NULL;
 
+}
+
+PgnInterprete::~PgnInterprete() {
+	if (piezasIniciales) {
+		ListaPPieza::IteratorList it = piezasIniciales->getIterator();
+		while (it.hasNext()) {
+			delete it.next();
+		}
+		delete piezasIniciales;
+	}
+	if (turnos) {
+		ListaPTurno::IteratorList it = turnos->getIterator();
+		while (it.hasNext()) {
+			delete it.next();
+		}
+		delete turnos;
+	}
+	if (piezasPromocion) {
+		ListaPPieza::IteratorList it = piezasPromocion->getIterator();
+		while (it.hasNext()) {
+			delete it.next();
+		}
+		delete piezasPromocion;
+	}
 }
 
 void PgnInterprete::interpretar() {
@@ -33,33 +59,27 @@ void PgnInterprete::interpretarTurnos() {
 	if (!turnos && pgn) {
 		turnos = new ListaPTurno();
 		stringstream& streamMovidas = pgn->getMovidas();
-		while (!streamMovidas.eof()) {
-			string palabra;
 
-			streamMovidas>>palabra;
+		bool primerTurno = true;
+		while (!streamMovidas.eof()) {
+			string nroTurno;
+
+			streamMovidas>>nroTurno;
 			if (!streamMovidas.good()) {
 				break;
 			}
-
-			streamMovidas>>palabra;
-			Movimiento* movimientoBlanco = NULL;
-			movimientoBlanco = factoryMovimiento.crear(palabra, BLANCO);
-
-			if (movimientoBlanco->tienePromocion()) {
-				registrarPromocionDe(movimientoBlanco, palabra);
+			if (primerTurno && empiezaNegra()) {
+				string movNegro;
+				streamMovidas>>movNegro;
+				crearTurno(nroTurno, movNegro);
+			} else {
+				string movNegro;
+				string movBlanco;
+				streamMovidas>>movBlanco;
+				streamMovidas>>movNegro;
+				crearTurno(nroTurno, movBlanco, movNegro);
 			}
-
-			streamMovidas>>palabra;
-			Movimiento* movimientoNegro = NULL;
-			movimientoNegro = factoryMovimiento.crear(palabra, NEGRO);
-			if (movimientoBlanco->tienePromocion()) {
-				registrarPromocionDe(movimientoNegro, palabra);
-			}
-
-			Turno* unTurno = new Turno();
-			unTurno->setMovimientoNegro(movimientoNegro);
-			unTurno->setMovimientoBlanco(movimientoBlanco);
-			turnos->agregar(unTurno);
+			if (primerTurno) { primerTurno = !primerTurno; }
 		}
 	}
 
@@ -91,24 +111,10 @@ void PgnInterprete::interpretarFila(string filaString, int fila) {
 }
 
 void PgnInterprete::registrarPiezas(PiezaJugadora* piezaJugadora,
-									const Coordenada& coord, char simbolo){
+									const Coordenada& coord, char simbolo) {
 	if (piezaJugadora) {
 		piezasIniciales->agregar(new Pieza(piezaJugadora, coord, simbolo));
 	}
-}
-void PgnInterprete::registrarPromocionDe(Movimiento* movimiento, string palabra) {
-	if (piezasPromocion == NULL) {
-		piezasPromocion = new ListaPPieza();
-	}
-
-	char simbolo = ((Promocion*)movimiento)->getSimboloPromocion();
-	PiezaJugadora* nuevaPiezaJugadora = factoryPiezaJugadora.crear(simbolo);
-	((Promocion*)movimiento)->setPiezaPromocion(nuevaPiezaJugadora);
-	Coordenada& destino = ((Promocion*)movimiento)->getDestino();
-	if (nuevaPiezaJugadora) {
-		piezasPromocion->agregar(new Pieza(nuevaPiezaJugadora, destino, simbolo));
-	}
-
 }
 
 void PgnInterprete::setPgn(PgnAjedrez *pgn) {
@@ -123,32 +129,52 @@ ListaPTurno* PgnInterprete::getTurnos() {
 	return turnos;
 }
 
-PgnInterprete::~PgnInterprete() {
-	if (piezasIniciales){
-		ListaPPieza::IteratorList it = piezasIniciales->getIterator();
-		while (it.hasNext()) {
-			delete it.next();
-		}
-		delete piezasIniciales;
-	}
-	if (turnos){
-		ListaPTurno::IteratorList it = turnos->getIterator();
-		while (it.hasNext()) {
-			delete it.next();
-		}
-		delete turnos;
-	}
-	if (piezasPromocion) {
-		ListaPPieza::IteratorList it = piezasPromocion->getIterator();
-		while (it.hasNext()) {
-			delete it.next();
-		}
-		delete piezasPromocion;
-	}
+bool PgnInterprete::empiezaNegra() {
+	return (pgn->getSimboloSiguienteJugador() == JUGADOR_NEGRO);
 }
 
+void PgnInterprete::crearTurno(std::string nroTurno, std::string movidaBlanco, std::string movidaNegro) {
+	Movimiento* movimientoBlanco = NULL;
+	movimientoBlanco = factoryMovimiento.crear(movidaBlanco, BLANCO);
+	if (movimientoBlanco->tienePromocion()) {
+		registrarPromocionDe(movimientoBlanco, movidaBlanco);
+	}
+	Movimiento* movimientoNegro = NULL;
+	movimientoNegro = factoryMovimiento.crear(movidaNegro, NEGRO);
+	if (movimientoNegro->tienePromocion()) {
+		registrarPromocionDe(movimientoNegro, movidaNegro);
+	}
+	crearTurno(movimientoBlanco, movimientoNegro);
+}
 
+void PgnInterprete::crearTurno(std::string nroTurno, std::string movidaNegro) {
+	Movimiento* movimientoNegro = NULL;
+	movimientoNegro = factoryMovimiento.crear(movidaNegro, NEGRO);
+	if (movimientoNegro->tienePromocion()) {
+		registrarPromocionDe(movimientoNegro, movidaNegro);
+	}
+	Movimiento* movimientoVacio = new NingunMovimiento();
+	crearTurno(movimientoVacio, movimientoNegro);
+}
 
+void PgnInterprete::crearTurno(Movimiento* movidaBlanco, Movimiento* movidaNegro) {
+	Turno* unTurno = new Turno();
+	unTurno->setMovimientoBlanco(movidaBlanco);
+	unTurno->setMovimientoNegro(movidaNegro);
+	turnos->agregar(unTurno);
+}
 
+void PgnInterprete::registrarPromocionDe(Movimiento* movimiento, string palabra) {
+	if (piezasPromocion == NULL) {
+		piezasPromocion = new ListaPPieza();
+	}
 
+	char simbolo = ((Promocion*)movimiento)->getSimboloPromocion();
+	PiezaJugadora* nuevaPiezaJugadora = factoryPiezaJugadora.crear(simbolo);
+	((Promocion*)movimiento)->setPiezaPromocion(nuevaPiezaJugadora);
+	Coordenada& destino = ((Promocion*)movimiento)->getDestino();
+	if (nuevaPiezaJugadora) {
+		piezasPromocion->agregar(new Pieza(nuevaPiezaJugadora, destino, simbolo));
+	}
 
+}
