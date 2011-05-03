@@ -240,7 +240,7 @@ void TestPiezas::testAnalizadorTorreF4yEnemigo()
 		delete lAnalizadas;
 	}
 	delete torre;
-
+	delete rey;
 }
 
 
@@ -278,6 +278,7 @@ void TestPiezas::testAnalizadorTorreF4yAliado()
 		delete lAnalizadas;
 	}
 	delete torre;
+	delete rey;
 }
 
 
