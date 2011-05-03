@@ -6,8 +6,20 @@
  */
 
 #include "Torre.h"
+#include "TableroAjedrez.h"
 
 Torre::Torre() {
+
+}
+
+ListaPCoordenadas *Torre::coordDestinoDesde(const Coordenada & coord) {
+	return NULL;
+}
+
+
+
+ListaPCoordenadas *Torre::filtrarCoordValidas(const Coordenada & coordenada, TableroAjedrez *unTablero) {
+	return NULL;
 
 }
 

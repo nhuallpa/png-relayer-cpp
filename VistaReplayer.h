@@ -13,6 +13,7 @@
 
 #include "PgnInterprete.h"
 #include <iosfwd>
+#include "Analizador.h"
 
 
 
@@ -37,12 +38,16 @@ public:
 
 	char encontrarSymbolo(PiezaJugadora* piezaJugadora, ListaPPieza* listaPiezas);
 
+	void visualizarAnalisis(Analizador& analizador);
+
 	std::string toString();
 
 private:
 	void visualizar(TableroAjedrez* tablero,
 						ListaPPieza* piezasIniciales,
 						ListaPPieza* piezasPromociones);
+
+	void listar(ListaPCoordenadas* listaCoord);
 
 };
 

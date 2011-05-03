@@ -13,6 +13,8 @@
 class Torre: public PiezaJugadora {
 public:
 	Torre();
+	ListaPCoordenadas* coordDestinoDesde(const Coordenada& coord);
+	ListaPCoordenadas* filtrarCoordValidas(const Coordenada& coordenada, TableroAjedrez* unTablero);
 	virtual ~Torre();
 };
 

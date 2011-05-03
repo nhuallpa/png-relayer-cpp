@@ -6,6 +6,7 @@
  */
 
 #include "TableroAjedrez.h"
+#include "PiezaJugadora.h"
 
 TableroAjedrez::TableroAjedrez() {
 	cantFilas = AJ_CANT_FILAS;
@@ -20,16 +21,13 @@ bool TableroAjedrez::hayPiezaJugadora(int fila, char columna) {
 }
 
 bool TableroAjedrez::hayPiezaJugadora(const Coordenada &coord) {
-
 	bool result = false;
-
 	int i = filaToIndice(coord.getFila());
 	int j = columnaToIndice(coord.getColumna());
 
 	if (indicesValidos(i, j)) {
 		result = (tablero[i][j].getPiezaJugadora() != NULL);
 	}
-
 	return result;
 }
 

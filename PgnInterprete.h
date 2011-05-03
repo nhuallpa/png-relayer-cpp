@@ -26,19 +26,25 @@
 #include "Turno.h"
 #include "PiezaJugadora.h"
 #include "FactoryMovimiento.h"
+#include "InterpreteTurnos.h"
 
 typedef Lista<Pieza*> ListaPPieza;
 typedef Lista<Turno*> ListaPTurno;
+//const char JUGADOR_NEGRO = 'b';
+//const char c_ANALIZAR = '?';
 
-const char JUGADOR_NEGRO = 'b';
+
 class PgnInterprete {
 private:
 	PgnAjedrez* pgn;
 	FactoryPiezaJugadora factoryPiezaJugadora;
-	FactoryMovimiento	factoryMovimiento;
+//	FactoryMovimiento	factoryMovimiento;
 	ListaPPieza* piezasIniciales;
-	ListaPPieza* piezasPromocion;
-	ListaPTurno* turnos;
+//	ListaPPieza* piezasPromocion;
+//	ListaPTurno* turnos;
+
+
+	InterpreteTurnos interpreteTurno;
 
 public:
 	PgnInterprete();
@@ -62,7 +68,7 @@ public:
 
     /*
      * */
-    bool empiezaNegra();
+    // bool empiezaNegra();
 
 private:
 
@@ -72,21 +78,28 @@ private:
 	* */
     void interpretarTableroInicial();
 
-    void interpretarTurnos();
+
 
     void interpretarFila(std::string filaString, int fila);
 
-    void registrarPiezas(PiezaJugadora* piezaJugadora, const Coordenada& coord, char simbolo);
+    void registrarPiezas(PiezaJugadora* piezaJugadora,
+    					 const Coordenada& coord, char simbolo);
 
-    // caso particular, debido a que un movimiento es causante de un
-    // una nueva pieza. Esta debe registrarse para ser usada en el MVC
-    void registrarPromocionDe(Movimiento* movimientoBlanco, std::string palabra);
-
-    void crearTurno(std::string nroTurno, std::string movidaNegro);
-
-    void crearTurno(std::string nroTurno, std::string movidaBlanco, std::string movidaNegro);
-
-    void crearTurno(Movimiento* movidaBlanco, Movimiento* movidaNegro);
+//    void interpretarTurnos();
+//
+//    // caso particular, debido a que un movimiento es causante de un
+//    // una nueva pieza. Esta debe registrarse para ser usada en el MVC
+//    void registrarPromocionDe(Movimiento* movimientoBlanco,
+//    						  std::string palabra);
+//
+//    void crearTurno(std::string nroTurno, std::string movidaNegro);
+//
+//    void crearTurno(std::string nroTurno, std::string movidaBlanco,
+//    									  std::string movidaNegro);
+//
+//    void crearTurno(std::string& nroTurno, Movimiento* movidaBlanco,
+//    									   Movimiento* movidaNegro);
+//    int obtenerNumeroTurno(std::string& nroTurno);
 };
 
 #endif /* PGNINTERPRETE_H_ */

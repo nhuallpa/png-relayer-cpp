@@ -12,10 +12,12 @@
 
 #include "TestTableroAjedrez.h"
 #include "TestPgnInterprete.h"
+#include "TestPiezas.h"
+#include "TestAnalizador.h"
 
 using namespace std;
 
-#define TEST_
+#define TEST
 void iniciarEjecucion(PgnAjedrez* entradaPng) {
 	TableroAjedrez ajedrez;
 	VistaReplayer vista;
@@ -30,8 +32,12 @@ int main(int argc, char* argv[]) {
 #ifdef TEST
 	TestTableroAjedrez testSuitTablero;
 	TestPgnInterprete testSuitPgn;
+	TestPiezas testSuitPiezasJugadoras;
+	TestAnalizador testSuitAnalizador;
 	testSuitTablero.run();
 	testSuitPgn.run();
+	testSuitPiezasJugadoras.run();
+	testSuitAnalizador.run();
 #else
 	PgnAjedrez entradaPng;
 	if (argc == 2) {

@@ -11,5 +11,9 @@ Alfil::Alfil() {
 
 }
 
+ListaPCoordenadas *Alfil::coordDestinoDesde(const Coordenada & coord) {
+	return NULL;
+}
+
 Alfil::~Alfil() {
 }

@@ -13,6 +13,7 @@
 class Rey: public PiezaJugadora {
 public:
 	Rey();
+	ListaPCoordenadas* coordDestinoDesde(const Coordenada& coord);
 	virtual ~Rey();
 };
 
