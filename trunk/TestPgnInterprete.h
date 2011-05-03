@@ -11,6 +11,7 @@
 #include "TableroAjedrez.h"
 #include "VistaReplayer.h"
 #include "ControladorReplayer.h"
+#include "Assert.h"
 
 #include "iostream"
 

@@ -19,7 +19,6 @@ std::ostream& operator<< (ostream& out, VistaReplayer* vista){
 ControladorReplayer::ControladorReplayer(TableroAjedrez* unAjedrez, VistaReplayer* unaVista) {
 	tableroAjedrez = unAjedrez;
 	vista = unaVista;
-
 }
 
 ControladorReplayer::~ControladorReplayer() {
@@ -37,7 +36,7 @@ void ControladorReplayer::reproducir(PgnAjedrez* entradaPng) {
 									pgnInterprete.getPiezasIniciales(),
 									pgnInterprete.getPiezasPromocion());
 	ejecutarTurnos();
-	//vista->visualizarAnalisis(listaAnalisis);
+	vista->visualizarAnalisis(analizador);
 	vista->visualizarTableroFinal(tableroAjedrez,
 								  pgnInterprete.getPiezasIniciales(),
 								  pgnInterprete.getPiezasPromocion());
@@ -60,12 +59,14 @@ void ControladorReplayer::colocarPiezasIniciales(ListaPPieza* piezasIniciales) {
 }
 
 void ControladorReplayer::ejecutarTurnos() {
-
 	ListaPTurno* turnos = pgnInterprete.getTurnos();
 	if (turnos) {
 		ListaPTurno::IteratorList it = turnos->getIterator();
 		while (it.hasNext()) {
 			Turno* turno = it.next();
+			if (turno->requiereAnalisis()) {
+				analizador.analizar(turno, tableroAjedrez);
+			}
 			Movimiento* unMovimiento = NULL;
 			unMovimiento = turno->getMovimientoBlanco();
 			unMovimiento->aplicarEn(tableroAjedrez);

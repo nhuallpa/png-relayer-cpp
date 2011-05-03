@@ -6,6 +6,8 @@
  */
 
 #include "Coordenada.h"
+using namespace std;
+
 
 Coordenada::Coordenada() {
 	fila = 1;
@@ -19,6 +21,23 @@ Coordenada::Coordenada(int fil, char colum) {
 Coordenada::Coordenada(const Coordenada & coordena) {
 	fila = coordena.getFila();
 	columna = coordena.getColumna();
+}
+
+Coordenada::Coordenada(const Coordenada* coordena) {
+	fila = coordena->getFila();
+	columna = coordena->getColumna();
+}
+
+void Coordenada::operator=(const Coordenada & coordena) {
+	fila = coordena.getFila();
+	columna = coordena.getColumna();
+}
+
+bool Coordenada::operator==(const Coordenada & coordena) {
+	return (fila == coordena.getFila() && columna == coordena.getColumna());
+}
+bool Coordenada::esIgual(const Coordenada & coordena) {
+	return (fila == coordena.getFila() && columna == coordena.getColumna());
 }
 
 char Coordenada::getColumna() const {
@@ -35,6 +54,21 @@ void Coordenada::setColumna(char columna) {
 
 void Coordenada::setFila(int fila) {
     this->fila = fila;
+}
+
+std::string Coordenada::toString() {
+	string fila(fila);
+	string columna(columna);
+	return columna + fila;
+}
+
+bool Coordenada::validaEnAjedrez() const{
+	bool valida = false;
+	if ( fila >= 1 && fila<=8 &&
+		 columna >='a' && columna <= 'h'){
+		valida = true;
+	}
+	return valida;
 }
 
 Coordenada::~Coordenada() {

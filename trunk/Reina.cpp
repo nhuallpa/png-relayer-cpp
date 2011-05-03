@@ -10,5 +10,9 @@
 Reina::Reina() {
 }
 
+ListaPCoordenadas *Reina::coordDestinoDesde(const Coordenada & coord) {
+	return NULL;
+}
+
 Reina::~Reina() {
 }

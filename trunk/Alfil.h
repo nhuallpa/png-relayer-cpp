@@ -13,6 +13,7 @@
 class Alfil: public PiezaJugadora {
 public:
 	Alfil();
+	ListaPCoordenadas* coordDestinoDesde(const Coordenada& coord);
 	virtual ~Alfil();
 };
 

@@ -6,6 +6,7 @@
  */
 
 #include "Util.h"
+using namespace std;
 
 
 int Util::charToInt(char c) {
@@ -14,6 +15,14 @@ int Util::charToInt(char c) {
 
 bool Util::esMayucula(char c) {
 	return (c>='A' && c<='Z');
+}
+
+int Util::stringToInt(std::string nro) {
+	int nroInt;
+	stringstream stream;
+	stream<<nro;
+	stream>>nroInt;
+	return nroInt;
 }
 
 

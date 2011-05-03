@@ -11,5 +11,9 @@ Rey::Rey() {
 
 }
 
+ListaPCoordenadas *Rey::coordDestinoDesde(const Coordenada & coord) {
+	return NULL;
+}
+
 Rey::~Rey() {
 }

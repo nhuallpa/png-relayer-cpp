@@ -6,7 +6,6 @@
  */
 
 #include "TestPgnInterprete.h"
-#include "Assert.h"
 
 using namespace std;
 
@@ -321,7 +320,7 @@ void TestPgnInterprete::testMovimientoSimple() {
 	stringstream streamtest;
 	streamtest<<"8/pppppppp/8/8/8/8/PPPPPPPP/8 w"<<endl;
 	streamtest<<endl;
-	streamtest<<"1. e2e4 e7e5"<<endl;
+	streamtest<<"23. e2e4 e7e5"<<endl;
 
 	PgnAjedrez entradaPng;
 	entradaPng.cargarPng(streamtest);

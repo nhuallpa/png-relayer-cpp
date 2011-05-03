@@ -10,5 +10,9 @@
 Peon::Peon() {
 }
 
+ListaPCoordenadas *Peon::coordDestinoDesde(const Coordenada & coord) {
+	return NULL;
+}
+
 Peon::~Peon() {
 }

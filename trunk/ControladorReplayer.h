@@ -17,6 +17,8 @@
 #include "VistaReplayer.h"
 #include "Movimiento.h"
 #include "Turno.h"
+#include "Analizador.h"
+
 
 class ControladorReplayer {
 
@@ -24,6 +26,7 @@ private:
 	TableroAjedrez* tableroAjedrez;
 	VistaReplayer* vista;
 	PgnInterprete pgnInterprete;
+	Analizador analizador;
 
 public:
 	ControladorReplayer(TableroAjedrez* ajedrez, VistaReplayer* unaVista);
