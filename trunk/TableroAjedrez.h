@@ -10,7 +10,6 @@
 #define AJ_CANT_FILAS 8
 #define AJ_CANT_COLUMNAS 8
 #include "Celda.h"
-//#include "PiezaJugadora.h"
 #include "Coordenada.h"
 
 class PiezaJugadora;
@@ -41,7 +40,6 @@ public:
 	 * coordenada pasa por parametro
 	 * */
 	void posionar(PiezaJugadora* piezaJugadora, const Coordenada &coord);
-
 
 	/*
 	 * */

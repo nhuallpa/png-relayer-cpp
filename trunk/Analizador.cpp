@@ -9,7 +9,7 @@
 
 
 Analizador::Analizador() {
-	reportes = new ListaPReportes;
+
 }
 
 void Analizador::analizar(Turno* unTurno,
@@ -39,17 +39,13 @@ void Analizador::analizar(Turno* unTurno,
 }
 
 
-ListaPReportes* Analizador::getReportes() {
-	return reportes;
-}
+
+
+
 
 
 
 Analizador::~Analizador() {
-	ListaPReportes::IteratorList it = reportes->getIterator();
-	while (it.hasNext()) {
-		delete it.next();
-	}
-	delete reportes;
+
 }
 

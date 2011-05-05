@@ -8,6 +8,7 @@
 #include "TestPiezas.h"
 #include "TableroAjedrez.h"
 
+
 void TestPiezas::run()
 {
 	testCaballo();
@@ -18,6 +19,11 @@ void TestPiezas::run()
 	testAnalizadorCaballoB1YAliado();
 	testAnalizadorTorreF4yAliado();
 	testAnalizadorTorreF4yEnemigo();
+	testAnalizadorAlfilB6yAliado();
+	testAnalizadorAlfilB6yEnemigo();
+	testAnalizadorReinag2yAliado();
+	testAnalizadorReinag2yEnemigo();
+
 }
 
 
@@ -121,19 +127,65 @@ void TestPiezas::testTorre()
 
 
 
-void TestPiezas::testAlfil()
-{
+void TestPiezas::testAlfil() {
+
+	int cant = 0;
+	TableroAjedrez tablero;
+	PiezaJugadora* alfil = new Alfil();
+	Coordenada b6(6, 'b');
+	tablero.posionar(alfil, b6);
+	ListaPCoordenadas* lAnalizadas = alfil->filtrarCoordValidas(b6, &tablero);
+
+	if (lAnalizadas) {
+	ListaPCoordenadas::IteratorList it = lAnalizadas->getIterator();
+		while (it.hasNext()) {
+			it.next();
+			cant++;
+		}
+	}
+
+	Assert::assertEquals(9, cant , "testAlfil");
+
+	if (lAnalizadas) {
+		ListaPCoordenadas::IteratorList it = lAnalizadas->getIterator();
+		while (it.hasNext()) {
+			delete it.next();
+		}
+		delete lAnalizadas;
+	}
+	delete alfil;
 }
 
 
 
+void TestPiezas::testReina() {
+	int cant = 0;
+	TableroAjedrez tablero;
+	PiezaJugadora* reina = new Reina();
+	Coordenada g3(3, 'g');
+	tablero.posionar(reina, g3);
+	ListaPCoordenadas* lAnalizadas = reina->filtrarCoordValidas(g3, &tablero);
 
+	if (lAnalizadas) {
+		ListaPCoordenadas::IteratorList it = lAnalizadas->getIterator();
+		while (it.hasNext()) {
+			it.next();
+			cant++;
+		}
+	}
 
+	Assert::assertEquals(23, cant , "testReina");
 
-
-void TestPiezas::testReina()
-{
+	if (lAnalizadas) {
+		ListaPCoordenadas::IteratorList it = lAnalizadas->getIterator();
+		while (it.hasNext()) {
+			delete it.next();
+		}
+		delete lAnalizadas;
+	}
+	delete reina;
 }
+
 
 void TestPiezas::testAnalizadorCaballoB1YAliado()
 {
@@ -280,6 +332,155 @@ void TestPiezas::testAnalizadorTorreF4yAliado()
 	delete torre;
 	delete rey;
 }
+
+void TestPiezas::testAnalizadorReinag2yEnemigo() {
+	int cant = 0;
+	TableroAjedrez tablero;
+	PiezaJugadora* reina = new Reina();
+	PiezaJugadora* rey = new Rey();
+	reina->setColor(NEGRO);
+	rey->setColor(BLANCO);
+
+	Coordenada g3(3, 'g');
+	Coordenada d6(6, 'd');
+	tablero.posionar(reina, g3);
+	tablero.posionar(rey, d6);
+	ListaPCoordenadas* lAnalizadas = reina->filtrarCoordValidas(g3, &tablero);
+
+	if (lAnalizadas) {
+		ListaPCoordenadas::IteratorList it = lAnalizadas->getIterator();
+		while (it.hasNext()) {
+			it.next();
+			cant++;
+		}
+	}
+
+	Assert::assertEquals(21, cant , "testAnalizadorReinag2yEnemigo");
+
+	if (lAnalizadas) {
+		ListaPCoordenadas::IteratorList it = lAnalizadas->getIterator();
+		while (it.hasNext()) {
+			delete it.next();
+		}
+		delete lAnalizadas;
+	}
+	delete reina;
+	delete rey;
+}
+
+
+
+void TestPiezas::testAnalizadorReinag2yAliado() {
+	int cant = 0;
+	TableroAjedrez tablero;
+	PiezaJugadora* reina = new Reina();
+	PiezaJugadora* rey = new Rey();
+	reina->setColor(NEGRO);
+	rey->setColor(NEGRO);
+
+	Coordenada g3(3, 'g');
+	Coordenada d6(6, 'd');
+	tablero.posionar(reina, g3);
+	tablero.posionar(rey, d6);
+	ListaPCoordenadas* lAnalizadas = reina->filtrarCoordValidas(g3, &tablero);
+
+	if (lAnalizadas) {
+		ListaPCoordenadas::IteratorList it = lAnalizadas->getIterator();
+		while (it.hasNext()) {
+			it.next();
+			cant++;
+		}
+	}
+
+	Assert::assertEquals(20, cant , "testAnalizadorReinag2yAliado");
+
+	if (lAnalizadas) {
+		ListaPCoordenadas::IteratorList it = lAnalizadas->getIterator();
+		while (it.hasNext()) {
+			delete it.next();
+		}
+		delete lAnalizadas;
+	}
+	delete reina;
+	delete rey;
+}
+
+
+
+void TestPiezas::testAnalizadorAlfilB6yEnemigo() {
+
+	int cant = 0;
+	TableroAjedrez tablero;
+	PiezaJugadora* alfil = new Alfil();
+	PiezaJugadora* enemigo = new Alfil();
+	alfil->setColor(NEGRO);
+	enemigo->setColor(BLANCO);
+	Coordenada b6(6, 'b');
+	tablero.posionar(alfil, b6);
+	Coordenada d4(4, 'd');
+	tablero.posionar(enemigo, d4);
+
+	ListaPCoordenadas* lAnalizadas = alfil->filtrarCoordValidas(b6, &tablero);
+
+	if (lAnalizadas) {
+		ListaPCoordenadas::IteratorList it = lAnalizadas->getIterator();
+		while (it.hasNext()) {
+			it.next();
+			cant++;
+		}
+	}
+
+	Assert::assertEquals(6, cant , "testAnalizadorAlfilB6yEnemigo");
+
+	if (lAnalizadas) {
+		ListaPCoordenadas::IteratorList it = lAnalizadas->getIterator();
+		while (it.hasNext()) {
+			delete it.next();
+		}
+		delete lAnalizadas;
+	}
+	delete alfil;
+	delete enemigo;
+}
+
+
+
+void TestPiezas::testAnalizadorAlfilB6yAliado() {
+	int cant = 0;
+	TableroAjedrez tablero;
+	PiezaJugadora* alfil = new Alfil();
+	PiezaJugadora* aliado = new Alfil();
+	alfil->setColor(NEGRO);
+	aliado->setColor(NEGRO);
+	Coordenada b6(6, 'b');
+	tablero.posionar(alfil, b6);
+	Coordenada d4(4, 'd');
+	tablero.posionar(aliado, d4);
+
+	ListaPCoordenadas* lAnalizadas = alfil->filtrarCoordValidas(b6, &tablero);
+
+	if (lAnalizadas) {
+		ListaPCoordenadas::IteratorList it = lAnalizadas->getIterator();
+		while (it.hasNext()) {
+			it.next();
+			cant++;
+		}
+	}
+
+	Assert::assertEquals(5, cant , "testAnalizadorAlfilB6yAliado");
+
+	if (lAnalizadas) {
+		ListaPCoordenadas::IteratorList it = lAnalizadas->getIterator();
+		while (it.hasNext()) {
+			delete it.next();
+		}
+		delete lAnalizadas;
+	}
+	delete alfil;
+	delete aliado;
+}
+
+
 
 
 
