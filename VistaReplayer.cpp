@@ -79,16 +79,7 @@ char VistaReplayer::encontrarSymbolo(PiezaJugadora* piezaJugadora, ListaPPieza* 
 
 void VistaReplayer::visualizarAnalisis(Analizador& analizador){
 
-	ListaPReportes* lReporte = analizador.getReportes();
 
-	Lista<Reporte*>::IteratorList it = lReporte->getIterator();
-	while (it.hasNext()) {
-		Reporte* reporte = it.next();
-		out<<"Analisis para movida: "<<reporte->getNroTurno()<<endl;
-		listar(reporte->getCoordenasDestinoBlanco());
-		listar(reporte->getCoordenasDestinoNegro());
-		out<<endl;
-	}
 
 }
 

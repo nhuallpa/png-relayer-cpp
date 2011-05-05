@@ -7,7 +7,6 @@
 
 #ifndef __ANALIZADOR_H_
 #define __ANALIZADOR_H_
-#include "Reporte.h"
 #include "Turno.h"
 #include "TableroAjedrez.h"
 #include "Lista.h"
@@ -17,7 +16,7 @@
 class Analizador {
 
 private:
-	Lista<Reporte*>* reportes;
+
 
 public:
 	Analizador();
@@ -32,7 +31,7 @@ public:
 //	ListaPCoordenadas* validarCoordenadasDestino(ListaPCoordenadas* coordenasDestino,
 //											 	 PiezaJugadora* piezaJugadora,
 //											 	 TableroAjedrez* unTablero);
-	ListaPReportes*  getReportes();
+
 
 	virtual ~Analizador();
 };

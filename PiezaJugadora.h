@@ -12,6 +12,11 @@
 
 typedef enum {NEGRO = 0, BLANCO = 1, SIN_COLOR = 2} tColor;
 
+const int pasoFil[8] = {1, 1, 0, -1, -1, -1, 	0, 	1};
+const int pasoCol[8] = {0, 1, 1, 	1, 	0, -1, -1, -1};
+typedef enum { NORTE, NORESTE, ESTE, SURESTE, SUR, SUROESTE, OESTE, NOROESTE} tDireccionPaso;
+
+
 class TableroAjedrez;
 class PiezaJugadora {
 	tColor color;
@@ -28,6 +33,10 @@ public:
 
 protected:
     bool estaHabilitada(Coordenada* coordenada, TableroAjedrez* unTablero);
+    ListaPCoordenadas *cargarCoordValidas(ListaPCoordenadas * listaCoord,
+    					 				  const Coordenada & coorBlanco,
+    									  TableroAjedrez *unTablero,
+    									  tDireccionPaso Dir);
 };
 
 #endif /* PIEZAJUGADORA_H_ */

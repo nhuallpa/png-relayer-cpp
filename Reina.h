@@ -9,11 +9,14 @@
 #define __REINA_H_
 
 #include "PiezaJugadora.h"
+#include "Coordenada.h"
 
 class Reina: public PiezaJugadora {
 public:
 	Reina();
 	ListaPCoordenadas* coordDestinoDesde(const Coordenada& coord);
+	ListaPCoordenadas* filtrarCoordValidas(const Coordenada& coordenada,
+											TableroAjedrez* unTablero);
 	virtual ~Reina();
 };
 

@@ -11,6 +11,8 @@
 #include "Coordenada.h"
 #include "Caballo.h"
 #include "Peon.h"
+#include "Alfil.h"
+#include "Reina.h"
 #include "Lista.h"
 #include "Assert.h"
 #include "Torre.h"
@@ -30,6 +32,10 @@ public:
 	void testAnalizadorCaballoB1YEnemigo();
 	void testAnalizadorTorreF4yAliado();
 	void testAnalizadorTorreF4yEnemigo();
+	void testAnalizadorAlfilB6yAliado();
+	void testAnalizadorAlfilB6yEnemigo();
+	void testAnalizadorReinag2yAliado();
+	void testAnalizadorReinag2yEnemigo();
 
 
 };
