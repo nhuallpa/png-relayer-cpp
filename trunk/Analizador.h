@@ -12,28 +12,20 @@
 #include "Lista.h"
 #include "Coordenada.h"
 #include "PiezaJugadora.h"
+#include "Reporte.h"
 
 class Analizador {
 
 private:
-
+	listaPReporte* reportes;
 
 public:
 	Analizador();
 
 	void analizar(Turno* unTurno, TableroAjedrez* unTablero);
 
-
-//	ListaPCoordenadas* filtrarCoordValidas(Coordenada& coordenada,
-//										   PiezaJugadora* piezaJugadora,
-//										   TableroAjedrez* unTablero);
-//
-//	ListaPCoordenadas* validarCoordenadasDestino(ListaPCoordenadas* coordenasDestino,
-//											 	 PiezaJugadora* piezaJugadora,
-//											 	 TableroAjedrez* unTablero);
-
-
 	virtual ~Analizador();
+    listaPReporte *getReportes() const;
 };
 
 #endif /* ANALIZADOR_H_ */

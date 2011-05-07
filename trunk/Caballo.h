@@ -18,7 +18,7 @@ public:
 	ListaPCoordenadas* filtrarCoordValidas(const Coordenada& coorBlanco, TableroAjedrez* unTablero);
 
 private:
-	ListaPCoordenadas* validarCoordenadasDestino(ListaPCoordenadas* coordenasDestino,
+	ListaPCoordenadas* validarCoordenadasDestino(const Coordenada& coordOrigen,
 							  	  	  	  	  	  TableroAjedrez* unTablero);
 
 

@@ -17,7 +17,7 @@
 
 using namespace std;
 
-#define TEST
+#define TEST_
 void iniciarEjecucion(PgnAjedrez* entradaPng) {
 	TableroAjedrez ajedrez;
 	VistaReplayer vista;
