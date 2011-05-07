@@ -60,7 +60,6 @@ void VistaReplayer::visualizar(TableroAjedrez* tablero,
 }
 
 char VistaReplayer::encontrarSymbolo(PiezaJugadora* piezaJugadora, ListaPPieza* listaPiezas) {
-
 	char symbol = c_SIN_SIMBOLO;
 	bool encontrado = false;
 
@@ -78,21 +77,26 @@ char VistaReplayer::encontrarSymbolo(PiezaJugadora* piezaJugadora, ListaPPieza* 
 
 
 void VistaReplayer::visualizarAnalisis(Analizador& analizador){
-
-
-
-}
-
-void VistaReplayer::listar(ListaPCoordenadas* listaCoord) {
-	if (listaCoord) {
-		ListaPCoordenadas::IteratorList it = listaCoord->getIterator();
-		while (it.hasNext()) {
-			Coordenada* coord = it.next();
-			out<<coord->toString();
-		}
+	listaPReporte::IteratorList it = analizador.getReportes()->getIterator();
+	while (it.hasNext()) {
+		Reporte* reporte = it.next();
+		out<<"Analisis para movida: "<<reporte->getNroTurno()<<endl;
+		listarCoordenadas(reporte->getListCoordenadasBlancas());
+		out<<endl;
+		listarCoordenadas(reporte->getListCoordenadasNegras());
 		out<<endl;
 	}
 }
+
+void VistaReplayer::listarCoordenadas(ListaPCoordenadas* listaCoord) {
+	ListaPCoordenadas::IteratorList itBlancas = listaCoord->getIterator();
+	while (itBlancas.hasNext()) {
+		Coordenada* coord = itBlancas.next();
+		out<<coord->getColumna()<<coord->getFila()<<" ";
+	}
+	out<<endl;
+}
+
 
 
 

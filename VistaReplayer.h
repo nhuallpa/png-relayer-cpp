@@ -10,7 +10,7 @@
 #include "TableroAjedrez.h"
 #include <sstream>
 #include <iostream>
-
+#include <iomanip>
 #include "PgnInterprete.h"
 #include <iosfwd>
 #include "Analizador.h"
@@ -40,6 +40,7 @@ public:
 
 	void visualizarAnalisis(Analizador& analizador);
 
+
 	std::string toString();
 
 private:
@@ -47,7 +48,8 @@ private:
 						ListaPPieza* piezasIniciales,
 						ListaPPieza* piezasPromociones);
 
-	void listar(ListaPCoordenadas* listaCoord);
+	void listarCoordenadas(ListaPCoordenadas* listaCoord);
+
 
 };
 

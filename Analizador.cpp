@@ -1,3 +1,5 @@
+
+
 /*
  * Analizador.cpp
  *
@@ -8,44 +10,44 @@
 #include "Analizador.h"
 
 
+
 Analizador::Analizador() {
 
+	reportes = new listaPReporte();
 }
 
 void Analizador::analizar(Turno* unTurno,
 						  TableroAjedrez* unTablero) {
 
-//	Coordenada coorBlanco = unTurno->getCoordOrigenBlanco();
-//	PiezaJugadora* piezaJugadora = unTablero->getPiezaJugadora(coorBlanco);
-//
-//	ListaPCoordenadas* listaCoordBlanco = NULL;
-//	if (piezaJugadora) {
-//		listaCoordBlanco = piezaJugadora->filtrarCoordValidas(coorBlanco, unTablero);
-//	}
-//
-//	ListaPCoordenadas* listaCoordNegro = NULL;
-//	Coordenada coordNegro = unTurno->getCoordOrigenNegro();
-//	piezaJugadora = unTablero->getPiezaJugadora(coordNegro);
-//	if (piezaJugadora) {
-//		listaCoordNegro = piezaJugadora->filtrarCoordValidas(coordNegro, unTablero);
-//	}
-//
-//
-//	Reporte* reporte = NULL;
-//
-//	reporte = new Reporte(unTurno->getNroTurno(), listaCoordBlanco, listaCoordNegro);
-//	delete reporte;
-//	//reportes->agregar(reporte);
+	Coordenada coordBlanco = unTurno->getCoordOrigenBlanco();
+	PiezaJugadora* piezaJugadora = unTablero->getPiezaJugadora(coordBlanco);
+	ListaPCoordenadas * listCoordBlancas =
+				piezaJugadora->filtrarCoordValidas(coordBlanco, unTablero);
+
+	Coordenada coordNegro = unTurno->getCoordOrigenNegro();
+	piezaJugadora = unTablero->getPiezaJugadora(coordNegro);
+	ListaPCoordenadas * listCoordNegras =
+				piezaJugadora->filtrarCoordValidas(coordNegro, unTablero);
+
+	int nroTurno = unTurno->getNroTurno();
+
+	Reporte* unReporte = new Reporte(nroTurno, listCoordBlancas, listCoordNegras);
+	reportes->agregar(unReporte);
+
 }
 
 
-
-
-
-
-
+listaPReporte *Analizador::getReportes() const
+{
+    return reportes;
+}
 
 Analizador::~Analizador() {
 
+	listaPReporte::IteratorList it = reportes->getIterator();
+	while (it.hasNext()) {
+		delete it.next();
+	}
+	delete reportes;
 }
 

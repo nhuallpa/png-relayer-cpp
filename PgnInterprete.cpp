@@ -20,8 +20,6 @@ using namespace std;
 
 PgnInterprete::PgnInterprete() {
 	piezasIniciales = NULL;
-//	piezasPromocion = NULL;
-//	turnos = NULL;
 	pgn = NULL;
 
 }

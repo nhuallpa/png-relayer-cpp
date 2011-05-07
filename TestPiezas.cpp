@@ -30,68 +30,68 @@ void TestPiezas::run()
 void TestPiezas::testCaballo()
 {
 
-	PiezaJugadora* caballo = new Caballo();
-	Coordenada d4(4, 'd');
-
-	ListaPCoordenadas* lCoordenas = caballo->coordDestinoDesde(d4);
-
-	ListaPCoordenadas::IteratorList it = lCoordenas->getIterator();
-	Assert::assertTrue(it.hasNext(), "testCaballo-1");
-	if (it.hasNext()){
-		Coordenada coordEsperado(6, 'e');
-		Coordenada* coordResul = it.next();
-		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-1");
-	}
-	Assert::assertTrue(it.hasNext(), "testCaballo-2");
-	if (it.hasNext()){
-		Coordenada coordEsperado(5, 'f');
-		Coordenada* coordResul = it.next();
-		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-2");
-	}
-	Assert::assertTrue(it.hasNext(), "testCaballo-3");
-	if (it.hasNext()){
-		Coordenada coordEsperado(3, 'f');
-		Coordenada* coordResul = it.next();
-		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-3");
-	}
-	Assert::assertTrue(it.hasNext(), "testCaballo-4");
-	if (it.hasNext()){
-		Coordenada coordEsperado(2, 'e');
-		Coordenada* coordResul = it.next();
-		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-4");
-	}
-	Assert::assertTrue(it.hasNext(), "testCaballo-5");
-	if (it.hasNext()){
-		Coordenada coordEsperado(2, 'c');
-		Coordenada* coordResul = it.next();
-		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-5");
-	}
-	Assert::assertTrue(it.hasNext(), "testCaballo-6");
-	if (it.hasNext()){
-		Coordenada coordEsperado(3, 'b');
-		Coordenada* coordResul = it.next();
-		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-6");
-	}
-	Assert::assertTrue(it.hasNext(), "testCaballo-7");
-	if (it.hasNext()){
-		Coordenada coordEsperado(5, 'b');
-		Coordenada* coordResul = it.next();
-		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-7");
-	}
-	Assert::assertTrue(it.hasNext(), "testCaballo-8");
-	if (it.hasNext()){
-		Coordenada coordEsperado(6, 'c');
-		Coordenada* coordResul = it.next();
-		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-8");
-	}
-	if (lCoordenas){
-		ListaPCoordenadas::IteratorList it = lCoordenas->getIterator();
-		while (it.hasNext()) {
-			delete (it.next());
-		}
-		delete lCoordenas;
-	}
-	delete caballo;
+//	PiezaJugadora* caballo = new Caballo();
+//	Coordenada d4(4, 'd');
+//
+//	ListaPCoordenadas* lCoordenas = caballo->coordDestinoDesde(d4);
+//
+//	ListaPCoordenadas::IteratorList it = lCoordenas->getIterator();
+//	Assert::assertTrue(it.hasNext(), "testCaballo-1");
+//	if (it.hasNext()){
+//		Coordenada coordEsperado(6, 'e');
+//		Coordenada* coordResul = it.next();
+//		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-1");
+//	}
+//	Assert::assertTrue(it.hasNext(), "testCaballo-2");
+//	if (it.hasNext()){
+//		Coordenada coordEsperado(5, 'f');
+//		Coordenada* coordResul = it.next();
+//		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-2");
+//	}
+//	Assert::assertTrue(it.hasNext(), "testCaballo-3");
+//	if (it.hasNext()){
+//		Coordenada coordEsperado(3, 'f');
+//		Coordenada* coordResul = it.next();
+//		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-3");
+//	}
+//	Assert::assertTrue(it.hasNext(), "testCaballo-4");
+//	if (it.hasNext()){
+//		Coordenada coordEsperado(2, 'e');
+//		Coordenada* coordResul = it.next();
+//		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-4");
+//	}
+//	Assert::assertTrue(it.hasNext(), "testCaballo-5");
+//	if (it.hasNext()){
+//		Coordenada coordEsperado(2, 'c');
+//		Coordenada* coordResul = it.next();
+//		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-5");
+//	}
+//	Assert::assertTrue(it.hasNext(), "testCaballo-6");
+//	if (it.hasNext()){
+//		Coordenada coordEsperado(3, 'b');
+//		Coordenada* coordResul = it.next();
+//		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-6");
+//	}
+//	Assert::assertTrue(it.hasNext(), "testCaballo-7");
+//	if (it.hasNext()){
+//		Coordenada coordEsperado(5, 'b');
+//		Coordenada* coordResul = it.next();
+//		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-7");
+//	}
+//	Assert::assertTrue(it.hasNext(), "testCaballo-8");
+//	if (it.hasNext()){
+//		Coordenada coordEsperado(6, 'c');
+//		Coordenada* coordResul = it.next();
+//		Assert::assertTrue(coordResul->esIgual(coordEsperado), "testCaballo-8");
+//	}
+//	if (lCoordenas){
+//		ListaPCoordenadas::IteratorList it = lCoordenas->getIterator();
+//		while (it.hasNext()) {
+//			delete (it.next());
+//		}
+//		delete lCoordenas;
+//	}
+//	delete caballo;
 }
 
 
