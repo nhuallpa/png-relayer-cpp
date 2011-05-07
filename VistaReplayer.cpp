@@ -82,7 +82,6 @@ void VistaReplayer::visualizarAnalisis(Analizador& analizador){
 		Reporte* reporte = it.next();
 		out<<"Analisis para movida: "<<reporte->getNroTurno()<<endl;
 		listarCoordenadas(reporte->getListCoordenadasBlancas());
-		out<<endl;
 		listarCoordenadas(reporte->getListCoordenadasNegras());
 		out<<endl;
 	}
