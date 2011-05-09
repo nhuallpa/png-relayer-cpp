@@ -9,19 +9,11 @@
 
 
 
-using namespace std;
-// todo : sacar
-//istream &operator >> (istream &in, Turno &turno) {
-//	cout<<"jeje";
-//	return in;
-//}
-
-
+using std::string;
 
 PgnInterprete::PgnInterprete() {
 	piezasIniciales = NULL;
 	pgn = NULL;
-
 }
 
 PgnInterprete::~PgnInterprete() {
@@ -36,7 +28,6 @@ PgnInterprete::~PgnInterprete() {
 
 void PgnInterprete::interpretar() {
 	interpretarTableroInicial();
-	// interpretarTurnos();
 	interpreteTurno.interpretarTurnos();
 }
 
@@ -58,7 +49,9 @@ void PgnInterprete::interpretarFila(string filaString, int fila) {
 			columna += (simbolo - '0');
 		} else {
 			PiezaJugadora* pJugadadora = factoryPiezaJugadora.crear(simbolo);
-			Coordenada coord(fila, 'a' + columna );
+			Coordenada coord;
+			coord.setFila(fila);
+			coord.setColumna('a' + columna);
 			registrarPiezas(pJugadadora, coord, simbolo);
 			++columna;
 		}
@@ -84,14 +77,11 @@ ListaPPieza* PgnInterprete::getPiezasIniciales() {
 }
 
 
-// todo: pasar esto hasta abajo
 ListaPPieza* PgnInterprete::getPiezasPromocion() {
-	// return piezasPromocion;
 	 return interpreteTurno.getPiezasPromocion();
 }
 
 ListaPTurno* PgnInterprete::getTurnos() {
-	// return turnos;
 	 return interpreteTurno.getTurnos();
 }
 

@@ -12,7 +12,6 @@
 #include "commonType.h"
 
 class Pieza {
-
 private:
 	PiezaJugadora* piezaJugadora;
 	Coordenada coordenadaInicial;

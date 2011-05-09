@@ -13,10 +13,8 @@
 
 
 class Celda {
-
 private:
 	PiezaJugadora*  piezaJugadora;
-
 public:
 	Celda();
 	virtual ~Celda();

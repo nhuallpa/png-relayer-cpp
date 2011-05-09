@@ -6,7 +6,7 @@
  */
 
 #include "Coordenada.h"
-using namespace std;
+using std::string;
 
 
 Coordenada::Coordenada() {
@@ -40,37 +40,23 @@ bool Coordenada::esIgual(const Coordenada & coordena) {
 	return (fila == coordena.getFila() && columna == coordena.getColumna());
 }
 
-char Coordenada::getColumna() const {
-    return columna;
-}
 
-int Coordenada::getFila() const {
-    return fila;
-}
-
-void Coordenada::setColumna(char columna) {
-    this->columna = columna;
-}
 
 void Coordenada::setFila(int fila) {
     this->fila = fila;
 }
 
-std::string Coordenada::toString() {
+string Coordenada::toString() {
 	string fila(fila);
 	string columna(columna);
 	return columna + fila;
 }
 
-bool Coordenada::validaEnAjedrez() const{
+bool Coordenada::validaEnAjedrez() const {
 	bool valida = false;
-	if ( fila >= 1 && fila<=8 &&
-		 columna >='a' && columna <= 'h'){
+	if ( fila >= 1 && fila <= 8 &&
+		 columna >='a' && columna <= 'h') {
 		valida = true;
 	}
 	return valida;
-}
-
-Coordenada::~Coordenada() {
-
 }

@@ -12,13 +12,11 @@
 
 
 Analizador::Analizador() {
-
 	reportes = new listaPReporte();
 }
 
 void Analizador::analizar(Turno* unTurno,
 						  TableroAjedrez* unTablero) {
-
 	Coordenada coordBlanco = unTurno->getCoordOrigenBlanco();
 	PiezaJugadora* piezaJugadora = unTablero->getPiezaJugadora(coordBlanco);
 	ListaPCoordenadas * listCoordBlancas =
@@ -30,20 +28,18 @@ void Analizador::analizar(Turno* unTurno,
 				piezaJugadora->filtrarCoordValidas(coordNegro, unTablero);
 
 	int nroTurno = unTurno->getNroTurno();
-
-	Reporte* unReporte = new Reporte(nroTurno, listCoordBlancas, listCoordNegras);
+	Reporte* unReporte = new Reporte(nroTurno,
+									listCoordBlancas,
+									listCoordNegras);
 	reportes->agregar(unReporte);
-
 }
 
 
-listaPReporte *Analizador::getReportes() const
-{
+listaPReporte *Analizador::getReportes() const {
     return reportes;
 }
 
 Analizador::~Analizador() {
-
 	listaPReporte::IteratorList it = reportes->getIterator();
 	while (it.hasNext()) {
 		delete it.next();

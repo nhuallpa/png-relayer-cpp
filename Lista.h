@@ -30,7 +30,7 @@ public:
 		Lista& list;
 		Nodo<T>* nodoActual;
 	public:
-		IteratorList(Lista& l):list(l) {
+		explicit IteratorList(Lista& l):list(l) {
 			nodoActual = NULL;
 		}
 		bool hasNext() {

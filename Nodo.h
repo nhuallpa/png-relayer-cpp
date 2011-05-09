@@ -16,13 +16,12 @@ class Nodo {
 public:
 
 	Nodo();
-	Nodo(T dat);
+	explicit Nodo(T dat);
 	virtual ~Nodo();
     T getData() const;
     void setData(T data);
     Nodo<T> *getNodoSig() const;
     void setNodoSig(Nodo *nodoSig);
-
 };
 
 
@@ -42,7 +41,7 @@ Nodo<T>::Nodo() {
 }
 
 template <class T>
-Nodo<T>::Nodo(T dat){
+Nodo<T>::Nodo(T dat) {
 	nodoSig = NULL;
 	data = dat;
 }

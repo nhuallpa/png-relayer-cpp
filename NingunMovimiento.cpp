@@ -9,5 +9,4 @@
 
 
 void NingunMovimiento::aplicarEn(TableroAjedrez* tablero) {
-
 }

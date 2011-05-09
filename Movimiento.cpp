@@ -14,6 +14,8 @@ Movimiento::Movimiento() {
 bool Movimiento::tienePromocion() {
 	return conPomocion;
 }
+Movimiento::~Movimiento() {
+}
 
 
 

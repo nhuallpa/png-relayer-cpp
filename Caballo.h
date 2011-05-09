@@ -13,15 +13,12 @@
 class Caballo: public PiezaJugadora {
 public:
 
-	ListaPCoordenadas* coordDestinoDesde(const Coordenada& coord);
-
-	ListaPCoordenadas* filtrarCoordValidas(const Coordenada& coorBlanco, TableroAjedrez* unTablero);
+	ListaPCoordenadas* filtrarCoordValidas(const Coordenada& coorBlanco,
+												TableroAjedrez* unTablero);
 
 private:
 	ListaPCoordenadas* validarCoordenadasDestino(const Coordenada& coordOrigen,
 							  	  	  	  	  	  TableroAjedrez* unTablero);
-
-
 };
 
 #endif /* CABALLO_H_ */

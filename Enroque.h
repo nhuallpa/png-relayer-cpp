@@ -12,7 +12,6 @@
 #include "PiezaJugadora.h"
 
 class Enroque: public Movimiento {
-
 protected:
 	Coordenada origenRey;
 	Coordenada destinoRey;

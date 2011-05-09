@@ -7,7 +7,7 @@
 
 #include "MovidaDirecta.h"
 
-MovidaDirecta::MovidaDirecta(const Coordenada &ori,const Coordenada &dest):
+MovidaDirecta::MovidaDirecta(const Coordenada &ori, const Coordenada &dest):
 							 origen(ori), destino(dest) {
 }
 

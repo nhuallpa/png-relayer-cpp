@@ -6,7 +6,8 @@
  */
 
 #include "InterpreteTurnos.h"
-using namespace std;
+using std::string;
+using std::stringstream;
 
 
 InterpreteTurnos::InterpreteTurnos() {
@@ -45,14 +46,14 @@ void InterpreteTurnos::interpretarTurnos() {
 		while (!streamMovidas.eof()) {
 			Turno* unTurno = NULL;
 			string nroTurno, movNegro, movBlanco;
-			streamMovidas>>nroTurno;
+			streamMovidas >> nroTurno;
 			if (!streamMovidas.good()) { break;	}
 			if (primerTurno && empiezaNegra()) {
-				streamMovidas>>movNegro;
+				streamMovidas >> movNegro;
 				unTurno = crearTurno(nroTurno, movNegro);
 			} else {
-				streamMovidas>>movBlanco;
-				streamMovidas>>movNegro;
+				streamMovidas >> movBlanco;
+				streamMovidas >> movNegro;
 				unTurno = crearTurno(nroTurno, movBlanco, movNegro);
 			}
 
@@ -80,7 +81,8 @@ bool InterpreteTurnos::empiezaNegra() {
 	return (pgn->getSimboloSiguienteJugador() == JUGADOR_NEGRO);
 }
 
-Turno* InterpreteTurnos::crearTurno(string nroTurno, string movidaBlanco, string movidaNegro) {
+Turno* InterpreteTurnos::crearTurno(string nroTurno,
+								string movidaBlanco, string movidaNegro) {
 	Movimiento* movimientoBlanco = NULL;
 	movimientoBlanco = factoryMovimiento.crear(movidaBlanco, BLANCO);
 	if (movimientoBlanco->tienePromocion()) {
@@ -104,8 +106,8 @@ Turno* InterpreteTurnos::crearTurno(string nroTurno, string movidaNegro) {
 	return crearTurno(nroTurno, movimientoVacio, movimientoNegro);
 }
 
-Turno* InterpreteTurnos::crearTurno(string& nroTurno, Movimiento* movidaBlanco, Movimiento* movidaNegro) {
-
+Turno* InterpreteTurnos::crearTurno(string& nroTurno,
+			Movimiento* movidaBlanco, Movimiento* movidaNegro) {
 	Turno* unTurno = new Turno();
 	int nro = obtenerNumeroTurno(nroTurno);
 	unTurno->setMovimientoBlanco(movidaBlanco);
@@ -133,7 +135,8 @@ int InterpreteTurnos::obtenerNumeroTurno(string& nroTurno) {
 }
 
 
-void InterpreteTurnos::preparaParaAnalizar(Turno* unTurno, string& movNegro, string& movBlanco) {
+void InterpreteTurnos::preparaParaAnalizar(Turno* unTurno, string& movNegro,
+														string& movBlanco) {
 	Coordenada coordOrigenBlanco = obtenerCoordenadaInicial(movBlanco);
 	Coordenada coordOrigenNegro = obtenerCoordenadaInicial(movNegro);
 	unTurno->setCoordOrigenBlanco(coordOrigenBlanco);
@@ -141,7 +144,6 @@ void InterpreteTurnos::preparaParaAnalizar(Turno* unTurno, string& movNegro, str
 }
 
 Coordenada InterpreteTurnos::obtenerCoordenadaInicial(string& movida) {
-
 	Coordenada coord;
 
 	if (factoryMovimiento.esMovimientoSimple(movida) ||
@@ -161,12 +163,12 @@ Coordenada InterpreteTurnos::obtenerCoordenadaInicial(string& movida) {
 		coord.setFila(Util::charToInt(movida[1]));
 		coord.setColumna(movida[0]);
 	}
-
 	return coord;
 }
 
 
-void InterpreteTurnos::registrarPromocionDe(Movimiento* movimiento, string palabra) {
+void InterpreteTurnos::registrarPromocionDe(Movimiento* movimiento,
+													string palabra) {
 	if (piezasPromocion == NULL) {
 		piezasPromocion = new ListaPPieza();
 	}
@@ -175,7 +177,7 @@ void InterpreteTurnos::registrarPromocionDe(Movimiento* movimiento, string palab
 	((Promocion*)movimiento)->setPiezaPromocion(nuevaPiezaJugadora);
 	Coordenada& destino = ((Promocion*)movimiento)->getDestino();
 	if (nuevaPiezaJugadora) {
-		piezasPromocion->agregar(new Pieza(nuevaPiezaJugadora, destino, simbolo));
+		piezasPromocion->agregar(
+				new Pieza(nuevaPiezaJugadora, destino, simbolo));
 	}
-
 }

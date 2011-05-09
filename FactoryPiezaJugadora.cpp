@@ -7,7 +7,6 @@
 
 #include "FactoryPiezaJugadora.h"
 
-//FactoryPiezaJugadora* FactoryPiezaJugadora::singletonFactory = NULL;
 char idPiezas[6] = {'P', 'R', 'N', 'B', 'Q', 'K'};
 
 FactoryPiezaJugadora::FactoryPiezaJugadora() {
@@ -17,7 +16,6 @@ FactoryPiezaJugadora::FactoryPiezaJugadora() {
 	creadores[3] = new CreadorEstandar<Alfil>();
 	creadores[4] = new CreadorEstandar<Reina>();
 	creadores[5] = new CreadorEstandar<Rey>();
-
 }
 
 PiezaJugadora *FactoryPiezaJugadora::crear(char simbolo) {
@@ -36,7 +34,6 @@ PiezaJugadora *FactoryPiezaJugadora::crear(char simbolo) {
 			pJugadora->setColor(BLANCO);
 		}
 	}
-
 	return pJugadora;
 }
 

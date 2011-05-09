@@ -21,13 +21,9 @@ const char c_SIN_SIMBOLO = '-';
 const char c_VACIO = '.';
 
 class VistaReplayer {
-
 	std::stringstream out;
-
 public:
 	VistaReplayer();
-
-
 
 	void visualizarTableroInicial(TableroAjedrez* tablero,
 								  ListaPPieza* piezasIniciales,
@@ -35,22 +31,15 @@ public:
 	void visualizarTableroFinal(TableroAjedrez* tablero,
 								ListaPPieza* piezasIniciales,
 								ListaPPieza* piezasPromociones);
-
 	char encontrarSymbolo(PiezaJugadora* piezaJugadora, ListaPPieza* listaPiezas);
 
 	void visualizarAnalisis(Analizador& analizador);
-
-
 	std::string toString();
-
 private:
 	void visualizar(TableroAjedrez* tablero,
 						ListaPPieza* piezasIniciales,
 						ListaPPieza* piezasPromociones);
-
 	void listarCoordenadas(ListaPCoordenadas* listaCoord);
-
-
 };
 
 #endif /* VISTAREPLAYER_H_ */

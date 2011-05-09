@@ -16,10 +16,10 @@
 #define PNG_CANT_FILA 8
 
 class PgnAjedrez {
-
 private:
 	std::string tableroInicial;
 	std::stringstream movidas;
+	tEstado estado;
 
 public:
 	PgnAjedrez();
@@ -29,8 +29,10 @@ public:
 	char getSimboloSiguienteJugador();
 	std::stringstream& getMovidas();
 	std::string getTableroInicial();
-
-
+    tEstado getEstado() const;
 };
+
+
+std::istream &operator >> (std::istream &in, PgnAjedrez& pgn);
 
 #endif /* PNGFILE_H_ */

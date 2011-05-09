@@ -14,12 +14,9 @@ class MovidaDirecta: public Movimiento {
 private:
 	Coordenada origen;
 	Coordenada destino;
-
 public:
-
 	MovidaDirecta(const Coordenada& ori, const Coordenada& dest);
 	void aplicarEn(TableroAjedrez* tablero);
-
 };
 
 #endif /* MOVIDADIRECTA_H_ */

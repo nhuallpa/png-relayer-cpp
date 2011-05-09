@@ -9,10 +9,13 @@
 
 #include "VistaReplayer.h"
 
-using namespace std;
+using std::string;
+using std::cout;
+using std::endl;
 
-std::string VistaReplayer::toString() {
-	return out.str();
+string VistaReplayer::toString() {
+	string salida(out.str());
+	return salida;
 }
 
 VistaReplayer::VistaReplayer() {
@@ -22,16 +25,15 @@ void VistaReplayer::visualizarTableroInicial(TableroAjedrez* tablero,
 											ListaPPieza* piezasIniciales,
 											ListaPPieza* piezasPromociones) {
 	string cadena();
-	out<<"Tablero inicial:"<<endl;
+	out << "Tablero inicial:" << endl;
 	visualizar(tablero, piezasIniciales, piezasPromociones);
-	out<<endl;
-	out<<endl;
+	out << endl;
 }
 void VistaReplayer::visualizarTableroFinal(TableroAjedrez* tablero,
 										   ListaPPieza* piezasIniciales,
 										   ListaPPieza* piezasPromociones) {
 	string cadena();
-	out<<"Tablero final:"<<endl;
+	out << "Tablero final:" << endl;
 	visualizar(tablero, piezasIniciales, piezasPromociones);
 }
 
@@ -43,23 +45,21 @@ void VistaReplayer::visualizar(TableroAjedrez* tablero,
 		for (char columna = 'a'; columna <= 'h'; columna++) {
 			if (tablero->hayPiezaJugadora(fila, columna)) {
 				PiezaJugadora* piezaJugadora = tablero->getPiezaJugadora(fila, columna);
-
 				char simbolo = encontrarSymbolo(piezaJugadora, piezasIniciales);
 				if 	(simbolo ==	c_SIN_SIMBOLO && piezasPromociones) {
 					simbolo = encontrarSymbolo(piezaJugadora, piezasPromociones);
 				}
-				out<<simbolo;
+				out << simbolo;
 			} else {
-				out<<c_VACIO;
+				out << c_VACIO;
 			}
 		}
-		if (fila != 1){
-			out<<endl;
-		}
+		out << endl;
 	}
 }
 
-char VistaReplayer::encontrarSymbolo(PiezaJugadora* piezaJugadora, ListaPPieza* listaPiezas) {
+char VistaReplayer::encontrarSymbolo(PiezaJugadora* piezaJugadora,
+									 ListaPPieza* listaPiezas) {
 	char symbol = c_SIN_SIMBOLO;
 	bool encontrado = false;
 
@@ -76,14 +76,14 @@ char VistaReplayer::encontrarSymbolo(PiezaJugadora* piezaJugadora, ListaPPieza* 
 }
 
 
-void VistaReplayer::visualizarAnalisis(Analizador& analizador){
+void VistaReplayer::visualizarAnalisis(Analizador& analizador) {
 	listaPReporte::IteratorList it = analizador.getReportes()->getIterator();
 	while (it.hasNext()) {
 		Reporte* reporte = it.next();
-		out<<"Analisis para movida: "<<reporte->getNroTurno()<<endl;
+		out << "Analisis para movida: " << reporte->getNroTurno() << endl;
 		listarCoordenadas(reporte->getListCoordenadasBlancas());
 		listarCoordenadas(reporte->getListCoordenadasNegras());
-		out<<endl;
+		out << endl;
 	}
 }
 
@@ -91,9 +91,9 @@ void VistaReplayer::listarCoordenadas(ListaPCoordenadas* listaCoord) {
 	ListaPCoordenadas::IteratorList itBlancas = listaCoord->getIterator();
 	while (itBlancas.hasNext()) {
 		Coordenada* coord = itBlancas.next();
-		out<<coord->getColumna()<<coord->getFila()<<" ";
+		out << coord->getColumna() << coord->getFila() << " ";
 	}
-	out<<endl;
+	out << endl;
 }
 
 

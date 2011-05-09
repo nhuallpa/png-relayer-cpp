@@ -14,7 +14,8 @@ typedef enum {NEGRO = 0, BLANCO = 1, SIN_COLOR = 2} tColor;
 
 const int pasoFil[8] = {1, 1, 0, -1, -1, -1, 	0, 	1};
 const int pasoCol[8] = {0, 1, 1, 	1, 	0, -1, -1, -1};
-typedef enum { NORTE, NORESTE, ESTE, SURESTE, SUR, SUROESTE, OESTE, NOROESTE} tDireccionPaso;
+typedef enum { NORTE, NORESTE, ESTE, SURESTE, SUR, SUROESTE, OESTE, NOROESTE}
+		tDireccionPaso;
 
 
 class TableroAjedrez;
@@ -23,13 +24,14 @@ class PiezaJugadora {
 public:
 	PiezaJugadora();
 	virtual ~PiezaJugadora();
-	virtual ListaPCoordenadas* coordDestinoDesde(const Coordenada& coord) = 0;
 	bool esAliado(const PiezaJugadora & piezaJugadora) const;
 	bool esAliado(const PiezaJugadora* piezaJugadora) const;
     tColor getColor() const;
     void setColor(tColor color);
 
-    virtual ListaPCoordenadas* filtrarCoordValidas(const Coordenada& coorBlanco, TableroAjedrez* unTablero);
+    virtual ListaPCoordenadas* filtrarCoordValidas(
+    										const Coordenada& coorBlanco,
+    										TableroAjedrez* unTablero);
 
 protected:
     bool estaHabilitada(Coordenada* coordenada, TableroAjedrez* unTablero);

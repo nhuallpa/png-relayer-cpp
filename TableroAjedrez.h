@@ -14,7 +14,6 @@
 
 class PiezaJugadora;
 class TableroAjedrez {
-
 private:
 	int cantFilas;
 	int cantColumnas;
@@ -49,7 +48,6 @@ private:
 	bool indicesValidos(int fila, int columna);
 	int filaToIndice(int fila);
 	int columnaToIndice(char columna);
-
 };
 
 #endif /* AJEDREZ_H_ */

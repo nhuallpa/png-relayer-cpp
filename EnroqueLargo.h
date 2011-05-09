@@ -9,10 +9,10 @@
 #define __ENROQUELARGO_H_
 #include "Enroque.h"
 
-class EnroqueLargo: public Enroque{
+class EnroqueLargo: public Enroque {
 private:
 public:
-	EnroqueLargo(tColor color);
+	explicit EnroqueLargo(tColor color);
 };
 
 #endif /* ENROQUELARGO_H_ */

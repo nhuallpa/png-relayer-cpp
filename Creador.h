@@ -12,6 +12,8 @@
 class Creador {
 public:
 	virtual PiezaJugadora* getInstancia() = 0;
+
+	virtual ~Creador() { }
 };
 
 #endif /* CREADOR_H_ */

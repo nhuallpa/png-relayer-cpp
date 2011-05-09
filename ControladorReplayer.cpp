@@ -6,17 +6,17 @@
  */
 
 #include "ControladorReplayer.h"
+using std::ostream;
+using std::cout;
 
-
-using namespace std;
-
-std::ostream& operator<< (ostream& out, VistaReplayer* vista){
-	out<<vista->toString();
+ostream& operator<< (ostream& out, VistaReplayer* vista) {
+	out << vista->toString();
 	return out;
 }
 
 
-ControladorReplayer::ControladorReplayer(TableroAjedrez* unAjedrez, VistaReplayer* unaVista) {
+ControladorReplayer::ControladorReplayer(TableroAjedrez* unAjedrez,
+											VistaReplayer* unaVista) {
 	tableroAjedrez = unAjedrez;
 	vista = unaVista;
 }
@@ -25,7 +25,7 @@ ControladorReplayer::~ControladorReplayer() {
 }
 
 void ControladorReplayer::mostrarResultados() {
-	cout<<vista;
+	cout << vista;
 }
 
 void ControladorReplayer::reproducir(PgnAjedrez* entradaPng) {
@@ -51,7 +51,7 @@ void ControladorReplayer::prepararTableroInicial() {
 void ControladorReplayer::colocarPiezasIniciales(ListaPPieza* piezasIniciales) {
 	ListaPPieza::IteratorList itPiezasInicales =
 											piezasIniciales->getIterator();
-    while(itPiezasInicales.hasNext()){
+    while (itPiezasInicales.hasNext()) {
         Pieza *unaPieza = itPiezasInicales.next();
         tableroAjedrez->posionar(unaPieza->getPiezaJugadora(),
         								unaPieza->getCoordenadaInicial());
@@ -75,5 +75,6 @@ void ControladorReplayer::ejecutarTurnos() {
 		}
 	}
 }
+
 
 

@@ -13,7 +13,6 @@
 class Peon: public PiezaJugadora {
 public:
 	Peon();
-	ListaPCoordenadas* coordDestinoDesde(const Coordenada& coord);
 	virtual ~Peon();
 };
 
