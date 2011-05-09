@@ -7,7 +7,7 @@
 
 #include "Enroque.h"
 
-void Enroque::aplicarEn(TableroAjedrez* tablero){
+void Enroque::aplicarEn(TableroAjedrez* tablero) {
 	PiezaJugadora* rey = tablero->levantarPiezaJugadora(origenRey);
 	PiezaJugadora* torre = tablero->levantarPiezaJugadora(origenTorre);
 	if (rey && torre) {

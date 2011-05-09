@@ -9,7 +9,6 @@
 
 Celda::Celda() {
 	piezaJugadora = NULL;
-
 }
 
 PiezaJugadora *Celda::getPiezaJugadora() const {

@@ -45,23 +45,19 @@ void Turno::setHay_QueAnalizar(bool hay_QueAnalizar) {
     this->hay_QueAnalizar = hay_QueAnalizar;
 }
 
-Coordenada Turno::getCoordOrigenBlanco() const
-{
+Coordenada Turno::getCoordOrigenBlanco() const {
     return coordOrigenBlanco;
 }
 
-Coordenada Turno::getCoordOrigenNegro() const
-{
+Coordenada Turno::getCoordOrigenNegro() const {
     return coordOrigenNegro;
 }
 
-void Turno::setCoordOrigenBlanco(Coordenada& coordOrigenBlanco)
-{
+void Turno::setCoordOrigenBlanco(Coordenada& coordOrigenBlanco) {
     this->coordOrigenBlanco = coordOrigenBlanco;
 }
 
-void Turno::setCoordOrigenNegro(Coordenada& coordOrigenNegro)
-{
+void Turno::setCoordOrigenNegro(Coordenada& coordOrigenNegro) {
     this->coordOrigenNegro = coordOrigenNegro;
 }
 

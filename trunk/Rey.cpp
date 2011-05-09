@@ -8,11 +8,6 @@
 #include "Rey.h"
 
 Rey::Rey() {
-
-}
-
-ListaPCoordenadas *Rey::coordDestinoDesde(const Coordenada & coord) {
-	return NULL;
 }
 
 Rey::~Rey() {

@@ -11,7 +11,6 @@
 #include "Movimiento.h"
 
 class Promocion: public Movimiento {
-
 private:
 	char simboloPromocion;
 	PiezaJugadora* piezaPromocion;
@@ -24,7 +23,6 @@ public:
 	void setPiezaPromocion(PiezaJugadora* piezaJugadora);
 	char getSimboloPromocion();
 	Coordenada& getDestino();
-
 };
 
 #endif /* PROMOCION_H_ */

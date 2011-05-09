@@ -25,13 +25,11 @@ void Pieza::setCoordenadaInicial(Coordenada coordenadaInicial) {
     this->coordenadaInicial = coordenadaInicial;
 }
 
-char Pieza::getSymbol() const
-{
+char Pieza::getSymbol() const {
     return symbol;
 }
 
-void Pieza::setSymbol(char symbol)
-{
+void Pieza::setSymbol(char symbol) {
     this->symbol = symbol;
 }
 

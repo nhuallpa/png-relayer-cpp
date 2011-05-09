@@ -13,16 +13,25 @@ Movimiento *FactoryMovimiento::crear(std::string palabra, tColor color) {
 	Movimiento* movimiento = NULL;
 	if (esMovimientoSimple(palabra) || esMovimientoSimpleCombinable(palabra)) {
 		int i = (palabra.length() == 4)?0:1;
-		Coordenada origen(Util::charToInt(palabra[i+1]), palabra[i+0]);
-		Coordenada destino(Util::charToInt(palabra[i+3]), palabra[i+2]);
+		Coordenada origen;
+		origen.setFila(Util::charToInt(palabra[i+1]));
+		origen.setColumna(palabra[i+0]);
+
+		Coordenada destino;
+		destino.setFila(Util::charToInt(palabra[i+3]));
+		destino.setColumna(palabra[i+2]);
+
 		Movimiento* movidaDirecta = new MovidaDirecta(origen, destino);
 		movimiento = movidaDirecta;
 	}
-
 	if (esMate(palabra) || esJaque(palabra)) {
 		int i = (palabra.length() == 5)?0:1;
-		Coordenada origen(Util::charToInt(palabra[i+1]), palabra[i]);
-		Coordenada destino(Util::charToInt(palabra[i+3]), palabra[i+2]);
+		Coordenada origen;
+		origen.setFila(Util::charToInt(palabra[i+1]));
+		origen.setColumna(palabra[i]);
+		Coordenada destino;
+		destino.setFila(Util::charToInt(palabra[i+3]));
+		destino.setColumna(palabra[i+2]);
 		Movimiento* movidaDirecta = new MovidaDirecta(origen, destino);
 		movimiento = movidaDirecta;
 	}
@@ -43,8 +52,15 @@ Movimiento *FactoryMovimiento::crear(std::string palabra, tColor color) {
 		if (color == NEGRO) {
 			simbolo = tolower(palabra[4]);
 		}
-		Coordenada origen(Util::charToInt(palabra[1]), palabra[0]);
-		Coordenada destino(Util::charToInt(palabra[3]), palabra[2]);
+		Coordenada origen;
+		origen.setFila(Util::charToInt(palabra[1]));
+		origen.setColumna(palabra[0]);
+
+		Coordenada destino;
+		destino.setFila(Util::charToInt(palabra[3]));
+		destino.setColumna(palabra[2]);
+
+
 		Movimiento* promocion = new Promocion(origen, destino, simbolo);
 		movimiento = promocion;
 	}

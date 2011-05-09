@@ -30,20 +30,12 @@
 
 typedef Lista<Pieza*> ListaPPieza;
 typedef Lista<Turno*> ListaPTurno;
-//const char JUGADOR_NEGRO = 'b';
-//const char c_ANALIZAR = '?';
-
 
 class PgnInterprete {
 private:
 	PgnAjedrez* pgn;
 	FactoryPiezaJugadora factoryPiezaJugadora;
-//	FactoryMovimiento	factoryMovimiento;
 	ListaPPieza* piezasIniciales;
-//	ListaPPieza* piezasPromocion;
-//	ListaPTurno* turnos;
-
-
 	InterpreteTurnos interpreteTurno;
 
 public:

@@ -16,7 +16,7 @@ tColor PiezaJugadora::getColor() const {
     return color;
 }
 
-bool PiezaJugadora::esAliado(const PiezaJugadora & piezaJugadora) const{
+bool PiezaJugadora::esAliado(const PiezaJugadora & piezaJugadora) const {
 	return (this->color == piezaJugadora.getColor());
 }
 
@@ -29,18 +29,19 @@ void PiezaJugadora::setColor(tColor color) {
 }
 
 PiezaJugadora::~PiezaJugadora() {
-
 }
 
-ListaPCoordenadas *PiezaJugadora::filtrarCoordValidas(const Coordenada & coorBlanco,
-														TableroAjedrez *unTablero) {
+ListaPCoordenadas *PiezaJugadora::filtrarCoordValidas(
+										const Coordenada & coorBlanco,
+										TableroAjedrez *unTablero) {
 	return NULL;
 }
 
-ListaPCoordenadas *PiezaJugadora::cargarCoordValidas(ListaPCoordenadas * listaCoord,
-													 const Coordenada & coordenada,
-													 TableroAjedrez *unTablero,
-													 tDireccionPaso dir) {
+ListaPCoordenadas *PiezaJugadora::cargarCoordValidas(
+										ListaPCoordenadas * listaCoord,
+										const Coordenada & coordenada,
+										TableroAjedrez *unTablero,
+										tDireccionPaso dir) {
 	if (listaCoord) {
 		Coordenada coord(coordenada);
 		bool continuar;
@@ -60,20 +61,20 @@ ListaPCoordenadas *PiezaJugadora::cargarCoordValidas(ListaPCoordenadas * listaCo
 			coord.setColumna(coord.getColumna() + pasoCol[dir]);
 		}
 	}
-
-
 	return listaCoord;
 }
 
 
 
-bool PiezaJugadora::estaHabilitada(Coordenada* coordenada, TableroAjedrez* unTablero) {
+bool PiezaJugadora::estaHabilitada(Coordenada* coordenada,
+								   TableroAjedrez* unTablero) {
 	bool valido = false;
-	if  (!unTablero->hayPiezaJugadora(*coordenada)){
+	if  (!unTablero->hayPiezaJugadora(*coordenada)) {
 		valido = true;
 	} else {
-		PiezaJugadora* piezaJugadora = unTablero->getPiezaJugadora(*coordenada);
-		if (!this->esAliado(piezaJugadora)){
+		PiezaJugadora* piezaJugadora =
+							unTablero->getPiezaJugadora(*coordenada);
+		if (!this->esAliado(piezaJugadora)) {
 			valido = true;
 		}
 	}

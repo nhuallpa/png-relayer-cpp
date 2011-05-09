@@ -9,7 +9,6 @@
 
 
 EnroqueLargo::EnroqueLargo(tColor color) {
-
 	int fila = (color == NEGRO)?8:1;
 	origenRey.setFila(fila);
 	origenRey.setColumna('e');

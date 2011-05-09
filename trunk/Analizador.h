@@ -15,7 +15,6 @@
 #include "Reporte.h"
 
 class Analizador {
-
 private:
 	listaPReporte* reportes;
 

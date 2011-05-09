@@ -14,7 +14,6 @@
 class Reina: public PiezaJugadora {
 public:
 	Reina();
-	ListaPCoordenadas* coordDestinoDesde(const Coordenada& coord);
 	ListaPCoordenadas* filtrarCoordValidas(const Coordenada& coordenada,
 											TableroAjedrez* unTablero);
 	virtual ~Reina();

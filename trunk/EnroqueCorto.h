@@ -12,7 +12,7 @@
 
 class EnroqueCorto: public Enroque {
 public:
-	EnroqueCorto(tColor color);
+	explicit EnroqueCorto(tColor color);
 };
 
 #endif /* ENROQUECORTO_H_ */

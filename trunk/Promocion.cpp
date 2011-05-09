@@ -7,8 +7,8 @@
 
 #include "Promocion.h"
 
-Promocion::Promocion(const Coordenada &ori,const Coordenada &dest, char simbolo):
-					origen(ori), destino(dest) {
+Promocion::Promocion(const Coordenada &ori, const Coordenada &dest,
+					char simbolo):origen(ori), destino(dest) {
 	piezaPromocion = NULL;
 	conPomocion = true;
 	simboloPromocion = simbolo;
@@ -16,7 +16,7 @@ Promocion::Promocion(const Coordenada &ori,const Coordenada &dest, char simbolo)
 
 void Promocion::aplicarEn(TableroAjedrez* tablero) {
 	PiezaJugadora* peon = tablero->levantarPiezaJugadora(origen);
-	if (peon){
+	if (peon) {
 		if (piezaPromocion) {
 			tablero->posionar(piezaPromocion, destino);
 		} else {

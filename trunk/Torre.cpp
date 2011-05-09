@@ -8,19 +8,8 @@
 #include "Torre.h"
 #include "TableroAjedrez.h"
 
-Torre::Torre() {
-
-}
-
-ListaPCoordenadas *Torre::coordDestinoDesde(const Coordenada & coord) {
-	return NULL;
-}
-
-
-
 ListaPCoordenadas *Torre::filtrarCoordValidas(const Coordenada & coordenada,
 												TableroAjedrez *unTablero) {
-
 	ListaPCoordenadas* lCoordenadas = new ListaPCoordenadas();
 	Coordenada coord(coordenada);
 	lCoordenadas = cargarCoordValidas(lCoordenadas, coordenada, unTablero, NORTE);
@@ -28,10 +17,5 @@ ListaPCoordenadas *Torre::filtrarCoordValidas(const Coordenada & coordenada,
 	lCoordenadas = cargarCoordValidas(lCoordenadas, coordenada, unTablero, SUR);
 	lCoordenadas = cargarCoordValidas(lCoordenadas, coordenada, unTablero, OESTE);
 	return lCoordenadas;
-
-}
-
-Torre::~Torre() {
-
 }
 

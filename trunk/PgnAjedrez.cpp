@@ -6,18 +6,26 @@
  */
 
 #include "PgnAjedrez.h"
-using namespace std;
+using std::string;
+using std::istream;
+using std::stringstream;
+using std::ifstream;
+using std::endl;
+
+istream& operator >> (istream &in, PgnAjedrez& pgn) {
+	pgn.cargarPng(in);
+	return in;
+}
 
 
 PgnAjedrez::PgnAjedrez() {
-
 	this->tableroInicial.clear();
 	this->movidas.clear();
-
+	estado = PNG_NO_ENCONTRADO;
 }
 
 tEstado PgnAjedrez::cargarPng(char *rutaPng) {
-	tEstado estado = EXITOSO;
+	estado = EXITOSO;
 	string lineaBuffer;
 	ifstream in(rutaPng);
 	if (in.is_open()) {
@@ -25,9 +33,8 @@ tEstado PgnAjedrez::cargarPng(char *rutaPng) {
 		getline(in, lineaBuffer);
 		while (!in.eof()) {
 			getline(in, lineaBuffer);
-			this->movidas<<lineaBuffer<<endl;
+			this->movidas << lineaBuffer << endl;
 		}
-		in.close();
 	} else {
 		estado = PNG_NO_ENCONTRADO;
 	}
@@ -37,13 +44,13 @@ tEstado PgnAjedrez::cargarPng(char *rutaPng) {
 
 
 tEstado PgnAjedrez::cargarPng(istream &inStream) {
-	tEstado estado = EXITOSO;
+	estado = EXITOSO;
 	string lineaBuffer;
 	getline(inStream, this->tableroInicial);
 	getline(inStream, lineaBuffer);
 	while (!inStream.eof()) {
 		getline(inStream, lineaBuffer);
-		this->movidas<<lineaBuffer<<endl;
+		this->movidas << lineaBuffer << endl;
 	}
 	return estado;
 }
@@ -52,7 +59,7 @@ string PgnAjedrez::dameFila(int nroFila) {
 	int posIni = 0;
 	string fila = "";
 	int nroToken = PNG_CANT_FILA - nroFila + 1;
-	for (int filaActual = 0; filaActual<nroToken; filaActual++) {
+	for (int filaActual = 0; filaActual < nroToken; filaActual++) {
 		size_t posEntontrado;
 		if (filaActual == (PNG_CANT_FILA-1)) {
 			posEntontrado = tableroInicial.find(' ', posIni);
@@ -70,6 +77,11 @@ string PgnAjedrez::dameFila(int nroFila) {
 stringstream&  PgnAjedrez::getMovidas() {
     return movidas;
 }
+tEstado PgnAjedrez::getEstado() const {
+    return estado;
+}
+
+
 string PgnAjedrez::getTableroInicial() {
     return this->tableroInicial;
 }

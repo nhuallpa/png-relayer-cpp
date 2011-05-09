@@ -22,7 +22,6 @@ const char JUGADOR_NEGRO = 'b';
 const char c_ANALIZAR = '?';
 
 class InterpreteTurnos {
-
 private:
 	PgnAjedrez* pgn;
 	FactoryPiezaJugadora factoryPiezaJugadora;

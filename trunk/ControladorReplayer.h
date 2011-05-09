@@ -21,7 +21,6 @@
 
 
 class ControladorReplayer {
-
 private:
 	TableroAjedrez* tableroAjedrez;
 	VistaReplayer* vista;
@@ -39,7 +38,6 @@ public:
 private:
 	void prepararTableroInicial();
 	void colocarPiezasIniciales(ListaPPieza* piezasIniciales);
-
 };
 
 #endif /* CONTROLADORREPLAYER_H_ */

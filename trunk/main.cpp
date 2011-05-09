@@ -15,9 +15,9 @@
 #include "TestPiezas.h"
 #include "TestAnalizador.h"
 
-using namespace std;
+using std::cin;
 
-#define TEST_
+#define TEST
 void iniciarEjecucion(PgnAjedrez* entradaPng) {
 	TableroAjedrez ajedrez;
 	VistaReplayer vista;
@@ -27,7 +27,6 @@ void iniciarEjecucion(PgnAjedrez* entradaPng) {
 }
 
 int main(int argc, char* argv[]) {
-
 	tEstado estado = EXITOSO;
 #ifdef TEST
 	TestTableroAjedrez testSuitTablero;
@@ -43,7 +42,8 @@ int main(int argc, char* argv[]) {
 	if (argc == 2) {
 		estado = entradaPng.cargarPng(argv[1]);
 	} else if (argc == 1){
-		estado = entradaPng.cargarPng(cin);
+		cin >> entradaPng;
+		estado = entradaPng.getEstado();
 	} else if (argc > 2) {
 		estado = CANT_PARAM_INV;
 	}

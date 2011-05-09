@@ -12,11 +12,8 @@
 
 class Alfil: public PiezaJugadora {
 public:
-	Alfil();
-	ListaPCoordenadas* coordDestinoDesde(const Coordenada& coord);
 	ListaPCoordenadas *filtrarCoordValidas(const Coordenada & coordenada,
-													TableroAjedrez *unTablero);
-	virtual ~Alfil();
+										   TableroAjedrez *unTablero);
 };
 
 #endif /* ALFIL_H_ */

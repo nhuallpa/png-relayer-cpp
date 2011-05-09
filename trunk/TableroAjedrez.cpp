@@ -36,9 +36,7 @@ PiezaJugadora *TableroAjedrez::getPiezaJugadora(const Coordenada &coord) {
 }
 
 PiezaJugadora *TableroAjedrez::getPiezaJugadora(int fila, char columna) {
-
 	PiezaJugadora* result = NULL;
-
 	int i = filaToIndice(fila);
 	int j = columnaToIndice(columna);
 
@@ -49,11 +47,10 @@ PiezaJugadora *TableroAjedrez::getPiezaJugadora(int fila, char columna) {
 }
 
 
-void TableroAjedrez::posionar(PiezaJugadora *piezaJugadora, const Coordenada &coord) {
-
+void TableroAjedrez::posionar(PiezaJugadora *piezaJugadora,
+									const Coordenada &coord) {
 	//  i 0 es FilaAjedrez 1
 	//  j 0 es la columnaTablero a
-
 	int i = filaToIndice(coord.getFila());
 	int j = columnaToIndice(coord.getColumna());
 
@@ -63,8 +60,8 @@ void TableroAjedrez::posionar(PiezaJugadora *piezaJugadora, const Coordenada &co
 }
 
 PiezaJugadora* TableroAjedrez::levantarPiezaJugadora(const Coordenada &coord) {
-
-	PiezaJugadora* pieza = getPiezaJugadora(coord.getFila(), coord.getColumna());
+	PiezaJugadora* pieza = getPiezaJugadora(coord.getFila(),
+										coord.getColumna());
 	posionar(NULL, coord);
 	return pieza;
 }
